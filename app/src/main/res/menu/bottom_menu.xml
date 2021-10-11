@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profilFragment"
+        android:title="Profile"
+        android:icon="@drawable/ic_person" />
+    <item
+        android:id="@+id/aktiviteterFragment"
+        android:title="@string/activity"
+        android:icon="@drawable/ic_assignment"/>
+    <item
+        android:id="@+id/banerFragment"
+        android:title="Baner"
+        android:icon="@drawable/ic_map"/>
+    <item
+        android:id="@+id/indstillingerFragment"
+        android:title="Indstillinger"
+        android:icon="@drawable/ic_settings"/>
+</menu>
