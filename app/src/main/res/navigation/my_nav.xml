@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/profilFragment">
+
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.dtu.nemsport.profilFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/aktiviteterFragment"
+        android:name="com.dtu.nemsport.AktivitetFragment"
+        android:label="Aktiviteter"
+        tools:layout="@layout/fragment_aktiviteter" />
+    <fragment
+        android:id="@+id/banerFragment"
+        android:name="com.dtu.nemsport.banerFragment"
+        android:label="Baner"
+        tools:layout="@layout/fragment_baner" />
+    <fragment
+        android:id="@+id/indstillingerFragment"
+        android:name="com.dtu.nemsport.indstillingerFragment"
+        android:label="Indstillinger"
+        tools:layout="@layout/fragment_indstillinger" />
+</navigation>
