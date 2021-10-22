@@ -9,7 +9,7 @@ namespace nemsport_web_api.DbBuilds
 {
     public class ManageEvent
     {
-        private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
+        // private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
 
 
 
@@ -18,7 +18,7 @@ namespace nemsport_web_api.DbBuilds
                                                 "Initial Catalog=nemsport_db; " +
                                                 "Persist Security Info=False;User " +
                                                 "ID=nemsport-admin; " +
-                                               "Password={your_password}; " +
+                                               "Password=Fodbold#C3; " +
                                                 "MultipleActiveResultSets=False; " +
                                                 "Encrypt=True;TrustServerCertificate=False; " +
                                                 "Connection Timeout=30;";
@@ -26,12 +26,11 @@ namespace nemsport_web_api.DbBuilds
         private const string GET_ALL = "select * from dbo.Event";
         private const string GET_ONE = "select * from dbo.Event WHERE Id = @ID";
         private const string POST_ONE = @"insert into dbo.Event 
-                                        (id, created, title, description, eventStart, fk_time_id, maxPlayers, onlyPaid, fk_member_id) 
+                                        (created, title, description, eventStart, fk_time_id, maxPlayers, onlyPaid, fk_member_id) 
                                         VALUES 
-                                        (@ID, @CREATED, @TITLE, @DESCRIPTION, @EVENTSTART, @FK_TIME_ID, @MAXPLAYERS, @ONLYPAID, @FK_MEMBER_ID) ";
+                                        (@CREATED, @TITLE, @DESCRIPTION, @EVENTSTART, @FK_TIME_ID, @MAXPLAYERS, @ONLYPAID, @FK_MEMBER_ID) ";
 
         private const string PUT_ONE = @"UPDATE dbo.Event SET 
-                                                id = @ID, 
                                                 created = @CREATED, 
                                                 title = @TITLE, 
                                                 description = @DESCRIPTION, 
@@ -67,8 +66,8 @@ namespace nemsport_web_api.DbBuilds
             tempEvent.Title = reader.GetString(2);
             tempEvent.Descript = reader.GetString(3);
             tempEvent.EventStart = reader.GetDateTime(4);
-            tempEvent.MaxPlayers = reader.GetInt32(5);
-            tempEvent.OnlyPaid = reader.GetInt32(6);
+            tempEvent.OnlyPaid = reader.GetInt32(5);
+            tempEvent.MaxPlayers = reader.GetInt32(6);
             tempEvent.Fk_member_id = reader.GetInt32(7);
 
             return tempEvent;
@@ -139,7 +138,6 @@ namespace nemsport_web_api.DbBuilds
                 //(@ID, @CREATED, @TITLE, @DESCRIPTION, @EVENTSTART, @FK_TIME_ID, @MAXPLAYERS, @ONLYPAID, @FK_MEMBER_ID)
 
                 // we will not use the id, since that get created in the DB
-                cmd.Parameters.AddWithValue("@ID", value.Id);
                 cmd.Parameters.AddWithValue("@CREATED", value.Created);
                 cmd.Parameters.AddWithValue("@TITLE", value.Title);
                 cmd.Parameters.AddWithValue("@DESCRIPTION", value.Descript);

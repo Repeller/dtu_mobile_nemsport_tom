@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace nemsport_web_api
 {
@@ -38,6 +39,8 @@ namespace nemsport_web_api
                         Version = "v1"
                     });
             });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +49,10 @@ namespace nemsport_web_api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -60,12 +67,22 @@ namespace nemsport_web_api
             });
 
             // this was added by Ziegler
+
+            app.UseCors(
+                options =>
+                {
+                    options.AllowAnyOrigin().AllowAnyMethod();
+                    // allow everything from anywhere | what can go wrong !!! xD
+                });
+
             app.UseSwagger();
 
             app.UseSwaggerUI(options => 
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger nemsport API");
             });
+
+            // app.UseMvc();
         }
     }
 }

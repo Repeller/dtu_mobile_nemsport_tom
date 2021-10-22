@@ -11,14 +11,14 @@ namespace nemsport_web_api.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public int MemberType { get; set; }
+        public string MemberType { get; set; }
 
         // constructor
         public Member()
         { 
         }
 
-        public Member(int id, string username, string password, int memberType) 
+        public Member(int id, string username, string password, string memberType) 
         {
             Id = id;
             Username = username;

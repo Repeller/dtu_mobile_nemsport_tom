@@ -12,19 +12,19 @@ namespace nemsport_web_api.DbBuilds
 {
     public class ManageMember
     {
-        private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
+        // private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
         
 
          
         // fields
         private const string _connectionString = "Server=tcp:nemsport-server.database.windows.net,1433; " +
-                                                "Initial Catalog=nemsport_db; " +
-                                                "Persist Security Info=False;User " +
-                                                "ID=nemsport-admin; " +
-                                               "Password={your_password}; " +
-                                                "MultipleActiveResultSets=False; " +
-                                                "Encrypt=True;TrustServerCertificate=False; " +
-                                                "Connection Timeout=30;"; 
+                                                    "Initial Catalog=nemsport_db; " +
+                                                    "Persist Security Info=False;User " +
+                                                    "ID=nemsport-admin; " +
+                                                    "Password=Fodbold#C3; " +
+                                                    "MultipleActiveResultSets=False; " +
+                                                    "Encrypt=True;TrustServerCertificate=False; " +
+                                                    "Connection Timeout=30;"; 
 
         private const string GET_ALL = "select * from dbo.Member";
         private const string GET_ONE = "select * from dbo.Member WHERE Id = @ID";
@@ -55,7 +55,7 @@ namespace nemsport_web_api.DbBuilds
             user.Id = reader.GetInt32(0);
             user.Username = reader.GetString(1);
             user.Password = reader.GetString(2);
-            user.MemberType = reader.GetInt32(3);
+            user.MemberType = reader.GetString(3);
 
             return user;
         }

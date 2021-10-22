@@ -9,7 +9,7 @@ namespace nemsport_web_api.DbBuilds
 {
     public class ManageEventMember
     {
-        private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
+        // private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
 
 
 
@@ -18,7 +18,7 @@ namespace nemsport_web_api.DbBuilds
                                                 "Initial Catalog=nemsport_db; " +
                                                 "Persist Security Info=False;User " +
                                                 "ID=nemsport-admin; " +
-                                               "Password={your_password}; " +
+                                               "Password=Fodbold#C3; " +
                                                 "MultipleActiveResultSets=False; " +
                                                 "Encrypt=True;TrustServerCertificate=False; " +
                                                 "Connection Timeout=30;";
@@ -26,12 +26,11 @@ namespace nemsport_web_api.DbBuilds
         private const string GET_ALL = "select * from dbo.EventMember";
         private const string GET_ONE = "select * from dbo.EventMember WHERE Id = @ID";
         private const string POST_ONE = @"insert into dbo.EventMember 
-                                        (id, fk_member_id, fk_event_id) 
+                                        (fk_member_id, fk_event_id) 
                                         VALUES 
-                                        (@ID, @FK_MEMBER_ID, @FK_EVENT_ID)";
+                                        (@FK_MEMBER_ID, @FK_EVENT_ID)";
 
         private const string PUT_ONE = @"UPDATE dbo.EventMember SET 
-                                                id = @ID, 
                                                 fk_member_id = @FK_MEMBER_ID, 
                                                 fk_event_id = @FK_EVENT_ID
                                                 WHERE Id = @ID";
@@ -129,7 +128,6 @@ namespace nemsport_web_api.DbBuilds
                 // (@ID, @FK_MEMBER_ID, @FK_EVENT_ID)
 
                 // we will not use the id, since that get created in the DB
-                cmd.Parameters.AddWithValue("@ID", value.Id);
                 cmd.Parameters.AddWithValue("@FK_MEMBER_ID", value.Fk_member_id);
                 cmd.Parameters.AddWithValue("@FK_EVENT_ID", value.Fk_event_id);
 

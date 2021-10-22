@@ -9,7 +9,7 @@ namespace nemsport_web_api.DbBuilds
 {
     public class ManageTime
     {
-        private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
+        // private string _jsonString = System.IO.File.ReadAllText("loginInfo.json");
 
 
 
@@ -18,7 +18,7 @@ namespace nemsport_web_api.DbBuilds
                                                 "Initial Catalog=nemsport_db; " +
                                                 "Persist Security Info=False;User " +
                                                 "ID=nemsport-admin; " +
-                                               "Password={your_password}; " +
+                                               "Password=Fodbold#C3; " +
                                                 "MultipleActiveResultSets=False; " +
                                                 "Encrypt=True;TrustServerCertificate=False; " +
                                                 "Connection Timeout=30;";
@@ -26,12 +26,11 @@ namespace nemsport_web_api.DbBuilds
         private const string GET_ALL = "select * from dbo.Time";
         private const string GET_ONE = "select * from dbo.Time WHERE Id = @ID";
         private const string POST_ONE = @"insert into dbo.Time 
-                                        (id, timeStart, timeEnd) 
+                                        (timeStart, timeEnd) 
                                         VALUES 
-                                        (@ID, @TIMESTART, @TIMEEND)";
+                                        (@TIMESTART, @TIMEEND)";
 
         private const string PUT_ONE = @"UPDATE dbo.Time SET 
-                                                id = @ID, 
                                                 timeStart = @TIMESTART, 
                                                 timeEnd = @TIMEEND
                                                 WHERE Id = @ID";
@@ -129,7 +128,6 @@ namespace nemsport_web_api.DbBuilds
                 // (@ID, @TIMESTART, @TIMEEND)
 
                 // we will not use the id, since that get created in the DB
-                cmd.Parameters.AddWithValue("@ID", value.Id);
                 cmd.Parameters.AddWithValue("@TIMESTART", value.TimeStart);
                 cmd.Parameters.AddWithValue("@TIMEEND", value.TimeEnd);
 
