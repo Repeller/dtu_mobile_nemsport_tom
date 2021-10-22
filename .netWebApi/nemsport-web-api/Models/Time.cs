@@ -7,9 +7,9 @@ namespace nemsport_web_api.Models
 {
     public class Time
     {
-        int Id { get; set; }
-        DateTime TimeStart { get; set; }
-        DateTime TimeEnd { get; set; }
+        public int Id { get; set; }
+        public DateTime TimeStart { get; set; }
+        public DateTime TimeEnd { get; set; }
 
         public Time() 
         { 

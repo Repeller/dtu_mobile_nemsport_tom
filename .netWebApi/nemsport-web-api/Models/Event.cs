@@ -13,13 +13,13 @@ namespace nemsport_web_api.Models
         public DateTime EventStart { get; set; }
         public string Descript { get; set; }
         public int MaxPlayers { get; set; }
-        public bool OnlyPaid { get; set; }
+        public int OnlyPaid { get; set; }
         public int Fk_member_id { get; set; }
 
         public Event()
         { }
 
-        public Event(int id, string title, DateTime created, DateTime eventStart, string descript, int maxPlayers, bool onlyPaid, int fk_member_id)
+        public Event(int id, string title, DateTime created, DateTime eventStart, string descript, int maxPlayers, int onlyPaid, int fk_member_id)
         {
             Id = id;
             Title = title;

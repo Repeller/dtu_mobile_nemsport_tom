@@ -11,12 +11,12 @@ namespace nemsport_web_api.Models
         public int Fk_member_id { get; set; }
         public int Fk_event_id { get; set; }
 
-        EventMember()
+        public EventMember()
         {
 
         }
 
-        EventMember(int id, int fk_member_id, int fk_event_id)
+        public EventMember(int id, int fk_member_id, int fk_event_id)
         {
             Id = id;
             Fk_member_id = fk_member_id;
