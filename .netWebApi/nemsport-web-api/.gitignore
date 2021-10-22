@@ -1,4 +1,8 @@
-﻿*.swp
+﻿# ------------added by the team ------------
+loginInfo.json
+# ------------------------
+
+*.swp
 *.*~
 project.lock.json
 .DS_Store
