@@ -1,12 +1,15 @@
 package com.example.bottomnavbar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dtu.nemsport.R
+import com.dtu.nemsport.RedigereIndstillinger
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +26,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController,appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)
+
+        // Go to skiftIndstillinger activity
+        val knapIndstillinger: Button = findViewById(R.id.skiftIndstillinger)
+        knapIndstillinger.setOnClickListener {
+            val intent = Intent(this,RedigereIndstillinger::class.java)
+            startActivity(intent)
+        }
 
     }
 }
