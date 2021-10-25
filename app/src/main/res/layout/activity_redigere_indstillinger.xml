@@ -231,7 +231,7 @@
             android:id="@+id/gemKnap"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:background="@drawable/bg_button"
+
             android:text="Gem"
             android:gravity="center"
             android:textSize="18dp"

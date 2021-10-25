@@ -17,16 +17,16 @@ class RedigereIndstillinger : AppCompatActivity() {
 
         val nyGemKnap: Button = findViewById(R.id.gemKnap)
 
-        val rigtigNavn: TextView = findViewById(R.id.navn)
+        //val rigtigNavn: TextView = findViewById(R.id.navn)
         val nyNavn: EditText = findViewById(R.id.edtxNavn)
 
-        val rigtigEmail: TextView = findViewById(R.id.email)
+        //val rigtigEmail: TextView = findViewById(R.id.email)
         val nyEmail: EditText = findViewById(R.id.edtxEmail)
 
-        val rigtigAdresse: TextView = findViewById(R.id.adresse)
+        //val rigtigAdresse: TextView = findViewById(R.id.adresse)
         val nyAdresse: EditText = findViewById(R.id.edtxAdresse)
 
-        val rigtigNummer: TextView = findViewById(R.id.nummer)
+        //val rigtigNummer: TextView = findViewById(R.id.nummer)
         val nyNummer: EditText = findViewById(R.id.edtxNummer)
 
         nyGemKnap.setOnClickListener {
@@ -35,10 +35,10 @@ class RedigereIndstillinger : AppCompatActivity() {
             val adresseBesked: String = nyAdresse.getText().toString()
             val nummerBesked: String = nyNummer.getText().toString()
 
-            rigtigNavn.setText(navnBesked)
-            rigtigEmail.setText(emailBesked)
-            rigtigAdresse.setText(adresseBesked)
-            rigtigNummer.setText(nummerBesked)
+            //rigtigNavn.setText(navnBesked)
+            //rigtigEmail.setText(emailBesked)
+            //rigtigAdresse.setText(adresseBesked)
+            //rigtigNummer.setText(nummerBesked)
 
         }
 

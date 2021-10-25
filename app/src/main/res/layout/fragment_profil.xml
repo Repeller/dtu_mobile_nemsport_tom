@@ -223,7 +223,7 @@
             android:id="@+id/skiftIndstillinger"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:background="@drawable/bg_button"
+
             android:text="Skift indstillinger"
             android:gravity="center"
             android:textSize="12dp"
