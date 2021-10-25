@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="0dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="75dp">
 
         <ImageView
             android:layout_width="100dp"
@@ -75,12 +75,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
+            android:inputType="text"
+            android:maxLines="1"
             android:text="Jens Mortensen"
             android:textColor="@color/gray"
             android:textSize="18dp"
-            android:maxLines="1"
-            android:inputType="text">
-        </EditText>
+            tools:ignore="TouchTargetSizeCheck"></EditText>
 
 
     </LinearLayout>
@@ -228,7 +228,7 @@
         android:gravity="center"
         android:orientation="vertical">
         <Button
-            android:id="@+id/gemKnap"
+            android:id="@+id/nyGemKnap"
             android:layout_width="200dp"
             android:layout_height="50dp"
 
