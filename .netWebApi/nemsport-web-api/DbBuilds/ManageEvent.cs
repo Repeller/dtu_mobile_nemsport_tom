@@ -23,13 +23,13 @@ namespace nemsport_web_api.DbBuilds
                                                 "Encrypt=True;TrustServerCertificate=False; " +
                                                 "Connection Timeout=30;";
 
+        // normal sql strings
         private const string GET_ALL = "select * from dbo.Event";
-        private const string GET_ONE = "select * from dbo.Event WHERE Id = @ID";
+        private const string GET_ONE = "select * from dbo.Event WHERE id = @ID";
         private const string POST_ONE = @"insert into dbo.Event 
                                         (created, title, description, eventStart, fk_time_id, maxPlayers, onlyPaid, fk_member_id) 
                                         VALUES 
                                         (@CREATED, @TITLE, @DESCRIPTION, @EVENTSTART, @FK_TIME_ID, @MAXPLAYERS, @ONLYPAID, @FK_MEMBER_ID) ";
-
         private const string PUT_ONE = @"UPDATE dbo.Event SET 
                                                 created = @CREATED, 
                                                 title = @TITLE, 
@@ -39,9 +39,18 @@ namespace nemsport_web_api.DbBuilds
                                                 maxPlayers = @MAXPLAYERS, 
                                                 onlyPaid = @ONLYPAID, 
                                                 fk_member_id = @FK_MEMBER_ID 
-                                                WHERE Id = @ID";
+                                                WHERE id = @ID";
+        private const string DELETE_ONE = "DELETE FROM dbo.Event WHERE id = @ID";
 
-        private const string DELETE_ONE = "DELETE FROM dbo.Event WHERE Id = @ID";
+        // custom sql strings
+        private const string GET_MINE = "select * from dbo.Event " +
+                                        "FULL JOIN dbo.EventMember ON dbo.Event.id = dbo.EventMember.fk_event_id " +
+                                        "WHERE dbo.Event.fk_member_id = @ID " +
+                                        "OR dbo.eventMember.fk_member_id = @ID";
+
+        private const string GET_ALL_PUBLIC = "select * from dbo.Event WHERE dbo.Event.onlyPaid = 0";
+
+        private const string GET_ONLY_MEMBERS = "select * from dbo.Event WHERE dbo.Event.onlyPaid = 1";
 
 
         public IEnumerable<Event> Events { get; set; }
@@ -50,6 +59,35 @@ namespace nemsport_web_api.DbBuilds
         public IEnumerable<Event> Get()
         {
             return Events;
+        }
+
+        // here we only get the Events, where the user is connected to them
+        public IEnumerable<Event> GetMine(int id)
+        {
+            List<Event> tempEvents = new List<Event>();
+
+            using (SqlConnection Conn = new SqlConnection(_connectionString))
+            using (SqlCommand cmd = new SqlCommand(GET_MINE, Conn))
+            {
+                cmd.Parameters.AddWithValue("@ID", id);
+                Conn.Open();
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Event value = ReadNextElement(reader);
+                    if (value.Id == id)
+                    {
+                        tempEvents.Add(value);
+                        break;
+                    }
+                }
+                reader.Close();
+                Conn.Close();
+            }
+
+            return tempEvents;
         }
 
         /// <summary>
