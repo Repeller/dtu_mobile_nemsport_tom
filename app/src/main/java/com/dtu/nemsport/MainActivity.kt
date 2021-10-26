@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.dtu.nemsport.MainPage
 import com.dtu.nemsport.R
 import com.dtu.nemsport.RedigereIndstilling
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,15 +19,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Navigation view
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        /*
+        Login screen is going to be here in MainActivity
 
-        // Navigation controller
-        val navController = findNavController(R.id.fragmentContainerView)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profilFragment,R.id.aktiviteterFragment,R.id.banerFragment,R.id.indstillingerFragment))
-        setupActionBarWithNavController(navController,appBarConfiguration)
+         */
 
-        bottomNavigationView.setupWithNavController(navController)
+
+        val knapTilMainPage: Button = findViewById(R.id.knapTilMainPage)
+        knapTilMainPage.setOnClickListener {
+            val intent = Intent(this, MainPage::class.java)
+            startActivity(intent)
+        }
 
 
 

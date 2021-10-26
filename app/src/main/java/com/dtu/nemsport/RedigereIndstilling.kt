@@ -50,13 +50,10 @@ class RedigereIndstilling : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        //Laver variable på vores EditText som vi henter på deres id
         val nyNavn: EditText = view.findViewById(R.id.edtxNavn)
-
         val nyEmail: EditText = view.findViewById(R.id.edtxEmail)
-
         val nyAdresse: EditText = view.findViewById(R.id.edtxAdresse)
-
         val nyNummer: EditText = view.findViewById(R.id.edtxNummer)
 
         nyGemKnap = view.findViewById(R.id.nyGemKnap)
@@ -65,9 +62,6 @@ class RedigereIndstilling : Fragment() {
             val emailBesked: String = nyEmail.getText().toString()
             val adresseBesked: String = nyAdresse.getText().toString()
             val nummerBesked: String = nyNummer.getText().toString()
-
-
-
 
 
             fragmentManager?.commit {
