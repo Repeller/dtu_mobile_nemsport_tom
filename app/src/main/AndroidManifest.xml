@@ -9,10 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nemsport">
-        <activity android:name="com.example.bottomnavbar.MainActivity">
+        <activity
+            android:name=".OpretProfilAktivitet"
+            android:exported="true" />
+        <activity android:name="com.example.bottomnavbar.MainActivity"
+                android:label = "Nemsport">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
