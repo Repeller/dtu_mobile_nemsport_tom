@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.dtu.nemsport.MainPage
 import com.dtu.nemsport.R
 import com.dtu.nemsport.RedigereIndstilling
+import com.dtu.nemsport.profilFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
