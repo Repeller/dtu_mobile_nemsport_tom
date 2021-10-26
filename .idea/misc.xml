@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_main_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_aktiviteter.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_baner.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_indstillinger.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_profil.xml" value="0.4" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_opret_profil_aktivitet.xml" value="0.16394927536231885" />
