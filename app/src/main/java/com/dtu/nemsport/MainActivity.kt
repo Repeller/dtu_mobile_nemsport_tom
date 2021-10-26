@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
          */
 
 
-        val knapTilMainPage: Button = findViewById(R.id.knapTilMainPage)
+        val knapTilMainPage: Button = findViewById(R.id.button)
         knapTilMainPage.setOnClickListener {
             val intent = Intent(this, MainPage::class.java)
             startActivity(intent)
