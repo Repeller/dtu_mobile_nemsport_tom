@@ -13,10 +13,8 @@
         android:layout_width="170dp"
         android:layout_height="90dp"
         android:layout_gravity="center"
-        android:layout_marginTop="225dp"
-        android:src="@drawable/ic_person"
-
-        />
+        android:layout_marginTop="275dp"
+        android:src="@drawable/ic_person" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -33,6 +31,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#000000"
-        android:text="Opret Profil"
-         />
+        android:text="Opret Profil" />
+
 </LinearLayout>
