@@ -21,16 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /*
-        Login screen is going to be here in MainActivity
+        Forside screen is going to be here in MainActivity
 
          */
 
 
-        val knapTilMainPage: Button = findViewById(R.id.button)
-        knapTilMainPage.setOnClickListener {
-            val intent = Intent(this, MainPage::class.java)
-            startActivity(intent)
-        }
+
 
 
 
