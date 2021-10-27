@@ -9,10 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.dtu.nemsport.MainPage
-import com.dtu.nemsport.R
-import com.dtu.nemsport.RedigereIndstilling
-import com.dtu.nemsport.profilFragment
+import com.dtu.nemsport.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +23,18 @@ class MainActivity : AppCompatActivity() {
          */
 
 
+        val knapTilLogin: Button = findViewById(R.id.buttonLogin)
+        val knapTilOpret: Button = findViewById(R.id.buttonOpretProfil)
+
+        knapTilLogin.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
+
+        knapTilOpret.setOnClickListener {
+            val intent = Intent(this, OpretProfil::class.java)
+            startActivity(intent)
+        }
 
 
 
