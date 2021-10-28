@@ -54,7 +54,7 @@ class profilFragment : Fragment() {
                 replace<RedigereIndstilling>(R.id.fragmentContainerView)
             }
         }
-        }
+    }
 
     companion object {
         /**
