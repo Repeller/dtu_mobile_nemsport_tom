@@ -31,8 +31,8 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="161dp"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="Login med eksisterende bruger"
@@ -43,8 +43,8 @@
 
     <Button
         android:id="@+id/buttonOpretProfil"
-        android:layout_width="161dp"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:text="Opret Profil"
         android:textColor="@color/black"
