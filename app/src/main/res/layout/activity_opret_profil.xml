@@ -36,7 +36,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Navn"
+            android:hint="Navn"
             android:textSize="20dp"/>
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:text="Email"
+            android:hint="Email"
             android:layout_marginLeft="47dp"
             android:layout_marginTop="10dp"
             android:textSize="20dp"/>
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Kode"
+            android:hint="Kode"
             android:layout_marginLeft="47dp"
             android:layout_marginTop="10dp"
             android:textSize="20dp"/>
@@ -107,7 +107,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Kode"
+            android:hint="Kode"
             android:textSize="20dp"/>
         <TextView
             android:id="@+id/textView2"
@@ -129,7 +129,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:text="Adresse"
+            android:hint="Adresse"
             android:textSize="20dp"/>
         <TextView
             android:id="@+id/textView1"
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="47dp"
             android:layout_marginTop="20dp"
-            android:text="Tlf.nr."
+            android:hint="Tlf.nr."
             android:drawableStart="@drawable/ic_home"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -152,7 +152,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPhonetic"
-            android:text="Tlf.nr."
+            android:hint="45 21 45 10"
             android:textSize="20dp" />
 
         <Switch
