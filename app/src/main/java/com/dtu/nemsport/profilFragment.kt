@@ -1,15 +1,12 @@
 package com.dtu.nemsport
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.SurfaceControl
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.*
-import com.example.bottomnavbar.MainActivity
-import kotlin.concurrent.fixedRateTimer
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,12 +18,20 @@ private const val ARG_PARAM2 = "param2"
  * Use the [profilFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
+
+
 class profilFragment : Fragment() {
+
+    var displayMessage: String? = ""
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var knapIndstillinger: Button
+    lateinit var skiftIndstillinger: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,13 +47,21 @@ class profilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profil, container, false)
+        val view = inflater.inflate(R.layout.fragment_profil, container, false)
+        /*val textView: TextView = view.findViewById(R.id.navn)
+
+        val args = this.arguments
+        val inputData = args?.get("data")
+        textView.text = inputData.toString() */
+
+        return view
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        knapIndstillinger = view.findViewById(R.id.skiftIndstillinger)
-        knapIndstillinger.setOnClickListener {
+        skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
+        skiftIndstillinger.setOnClickListener {
             fragmentManager?.commit {
                 setReorderingAllowed(true)
                 replace<RedigereIndstilling>(R.id.fragmentContainerView)

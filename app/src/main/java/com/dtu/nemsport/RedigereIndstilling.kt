@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import kotlinx.coroutines.internal.artificialFrame
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,14 +22,22 @@ private const val ARG_PARAM2 = "param2"
  * Use the [RedigereIndstilling.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
+
 class RedigereIndstilling : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var nyGemKnap: Button
+    lateinit var nyNavn: EditText
+    lateinit var nyEmail: EditText
+    lateinit var nyAdresse: EditText
+    lateinit var nyNummer: EditText
+    lateinit var sendBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
 
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -44,7 +53,23 @@ class RedigereIndstilling : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
+        val view = inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
+        /*val sendBtn: Button = view.findViewById(R.id.sendBtn)
+
+        sendBtn.setOnClickListener {
+            val editText: EditText = view.findViewById(R.id.edtxNavn)
+            val input = editText.text.toString()
+
+            val bundle = Bundle()
+            bundle.putString("data", input)
+
+            val fragment = profilFragment()
+            fragment.arguments = bundle
+            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
+
+        } */
+
+        return view
 
 
     }
@@ -52,18 +77,23 @@ class RedigereIndstilling : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Laver variable på vores EditText som vi henter på deres id
-        val nyNavn: EditText = view.findViewById(R.id.edtxNavn)
-        val nyEmail: EditText = view.findViewById(R.id.edtxEmail)
-        val nyAdresse: EditText = view.findViewById(R.id.edtxAdresse)
-        val nyNummer: EditText = view.findViewById(R.id.edtxNummer)
+         //Laver variable på vores EditText som vi henter på deres id
+        nyNavn = view.findViewById(R.id.edtxNavn)
+        nyEmail = view.findViewById(R.id.edtxEmail)
+        nyAdresse = view.findViewById(R.id.edtxAdresse)
+        nyNummer = view.findViewById(R.id.edtxNummer)
 
-        nyGemKnap = view.findViewById(R.id.nyGemKnap)
-        nyGemKnap.setOnClickListener {
+        //val navnBesked: TextView = view.findViewById(R.id.navn)
+
+        sendBtn = view.findViewById(R.id.sendBtn)
+
+
+        sendBtn.setOnClickListener {
             val navnBesked: String = nyNavn.getText().toString()
             val emailBesked: String = nyEmail.getText().toString()
             val adresseBesked: String = nyAdresse.getText().toString()
             val nummerBesked: String = nyNummer.getText().toString()
+
 
 
             fragmentManager?.commit {
@@ -73,6 +103,8 @@ class RedigereIndstilling : Fragment() {
 
             }
         }
+
+
     }
 
     companion object {
