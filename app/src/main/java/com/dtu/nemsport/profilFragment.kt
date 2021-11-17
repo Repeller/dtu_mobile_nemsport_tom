@@ -48,11 +48,11 @@ class profilFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
-        /*val textView: TextView = view.findViewById(R.id.navn)
+        val textView: TextView = view.findViewById(R.id.navn)
 
         val args = this.arguments
         val inputData = args?.get("data")
-        textView.text = inputData.toString() */
+        textView.text = inputData.toString()
 
         return view
 

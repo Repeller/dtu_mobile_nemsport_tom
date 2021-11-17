@@ -23,8 +23,7 @@ class MainPage : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
-        val fragmentA = RedigereIndstilling()
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,fragmentA).commit()
+
 
 
     }

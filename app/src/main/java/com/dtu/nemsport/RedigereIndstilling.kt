@@ -54,9 +54,9 @@ class RedigereIndstilling : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
-        /*val sendBtn: Button = view.findViewById(R.id.sendBtn)
+        val nyGemKnap: Button = view.findViewById(R.id.nyGemKnap)
 
-        sendBtn.setOnClickListener {
+        nyGemKnap.setOnClickListener {
             val editText: EditText = view.findViewById(R.id.edtxNavn)
             val input = editText.text.toString()
 
@@ -67,7 +67,7 @@ class RedigereIndstilling : Fragment() {
             fragment.arguments = bundle
             fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
 
-        } */
+        }
 
         return view
 
@@ -85,7 +85,7 @@ class RedigereIndstilling : Fragment() {
 
         //val navnBesked: TextView = view.findViewById(R.id.navn)
 
-        sendBtn = view.findViewById(R.id.sendBtn)
+        sendBtn = view.findViewById(R.id.nyGemKnap)
 
 
         sendBtn.setOnClickListener {
