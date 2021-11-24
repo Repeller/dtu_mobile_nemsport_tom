@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dtu.nemsport.models.AktivitetData
@@ -91,9 +92,16 @@ class AktivitetFragment : Fragment() {
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
+            aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
+            aktivitetAdapter.notifyDataSetChanged()
+            Toast.makeText(context, "Aktivitet oprettet", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+
         }
         addDialog.setNegativeButton("Cancel") {
             dialog, i->
+            dialog.dismiss()
+            Toast.makeText(context, "Fortrudt", Toast.LENGTH_SHORT).show()
 
         }
 
