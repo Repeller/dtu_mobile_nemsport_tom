@@ -28,7 +28,14 @@
         android:id="@+id/indstillingerFragment"
         android:name="com.dtu.nemsport.indstillingerFragment"
         android:label="Indstillinger"
-        tools:layout="@layout/fragment_indstillinger" />
+        tools:layout="@layout/fragment_indstillinger" >
+        <action
+            android:id="@+id/action_indstillingerFragment_to_betalingsoplysning"
+            app:destination="@id/betalingsoplysning" />
+        <action
+            android:id="@+id/action_indstillingerFragment_to_betalingsoplysning2"
+            app:destination="@id/betalingsoplysning" />
+    </fragment>
     <fragment
         android:id="@+id/redigereIndstilling"
         android:name="com.dtu.nemsport.RedigereIndstilling"
@@ -37,5 +44,14 @@
         <action
             android:id="@+id/action_redigereIndstilling_to_profilFragment"
             app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/betalingsoplysning"
+        android:name="com.dtu.nemsport.Betalingsoplysning"
+        android:label="fragment_betalingsoplysning"
+        tools:layout="@layout/fragment_betalingsoplysning" >
+        <action
+            android:id="@+id/action_betalingsoplysning_to_indstillingerFragment"
+            app:destination="@id/indstillingerFragment" />
     </fragment>
 </navigation>

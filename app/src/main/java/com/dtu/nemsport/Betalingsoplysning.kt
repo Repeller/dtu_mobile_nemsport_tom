@@ -8,22 +8,29 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
 
+class Betalingsoplysning : Fragment() {
 
-class indstillingerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_indstillinger, container, false)
+        return inflater.inflate(R.layout.fragment_betalingsoplysning, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val betalinginformation: Button = view.findViewById(R.id.betalinginformation)
+        val gemButton: Button = view.findViewById(R.id.gemButton)
 
-        betalinginformation.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_indstillingerFragment_to_betalingsoplysning)
+        gemButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_betalingsoplysning_to_indstillingerFragment)
+        }
+
+        val tilbageButton: Button = view.findViewById(R.id.tilbageButton)
+
+        tilbageButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_betalingsoplysning_to_indstillingerFragment)
         }
     }
 }
