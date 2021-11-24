@@ -14,6 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/overskrift"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -22,10 +23,11 @@
             android:layout_marginStart="75dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="75dp"
+            android:gravity="center"
             android:text="Overskrift"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center">
+            android:textStyle="bold">
+
         </TextView>
 
         <TextView
@@ -45,16 +47,46 @@
         </TextView>
 
         <TextView
+            android:id="@+id/tilmeldteSpillere"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="110dp"
+            android:layout_marginStart="105dp"
             android:layout_marginTop="35dp"
-            android:layout_marginEnd="210dp"
-            android:gravity="center_vertical"
-            android:text="0 / 10">
+            android:layout_marginEnd="295dp"
+            android:gravity="center_horizontal"
+            android:text="0">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="115dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="285dp"
+            android:gravity="center_horizontal"
+            android:text="/">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/maxAntalSpillere"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="265dp"
+            android:gravity="center_horizontal"
+            android:text="10">
 
         </TextView>
 
@@ -74,6 +106,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/datoTv"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -103,6 +136,7 @@
         </TextView>
 
         <TextView
+            android:id="@+id/noteTv"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -148,4 +182,5 @@
         </Button>
 
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

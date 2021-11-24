@@ -1,11 +1,19 @@
 package com.dtu.nemsport
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dtu.nemsport.R
+import android.widget.Button
+import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.dtu.nemsport.models.AktivitetData
+import com.dtu.nemsport.view.AktivitetAdapter
+import kotlin.math.max
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +30,11 @@ class AktivitetFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var tilføjNyAktivitetKnap: Button
+    private lateinit var recycler: RecyclerView
+    private lateinit var aktivitetList: ArrayList<AktivitetData>
+    private lateinit var aktivitetAdapter: AktivitetAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +49,58 @@ class AktivitetFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_aktiviteter, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        aktivitetList = ArrayList()
+
+        tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+        recycler = view.findViewById(R.id.recyclerView)
+
+        aktivitetAdapter = AktivitetAdapter(this,aktivitetList)
+        recycler.layoutManager = LinearLayoutManager(context)
+        recycler.adapter = aktivitetAdapter
+
+        tilføjNyAktivitetKnap.setOnClickListener {
+            addInfo()
+        }
+
+    }
+
+    private fun addInfo() {
+        val inflater = LayoutInflater.from(context)
+        val v = inflater.inflate(R.layout.add_list, null)
+
+        val overskrift = v.findViewById<EditText>(R.id.overskriftInput)
+        val maxAntalSpillere = v.findViewById<EditText>(R.id.maxAntalSpillereInput)
+        val dato = v.findViewById<EditText>(R.id.datoInput)
+        val note = v.findViewById<EditText>(R.id.noteInput)
+
+        val addDialog = AlertDialog.Builder(requireActivity())
+
+        addDialog.setTitle("Opret aktivitet")
+        addDialog.setMessage("Indtast oplysninger")
+
+        addDialog.setView(v)
+        addDialog.setPositiveButton("Ok") {
+            dialog, i->
+            val overskrifter = overskrift.text.toString()
+            val maxAntalSpillere = maxAntalSpillere.text.toString()
+            val datoer = dato.text.toString()
+            val noter = note.text.toString()
+
+        }
+        addDialog.setNegativeButton("Cancel") {
+            dialog, i->
+
+        }
+
+        addDialog.create()
+        addDialog.show()
+
+
     }
 
     companion object {
