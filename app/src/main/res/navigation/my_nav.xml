@@ -38,4 +38,14 @@
             android:id="@+id/action_redigereIndstilling_to_profilFragment"
             app:destination="@id/profilFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.bottomnavbar.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/glemtKode"
+        android:name="com.dtu.nemsport.GlemtKode"
+        android:label="activity_glemt_kode"
+        tools:layout="@layout/activity_glemt_kode" />
 </navigation>
