@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
+import com.dtu.nemsport.models.FakeDB
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +27,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AktivitetFragment : Fragment() {
+
+    var fakeDB = FakeDB
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -67,6 +71,13 @@ class AktivitetFragment : Fragment() {
             addInfo()
         }
 
+        //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
+
+        if(fakeDB.listData.size > 1) {
+            aktivitetList.add(AktivitetData(fakeDB.listData.get(1).overskrift, fakeDB.listData.get(1).maxAntalSpillere, fakeDB.listData.get(1).dato, fakeDB.listData.get(1).note))
+            Toast.makeText(context,fakeDB.listData.get(1).overskrift , Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun addInfo() {
@@ -91,9 +102,12 @@ class AktivitetFragment : Fragment() {
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
-            aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
+            //aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
+            fakeDB.listData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
+            aktivitetList.add(AktivitetData(fakeDB.listData.get(1).overskrift, fakeDB.listData.get(1).maxAntalSpillere, fakeDB.listData.get(1).dato, fakeDB.listData.get(1).note))
+            Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
+
             aktivitetAdapter.notifyDataSetChanged()
-            Toast.makeText(context, "Aktivitet oprettet", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
 
         }

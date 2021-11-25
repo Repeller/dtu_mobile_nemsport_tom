@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.*
 import com.dtu.nemsport.R
+import com.dtu.nemsport.models.FakeDB
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,6 +70,7 @@ class profilFragment : Fragment() {
                 replace<RedigereIndstilling>(R.id.fragmentContainerView)
             }
         }
+        Toast.makeText(context, FakeDB.listData.get(0).overskrift , Toast.LENGTH_SHORT).show()
     }
 
     companion object {
