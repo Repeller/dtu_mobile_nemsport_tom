@@ -42,13 +42,4 @@
             android:id="@+id/glemtKodeToLogin"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/betalingsoplysning"
-        android:name="com.dtu.nemsport.Betalingsoplysning"
-        android:label="fragment_betalingsoplysning"
-        tools:layout="@layout/fragment_betalingsoplysning" >
-        <action
-            android:id="@+id/action_betalingsoplysning_to_indstillingerFragment"
-            app:destination="@id/indstillingerFragment" />
-    </fragment>
 </navigation>
