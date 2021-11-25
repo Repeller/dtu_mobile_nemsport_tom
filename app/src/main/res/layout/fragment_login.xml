@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".loginFragment"
     android:orientation="vertical">
 
     <TextView
@@ -68,12 +68,12 @@
         android:text="Login"
         android:textSize="10sp"/>
 
-        <!-- android:backgroundTint="#000000"
-        android:text="Login"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="526dp"
-        tools:ignore="SmallSp" /> -->
+    <!-- android:backgroundTint="#000000"
+    android:text="Login"
+    android:textSize="10sp"
+    tools:layout_editor_absoluteX="48dp"
+    tools:layout_editor_absoluteY="526dp"
+    tools:ignore="SmallSp" /> -->
 
 
     <Button

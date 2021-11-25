@@ -1,22 +1,13 @@
-package com.example.bottomnavbar
+package com.dtu.nemsport.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import androidx.fragment.app.*
-import android.widget.Toolbar
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 
 import com.dtu.nemsport.*
 
-import com.dtu.nemsport.OpretProfilAktivitet
 import com.dtu.nemsport.R
-
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +21,7 @@ class MainActivity : AppCompatActivity() {
          */
 
 
-        val knapTilLogin: Button = findViewById(R.id.buttonLogin)
+        /*val knapTilLogin: Button = findViewById(R.id.buttonLogin)
         val knapTilOpret: Button = findViewById(R.id.buttonOpretProfil)
 
         knapTilLogin.setOnClickListener {
@@ -41,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         knapTilOpret.setOnClickListener {
             val intent = Intent(this, OpretProfil::class.java)
             startActivity(intent)
-        }
+        }*/
 
 
 
@@ -56,12 +47,6 @@ class MainActivity : AppCompatActivity() {
 
 
         // }*/
-
-
-        // // Navigation view
-        // val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
-
 
 
     }

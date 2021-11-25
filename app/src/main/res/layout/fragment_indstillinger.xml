@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".indstillingerFragment">
+    tools:context="com.dtu.nemsport.view.fragments.indstillingerFragment">
 
 
     <TextView
@@ -16,10 +16,12 @@
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:text="Generelle indstillinger:"
-        android:textColor="@color/Red"
+
+        android:textColor="@color/primary_color"
         android:textSize="35dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/betalinginformation"
+        app:layout_constraintBottom_toTopOf="@+id/betalingInformationKnap"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,10 +39,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betalinginformation" />
+        app:layout_constraintTop_toBottomOf="@+id/betalingInformationKnap" />
 
     <Button
-        android:id="@+id/betalinginformation"
+        android:id="@+id/betalingInformationKnap"
         android:layout_width="183dp"
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
@@ -77,6 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1"
         app:layout_constraintVertical_bias="0.0" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

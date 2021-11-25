@@ -3,47 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/profilFragment">
+    app:startDestination="@id/forside">
+
 
     <fragment
-        android:id="@+id/profilFragment"
-        android:name="com.dtu.nemsport.profilFragment"
-        android:label="Profil"
-        tools:layout="@layout/fragment_profil" >
+        android:id="@+id/forside"
+        android:name="com.dtu.nemsport.view.fragments.forside"
+        android:label="forside"
+        tools:layout="@layout/fragment_forside">
         <action
-            android:id="@+id/action_profilFragment_to_redigereIndstilling"
-            app:destination="@id/redigereIndstilling" />
+            android:id="@+id/forsideToLogin"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/forsideToOpret"
+            app:destination="@id/opretProfilFragment" />
     </fragment>
     <fragment
-        android:id="@+id/aktiviteterFragment"
-        android:name="com.dtu.nemsport.AktivitetFragment"
-        android:label="Aktiviteter"
-        tools:layout="@layout/fragment_aktiviteter" />
-    <fragment
-        android:id="@+id/banerFragment"
-        android:name="com.dtu.nemsport.banerFragment"
-        android:label="Baner"
-        tools:layout="@layout/fragment_baner" />
-    <fragment
-        android:id="@+id/indstillingerFragment"
-        android:name="com.dtu.nemsport.indstillingerFragment"
-        android:label="Indstillinger"
-        tools:layout="@layout/fragment_indstillinger" >
+        android:id="@+id/loginFragment"
+        android:name="com.dtu.nemsport.view.fragments.loginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_indstillingerFragment_to_betalingsoplysning"
-            app:destination="@id/betalingsoplysning" />
-        <action
-            android:id="@+id/action_indstillingerFragment_to_betalingsoplysning2"
-            app:destination="@id/betalingsoplysning" />
+            android:id="@+id/loginToGlemtKode"
+            app:destination="@id/glemtKodeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/redigereIndstilling"
-        android:name="com.dtu.nemsport.RedigereIndstilling"
-        android:label="fragment_redigere_indstilling"
-        tools:layout="@layout/fragment_redigere_indstilling" >
+        android:id="@+id/opretProfilFragment"
+        android:name="com.dtu.nemsport.view.fragments.opretProfilFragment"
+        android:label="fragment_opret_profil"
+        tools:layout="@layout/fragment_opret_profil" />
+
+    <fragment
+        android:id="@+id/glemtKodeFragment"
+        android:name="com.dtu.nemsport.view.fragments.glemtKodeFragment"
+        android:label="fragment_glemt_kode"
+        tools:layout="@layout/fragment_glemt_kode" >
         <action
-            android:id="@+id/action_redigereIndstilling_to_profilFragment"
-            app:destination="@id/profilFragment" />
+            android:id="@+id/glemtKodeToLogin"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/betalingsoplysning"

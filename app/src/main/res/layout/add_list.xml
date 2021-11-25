@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_margin="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tilføj Aktivitet"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@color/primary_color"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:layout_margin="15dp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/overskriftInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Overskrift"
+            android:layout_margin="5dp"
+            android:textSize="18sp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/maxAntalSpillereInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Max. antal spillere"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/datoInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dato"
+            android:layout_margin="5dp"
+            android:ems="10"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/noteInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Note"
+            android:layout_margin="5dp"
+            android:textSize="18sp">
+
+        </EditText>
+
+    </LinearLayout>
+
+</LinearLayout>

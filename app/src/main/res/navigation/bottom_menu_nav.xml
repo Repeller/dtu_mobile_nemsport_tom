@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_menu_nav"
+    app:startDestination="@id/profilFragment">
+
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.dtu.nemsport.view.fragments.profilFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profilFragment_to_redigereIndstilling"
+            app:destination="@id/redigereIndstilling" />
+    </fragment>
+    <fragment
+        android:id="@+id/aktiviteterFragment"
+        android:name="com.dtu.nemsport.view.fragments.AktivitetFragment"
+        android:label="Aktiviteter"
+        tools:layout="@layout/fragment_aktiviteter" />
+    <fragment
+        android:id="@+id/banerFragment"
+        android:name="com.dtu.nemsport.view.fragments.banerFragment"
+        android:label="Baner"
+        tools:layout="@layout/fragment_baner" />
+    <fragment
+        android:id="@+id/indstillingerFragment"
+        android:name="com.dtu.nemsport.view.fragments.indstillingerFragment"
+        android:label="Indstillinger"
+        tools:layout="@layout/fragment_indstillinger" >
+        <action
+            android:id="@+id/indstillingToBetaling"
+            app:destination="@id/betalingsOplysningerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/redigereIndstilling"
+        android:name="com.dtu.nemsport.view.fragments.RedigereIndstilling"
+        android:label="fragment_redigere_indstilling"
+        tools:layout="@layout/fragment_redigere_indstilling" >
+        <action
+            android:id="@+id/action_redigereIndstilling_to_profilFragment"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/betalingsOplysningerFragment"
+        android:name="com.dtu.nemsport.view.fragments.betalingsOplysningerFragment"
+        android:label="fragment_betalings_oplysninger"
+        tools:layout="@layout/fragment_betalings_oplysninger" >
+        <action
+            android:id="@+id/betalingToIndstilling"
+            app:destination="@id/indstillingerFragment" />
+    </fragment>
+
+</navigation>

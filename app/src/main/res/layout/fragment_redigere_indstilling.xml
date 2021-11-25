@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profilFragment"
+    tools:context=".redigereIndstillingFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,7 +33,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray"
+            android:background="@color/grey"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp">
@@ -78,7 +78,7 @@
             android:inputType="text"
             android:maxLines="1"
             android:text="Jens Mortensen"
-            android:textColor="@color/gray"
+            android:textColor="@color/grey"
             android:textSize="18dp"
             tools:ignore="TouchTargetSizeCheck">
 
@@ -121,7 +121,7 @@
             android:text="user@gmail.com"
             android:layout_marginLeft="25dp"
             android:textSize="18dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/grey"
             android:maxLines="1"
             android:inputType="text">
         </EditText>
@@ -163,7 +163,7 @@
             android:text="Nyhavn 23, 2000 Frederriksberg"
             android:layout_marginLeft="5dp"
             android:textSize="17dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/grey"
             android:maxLines="1"
             android:inputType="text">
         </EditText>
@@ -205,7 +205,7 @@
             android:text="481650361"
             android:layout_marginLeft="16dp"
             android:textSize="18dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/grey"
             android:maxLines="1"
             android:inputType="text">
         </EditText>
@@ -216,7 +216,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray"
+        android:background="@color/grey"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp">
@@ -229,17 +229,17 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/nyGemKnap"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:text="Gem"
-            android:gravity="center"
-            android:textSize="18sp"
             android:drawableLeft="@drawable/ic_edit"
+            android:gravity="center"
+            android:paddingStart="12dp"
             android:paddingEnd="40dp"
-            android:paddingStart="12dp">
-        </Button>
+            android:text="Gem"
+            android:textSize="18sp"></Button>
 
     </LinearLayout>
 

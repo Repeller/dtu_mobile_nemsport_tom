@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".resetPassword"
+    tools:context=".glemtKodeFragment"
     android:orientation="vertical">
 
 
@@ -26,9 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#000000"
         android:text="Send nyt kodeord"
-        android:textSize="7sp"
+        android:textSize="12sp"
         tools:ignore="SmallSp"
         tools:layout_editor_absoluteX="48dp"
         tools:layout_editor_absoluteY="526dp" />
