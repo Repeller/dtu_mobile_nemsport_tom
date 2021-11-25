@@ -1,4 +1,4 @@
-package com.dtu.nemsport.view
+package com.dtu.nemsport.adapter
 
 import android.view.LayoutInflater
 import android.view.View

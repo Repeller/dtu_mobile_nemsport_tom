@@ -1,7 +1,6 @@
 package com.dtu.nemsport
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,9 +11,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
-import com.dtu.nemsport.view.AktivitetAdapter
-import kotlin.math.max
+import com.dtu.nemsport.adapter.AktivitetAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

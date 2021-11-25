@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/profilFragment">
+    app:startDestination="@id/forside">
 
     <fragment
         android:id="@+id/profilFragment"
@@ -38,14 +38,46 @@
             android:id="@+id/action_redigereIndstilling_to_profilFragment"
             app:destination="@id/profilFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.bottomnavbar.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
-    <activity
-        android:id="@+id/glemtKode"
-        android:name="com.dtu.nemsport.GlemtKode"
-        android:label="activity_glemt_kode"
-        tools:layout="@layout/activity_glemt_kode" />
+    <fragment
+        android:id="@+id/forside"
+        android:name="com.dtu.nemsport.forside"
+        android:label="forside"
+        tools:layout="@layout/fragment_forside">
+        <action
+            android:id="@+id/forsideToLogin"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/forsideToOpret"
+            app:destination="@id/opretProfilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.dtu.nemsport.loginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/loginToGlemtKode"
+            app:destination="@id/glemtKodeFragment" />
+        <action
+            android:id="@+id/loginToProfil"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/opretProfilFragment"
+        android:name="com.dtu.nemsport.opretProfilFragment"
+        android:label="fragment_opret_profil"
+        tools:layout="@layout/fragment_opret_profil" >
+        <action
+            android:id="@+id/opretToProfil"
+            app:destination="@id/profilFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/glemtKodeFragment"
+        android:name="com.dtu.nemsport.glemtKodeFragment"
+        android:label="fragment_glemt_kode"
+        tools:layout="@layout/fragment_glemt_kode" >
+        <action
+            android:id="@+id/glemtKodeToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

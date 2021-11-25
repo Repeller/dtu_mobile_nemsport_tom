@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.dtu.nemsport.R
 import kotlinx.coroutines.internal.artificialFrame
 
 // TODO: Rename parameter arguments, choose names that match
