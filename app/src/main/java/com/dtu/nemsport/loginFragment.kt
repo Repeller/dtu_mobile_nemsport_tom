@@ -1,5 +1,6 @@
 package com.dtu.nemsport
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -47,10 +48,14 @@ class loginFragment : Fragment() {
 
         buttonForgotPassword.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.loginToGlemtKode)
+
         }
 
         buttonLogin.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.loginToProfil)
+            requireActivity().run {
+                startActivity(Intent(this, MainPage::class.java))
+                finish()
+            }
         }
 
     }
