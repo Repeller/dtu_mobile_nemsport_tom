@@ -50,7 +50,7 @@ class betalingsOplysningerFragment : Fragment() {
 
         val tilbageButton: Button = view.findViewById(R.id.tilbageButton)
         tilbageButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.tilbageButton)
+            Navigation.findNavController(view).navigate(R.id.betalingToIndstilling)
         }
 
     }
