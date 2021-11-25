@@ -33,7 +33,7 @@
         <entry key="app/src/main/res/layout/fragment_betalings_oplysninger.xml" value="0.1671195652173913" />
         <entry key="app/src/main/res/layout/fragment_forside.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/fragment_glemt_kode.xml" value="0.17074275362318841" />
-        <entry key="app/src/main/res/layout/fragment_indstillinger.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_indstillinger.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_lav_aktivitet.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_opret_profil.xml" value="0.264" />

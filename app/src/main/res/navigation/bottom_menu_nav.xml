@@ -30,7 +30,7 @@
         android:label="Indstillinger"
         tools:layout="@layout/fragment_indstillinger" >
         <action
-            android:id="@+id/action_indstillingerFragment_to_betalingsOplysningerFragment"
+            android:id="@+id/indstillingToBetaling"
             app:destination="@id/betalingsOplysningerFragment" />
     </fragment>
     <fragment
@@ -44,11 +44,11 @@
     </fragment>
     <fragment
         android:id="@+id/betalingsOplysningerFragment"
-        android:name="com.dtu.nemsport.betalingsOplysningerFragment"
+        android:name="com.dtu.nemsport.view.fragments.betalingsOplysningerFragment"
         android:label="fragment_betalings_oplysninger"
         tools:layout="@layout/fragment_betalings_oplysninger" >
         <action
-            android:id="@+id/action_betalingsOplysningerFragment_to_indstillingerFragment"
+            android:id="@+id/betalingToIndstilling"
             app:destination="@id/indstillingerFragment" />
     </fragment>
 

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.Navigation
 import com.dtu.nemsport.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,6 +38,21 @@ class betalingsOplysningerFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_betalings_oplysninger, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val gemButton: Button = view.findViewById(R.id.gemButton)
+        gemButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.betalingToIndstilling)
+        }
+
+        val tilbageButton: Button = view.findViewById(R.id.tilbageButton)
+        tilbageButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.tilbageButton)
+        }
+
     }
 
     companion object {
