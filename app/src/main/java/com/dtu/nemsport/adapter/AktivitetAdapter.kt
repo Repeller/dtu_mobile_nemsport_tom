@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dtu.nemsport.AktivitetFragment
+import com.dtu.nemsport.view.fragments.AktivitetFragment
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
 

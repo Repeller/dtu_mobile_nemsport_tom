@@ -1,4 +1,4 @@
-package com.dtu.nemsport
+package com.dtu.nemsport.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

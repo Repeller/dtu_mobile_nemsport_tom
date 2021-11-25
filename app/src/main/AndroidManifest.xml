@@ -22,7 +22,7 @@
 <!--            android:name=".Forside"-->
 <!--            android:exported="true" />-->
         <activity
-            android:name=".MainPage"
+            android:name=".view.MainPage"
             android:exported="true" />
         <!-- this maybe gonna be buggy -->
         <activity
@@ -35,7 +35,7 @@
             android:name=".start_side"
             android:exported="true" />
 
-        <activity android:name="com.example.bottomnavbar.MainActivity">
+        <activity android:name=".view.MainActivity">
 <!--            android:name=".OpretProfilAktivitet"-->
 <!--            android:exported="true" />-->
         <!-- end of buggy -->

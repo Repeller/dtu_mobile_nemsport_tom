@@ -1,4 +1,4 @@
-package com.dtu.nemsport
+package com.dtu.nemsport.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
+import com.dtu.nemsport.R
+import com.dtu.nemsport.view.MainPage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

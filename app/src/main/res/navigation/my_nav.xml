@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/forside"
-        android:name="com.dtu.nemsport.forside"
+        android:name="com.dtu.nemsport.view.fragments.forside"
         android:label="forside"
         tools:layout="@layout/fragment_forside">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.dtu.nemsport.loginFragment"
+        android:name="com.dtu.nemsport.view.fragments.loginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -29,12 +29,12 @@
     </fragment>
     <fragment
         android:id="@+id/opretProfilFragment"
-        android:name="com.dtu.nemsport.opretProfilFragment"
+        android:name="com.dtu.nemsport.view.fragments.opretProfilFragment"
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" />
     <fragment
         android:id="@+id/glemtKodeFragment"
-        android:name="com.dtu.nemsport.glemtKodeFragment"
+        android:name="com.dtu.nemsport.view.fragments.glemtKodeFragment"
         android:label="fragment_glemt_kode"
         tools:layout="@layout/fragment_glemt_kode" >
         <action

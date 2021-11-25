@@ -1,4 +1,4 @@
-package com.dtu.nemsport
+package com.dtu.nemsport.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.dtu.nemsport.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainPage : AppCompatActivity() {
@@ -18,7 +19,12 @@ class MainPage : AppCompatActivity() {
 
         // Navigation controller
         val navController = findNavController(R.id.fragmentContainerView)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profilFragment,R.id.aktiviteterFragment,R.id.banerFragment,R.id.indstillingerFragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.profilFragment,
+            R.id.aktiviteterFragment,
+            R.id.banerFragment,
+            R.id.indstillingerFragment
+        ))
         setupActionBarWithNavController(navController,appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)

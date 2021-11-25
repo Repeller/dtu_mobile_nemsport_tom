@@ -1,4 +1,4 @@
-package com.dtu.nemsport
+package com.dtu.nemsport.view.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
