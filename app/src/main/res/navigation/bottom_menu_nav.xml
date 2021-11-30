@@ -32,6 +32,9 @@
         <action
             android:id="@+id/indstillingToBetaling"
             app:destination="@id/betalingsOplysningerFragment" />
+        <action
+            android:id="@+id/indstillingerToNotification"
+            app:destination="@id/notifikationButton" />
     </fragment>
     <fragment
         android:id="@+id/redigereIndstilling"
@@ -49,6 +52,15 @@
         tools:layout="@layout/fragment_betalings_oplysninger" >
         <action
             android:id="@+id/betalingToIndstilling"
+            app:destination="@id/indstillingerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notifikationButton"
+        android:name="com.dtu.nemsport.view.fragments.notifikationFragment"
+        android:label="fragment_notifikation"
+        tools:layout="@layout/fragment_notifikation" >
+        <action
+            android:id="@+id/action_notifikation_to_indstillingerFragment"
             app:destination="@id/indstillingerFragment" />
     </fragment>
 

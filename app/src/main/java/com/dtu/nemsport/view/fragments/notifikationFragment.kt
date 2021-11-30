@@ -16,10 +16,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [indstillingerFragment.newInstance] factory method to
+ * Use the [notifikationFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class indstillingerFragment : Fragment() {
+class notifikationFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,21 +37,20 @@ class indstillingerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_indstillinger, container, false)
+        return inflater.inflate(R.layout.fragment_notifikation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val betalingInformationKnap: Button = view.findViewById(R.id.betalingInformationKnap)
-
-        betalingInformationKnap.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.indstillingToBetaling)
+        val gemButton: Button = view.findViewById(R.id.gemButton)
+        gemButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_notifikation_to_indstillingerFragment)
         }
-        val notifikationButton: Button = view.findViewById(R.id.notifikationButton)
 
-        notifikationButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.indstillingerToNotification)
+        val tilbageButton: Button = view.findViewById(R.id.tilbageButton)
+        tilbageButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_notifikation_to_indstillingerFragment)
         }
 
     }
@@ -63,12 +62,12 @@ class indstillingerFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment indstillingerFragment.
+         * @return A new instance of fragment notifikationFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            indstillingerFragment().apply {
+            notifikationFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
