@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=32:BE:72:EA:F4:70:C8:13:E2:7A:E5:26:AC:2B:B4:96:D9:4C:A6:2D%3Bcom.dtu.nemsport.view.fragments
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.dtu.nemsport.view.fragments
+
+    SHA-1 certificate fingerprint:
+    32:BE:72:EA:F4:70:C8:13:E2:7A:E5:26:AC:2B:B4:96:D9:4C:A6:2D
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDC1fBItxBEHT3-J8FJkw3bwdy_Iy9XoVs</string>
+</resources>
