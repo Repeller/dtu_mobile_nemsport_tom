@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".opretProfilFragment"
+    tools:context="com.dtu.nemsport.view.fragments.opretProfilFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -163,7 +163,8 @@
             android:textStyle="bold"
             android:layout_marginLeft="47dp"
             android:textSize="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:checked="false"/>
 
         <Button
             android:id="@+id/opretButton"
