@@ -63,6 +63,7 @@ class AktivitetFragment : Fragment() {
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
         recycler = view.findViewById(R.id.recyclerView)
 
+        // Show the recyclerview in our LayoutManager
         aktivitetAdapter = AktivitetAdapter(this,aktivitetList)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = aktivitetAdapter
@@ -102,6 +103,8 @@ class AktivitetFragment : Fragment() {
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
+
+            // Add the chosen text to the item
             //aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
             fakeDB.listData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
             aktivitetList.add(AktivitetData(fakeDB.listData.get(1).overskrift, fakeDB.listData.get(1).maxAntalSpillere, fakeDB.listData.get(1).dato, fakeDB.listData.get(1).note))

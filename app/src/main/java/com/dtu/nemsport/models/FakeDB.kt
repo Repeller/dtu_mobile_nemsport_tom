@@ -7,7 +7,6 @@ object FakeDB {
         listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
     }
 
-
-
-
 }
+
+
