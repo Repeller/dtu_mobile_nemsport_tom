@@ -70,7 +70,6 @@ class profilFragment : Fragment() {
                 replace<RedigereIndstilling>(R.id.fragmentContainerView)
             }
         }
-        Toast.makeText(context, FakeDB.listData.get(0).overskrift , Toast.LENGTH_SHORT).show()
     }
 
     companion object {

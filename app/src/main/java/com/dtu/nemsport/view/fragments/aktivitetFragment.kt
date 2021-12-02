@@ -63,7 +63,7 @@ class AktivitetFragment : Fragment() {
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
         recycler = view.findViewById(R.id.recyclerView)
 
-        aktivitetAdapter = AktivitetAdapter(this,aktivitetList)
+        aktivitetAdapter = AktivitetAdapter(this,fakeDB.listData)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = aktivitetAdapter
 
@@ -104,7 +104,8 @@ class AktivitetFragment : Fragment() {
 
             //aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
             fakeDB.listData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
-            aktivitetList.add(AktivitetData(fakeDB.listData.get(1).overskrift, fakeDB.listData.get(1).maxAntalSpillere, fakeDB.listData.get(1).dato, fakeDB.listData.get(1).note))
+            val lastObjectIndex = fakeDB.listData.size-1
+            aktivitetList.add(AktivitetData(fakeDB.listData.get(lastObjectIndex).overskrift, fakeDB.listData.get(lastObjectIndex).maxAntalSpillere, fakeDB.listData.get(lastObjectIndex).dato, fakeDB.listData.get(lastObjectIndex).note))
             Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
 
             aktivitetAdapter.notifyDataSetChanged()
