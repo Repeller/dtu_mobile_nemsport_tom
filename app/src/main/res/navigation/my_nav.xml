@@ -32,6 +32,7 @@
         android:name="com.dtu.nemsport.view.fragments.opretProfilFragment"
         android:label="fragment_opret_profil"
         tools:layout="@layout/fragment_opret_profil" />
+
     <fragment
         android:id="@+id/glemtKodeFragment"
         android:name="com.dtu.nemsport.view.fragments.glemtKodeFragment"

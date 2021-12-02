@@ -7,3 +7,4 @@ data class AktivitetData(
     val note: String,
 
 )
+
