@@ -12,7 +12,9 @@
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_opret_profil_aktivitet.xml" value="0.264" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_reset_password.xml" value="0.209375" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_start_side.xml" value="0.2078125" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/add_list.xml" value="0.245018115942029" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/aktivitet_item.xml" value="0.2078125" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/aktivitet_item_list.xml" value="0.245018115942029" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_aktiviteter.xml" value="0.2078125" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_baner.xml" value="0.2078125" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_betalings_oplysninger.xml" value="0.18432971014492755" />
@@ -23,6 +25,7 @@
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_notifikation.xml" value="0.18432971014492755" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_profil.xml" value="0.19701086956521738" />
         <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.20625" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/menu/bottom_menu.xml" value="0.2625" />
         <entry key="app/src/main/res/drawable/bg_button.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.39114583333333336" />
