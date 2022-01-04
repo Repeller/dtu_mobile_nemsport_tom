@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
-import kotlinx.coroutines.internal.artificialFrame
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,17 +45,26 @@ class RedigereIndstilling : Fragment() {
         }
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
+
+
+
+
+        /*
         val nyGemKnap: Button = view.findViewById(R.id.nyGemKnap)
+        val edtxNavn: EditText = view.findViewById(R.id.edtxNavn)
 
         nyGemKnap.setOnClickListener {
+            communicator.passDataCom(edtxNavn.text.toString())
+        }
+
+        /*nyGemKnap.setOnClickListener {
             val editText: EditText = view.findViewById(R.id.edtxNavn)
             val input = editText.text.toString()
 
@@ -69,7 +75,9 @@ class RedigereIndstilling : Fragment() {
             fragment.arguments = bundle
             fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
 
-        }
+        }*/
+
+         */
 
         return view
 
@@ -79,27 +87,45 @@ class RedigereIndstilling : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-         //Laver variable på vores EditText som vi henter på deres id
         nyNavn = view.findViewById(R.id.edtxNavn)
+        sendBtn = view.findViewById(R.id.nyGemKnap)
+
+
+        sendBtn.setOnClickListener {
+            val message = nyNavn.text.toString()
+            if(message.isNotEmpty()) {
+                val action = RedigereIndstillingDirections.redigereProfilToProfil(message)
+                Navigation.findNavController(view).navigate(action)
+            } else {
+                Toast.makeText(context, "please enter a message", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+
+        //Laver variable på vores EditText som vi henter på deres id
+        /*nyNavn = view.findViewById(R.id.edtxNavn)
         nyEmail = view.findViewById(R.id.edtxEmail)
         nyAdresse = view.findViewById(R.id.edtxAdresse)
-        nyNummer = view.findViewById(R.id.edtxNummer)
+        nyNummer = view.findViewById(R.id.edtxNummer)*/
 
         //val navnBesked: TextView = view.findViewById(R.id.navn)
 
-        sendBtn = view.findViewById(R.id.nyGemKnap)
+
 
         // Navigate to Profile fragment
         sendBtn.setOnClickListener {
-            val navnBesked: String = nyNavn.getText().toString()
+            /*val navnBesked: String = nyNavn.getText().toString()
             val emailBesked: String = nyEmail.getText().toString()
             val adresseBesked: String = nyAdresse.getText().toString()
-            val nummerBesked: String = nyNummer.getText().toString()
+            val nummerBesked: String = nyNummer.getText().toString()*/
+
 
             Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
 
-
         }
+
+
 
 
     }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/profilToRedigereProfil"
             app:destination="@id/redigereIndstilling" />
+        <argument
+            android:name="message"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/aktiviteterFragment"

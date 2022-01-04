@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.*
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
 
@@ -28,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
 
 class profilFragment : Fragment() {
 
-    var displayMessage: String? = ""
+    //val args: profilFragmentArgs by navArgs()
 
 
     // TODO: Rename and change types of parameters
@@ -52,11 +53,18 @@ class profilFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
-        val textView: TextView = view.findViewById(R.id.navn)
 
-        val args = this.arguments
-        val inputData = args?.get("data")
-        textView.text = inputData.toString()
+        //val textMessage = args.message
+        val navn: TextView = view.findViewById(R.id.navn)
+
+        //navn.text = textMessage
+
+
+        skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
+        skiftIndstillinger.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.profilToRedigereProfil)
+
+        }
 
         return view
 
@@ -64,7 +72,6 @@ class profilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
 
