@@ -43,11 +43,18 @@ class indstillingerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val betalingInformationKnap: Button = view.findViewById(R.id.betalingInformationKnap)
+        val ændreBetalingInformationKnap: Button = view.findViewById(R.id.ændreBetalingInformationKnap)
 
-        betalingInformationKnap.setOnClickListener {
+        ændreBetalingInformationKnap.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.indstillingToBetaling)
         }
+
+        val betalingInformationKnap: Button = view.findViewById(R.id.betalingInformationKnap)
+
+        betalingInformationKnap.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_indstillingerFragment_to_betalingsOplysninger)
+        }
+
         val notifikationButton: Button = view.findViewById(R.id.notifikationButton)
 
         notifikationButton.setOnClickListener {

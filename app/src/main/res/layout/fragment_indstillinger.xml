@@ -8,12 +8,12 @@
 
 
     <Button
-        android:id="@+id/betalingInformationKnap"
-        android:layout_width="183dp"
-        android:layout_height="65dp"
+        android:id="@+id/ændreBetalingInformationKnap"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
         android:layout_marginTop="56dp"
         android:backgroundTint="@color/primary_color"
-        android:text="Betalings Oplysninger"
+        android:text="Ændre Betalings Oplysninger"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
@@ -21,17 +21,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GeneralleIndstillinger" />
 
+
+    <Button
+        android:id="@+id/betalingInformationKnap"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/primary_color"
+        android:text="Betalings Oplysninger"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ændreBetalingInformationKnap" />
+
     <Button
         android:id="@+id/notifikationButton"
-        android:layout_width="183dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/primary_color"
         android:text="Notifikation"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/betalingInformationKnap" />
 
