@@ -13,10 +13,10 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
+import org.w3c.dom.Text
 
 class betalingsOplysninger : Fragment() {
 
-    lateinit var preferences: SharedPreferences
     lateinit var kortnummerText: TextView
     lateinit var MM: TextView
     lateinit var YY: TextView
@@ -34,9 +34,16 @@ class betalingsOplysninger : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val nyKortNummer = view.findViewById<TextView>(R.id.kortnummerText)
+        val nytKortNummer = view.findViewById<TextView>(R.id.kortnummerText)
+        val nytMM = view.findViewById<TextView>(R.id.MM)
+        val nytYY = view.findViewById<TextView>(R.id.YY)
+        val nytCVV = view.findViewById<TextView>(R.id.CVV)
 
-        nyKortNummer.text= FakeDB.kortNummberData[0].kortNummer
+        nytKortNummer.text= FakeDB.kortNummberData[0].kortNummer
+        nytMM.text= FakeDB.kortNummberData[0].MM
+        nytYY.text= FakeDB.kortNummberData[0].YY
+        nytCVV.text= FakeDB.kortNummberData[0].CVV
+
 
         val tilbageButton: Button = view.findViewById(R.id.tilbageButton)
         tilbageButton.setOnClickListener {

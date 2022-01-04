@@ -28,7 +28,6 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/KortnummerTextview" />
@@ -42,7 +41,6 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UdløbsdatoTextview" />
 
@@ -55,7 +53,6 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/MM"
@@ -71,7 +68,6 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CVVTextview" />
@@ -82,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:gravity="center"
-        android:text="Betalings oplysninger:"
+        android:text="Betalings oplysninger"
         android:textColor="@color/primary_color"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -98,7 +94,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="15dp"
-        android:text="Kort nummer"
+        android:text="Kort nummer:"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
