@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.*
@@ -29,7 +30,7 @@ private const val ARG_PARAM2 = "param2"
 
 class profilFragment : Fragment() {
 
-    //val args: profilFragmentArgs by navArgs()
+    //private val args: profilFragmentArgs by navArgs()
 
 
     // TODO: Rename and change types of parameters
@@ -37,6 +38,7 @@ class profilFragment : Fragment() {
     private var param2: String? = null
 
     lateinit var skiftIndstillinger: Button
+    lateinit var navn: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,18 +55,19 @@ class profilFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
+        navn = view.findViewById(R.id.navn)
 
-        //val textMessage = args.message
-        val navn: TextView = view.findViewById(R.id.navn)
+        val nyEmail = view.findViewById<TextView>(R.id.email)
+        val nyAdresse = view.findViewById<TextView>(R.id.adresse)
+        val nyNummer = view.findViewById<TextView>(R.id.nummer)
 
-        //navn.text = textMessage
 
 
-        skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
-        skiftIndstillinger.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.profilToRedigereProfil)
+        navn.text = FakeDB.userData[0].navn
+        nyEmail.text = FakeDB.userData[0].email
+        nyAdresse.text = FakeDB.userData[0].adresse
+        nyNummer.text = FakeDB.userData[0].nummer
 
-        }
 
         return view
 
@@ -82,6 +85,9 @@ class profilFragment : Fragment() {
         }
 
     }
+
+
+
 
     companion object {
         /**

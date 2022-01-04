@@ -17,6 +17,7 @@
             android:name="message"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/aktiviteterFragment"
         android:name="com.dtu.nemsport.view.fragments.AktivitetFragment"

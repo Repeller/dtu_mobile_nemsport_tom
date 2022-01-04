@@ -10,6 +10,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
+import com.dtu.nemsport.models.FakeDB
+import com.dtu.nemsport.models.UserProfileData
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +36,7 @@ class RedigereIndstilling : Fragment() {
     lateinit var nyAdresse: EditText
     lateinit var nyNummer: EditText
     lateinit var sendBtn: Button
+    var fakeDB = FakeDB
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -54,30 +57,16 @@ class RedigereIndstilling : Fragment() {
         val view = inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
 
 
+        nyNavn = view.findViewById(R.id.edtxNavn)
+        nyEmail = view.findViewById(R.id.edtxEmail)
+        nyAdresse = view.findViewById(R.id.edtxAdresse)
+        nyNummer = view.findViewById(R.id.edtxNummer)
 
+        nyNavn.setText(FakeDB.userData[0].navn)
+        nyEmail.setText(FakeDB.userData[0].email)
+        nyAdresse.setText(FakeDB.userData[0].adresse)
+        nyNummer.setText(FakeDB.userData[0].nummer)
 
-        /*
-        val nyGemKnap: Button = view.findViewById(R.id.nyGemKnap)
-        val edtxNavn: EditText = view.findViewById(R.id.edtxNavn)
-
-        nyGemKnap.setOnClickListener {
-            communicator.passDataCom(edtxNavn.text.toString())
-        }
-
-        /*nyGemKnap.setOnClickListener {
-            val editText: EditText = view.findViewById(R.id.edtxNavn)
-            val input = editText.text.toString()
-
-            val bundle = Bundle()
-            bundle.putString("data", input)
-
-            val fragment = profilFragment()
-            fragment.arguments = bundle
-            fragmentManager?.beginTransaction()?.replace(R.id.fragmentContainerView,fragment)?.commit()
-
-        }*/
-
-         */
 
         return view
 
@@ -87,46 +76,25 @@ class RedigereIndstilling : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nyNavn = view.findViewById(R.id.edtxNavn)
+
+
         sendBtn = view.findViewById(R.id.nyGemKnap)
 
-
         sendBtn.setOnClickListener {
-            val message = nyNavn.text.toString()
-            if(message.isNotEmpty()) {
-                val action = RedigereIndstillingDirections.redigereProfilToProfil(message)
-                Navigation.findNavController(view).navigate(action)
-            } else {
-                Toast.makeText(context, "please enter a message", Toast.LENGTH_SHORT).show()
-            }
+            val navn = nyNavn.text.toString()
+            val email = nyEmail.text.toString()
+            val adresse = nyAdresse.text.toString()
+            val nummer = nyNummer.text.toString()
 
+
+            fakeDB.userData[0].navn = navn
+            fakeDB.userData[0].email = email
+            fakeDB.userData[0].adresse = adresse
+            fakeDB.userData[0].nummer = nummer
+
+            val action = RedigereIndstillingDirections.redigereProfilToProfil("")
+            Navigation.findNavController(view).navigate(action)
         }
-
-
-        //Laver variable på vores EditText som vi henter på deres id
-        /*nyNavn = view.findViewById(R.id.edtxNavn)
-        nyEmail = view.findViewById(R.id.edtxEmail)
-        nyAdresse = view.findViewById(R.id.edtxAdresse)
-        nyNummer = view.findViewById(R.id.edtxNummer)*/
-
-        //val navnBesked: TextView = view.findViewById(R.id.navn)
-
-
-
-        // Navigate to Profile fragment
-        sendBtn.setOnClickListener {
-            /*val navnBesked: String = nyNavn.getText().toString()
-            val emailBesked: String = nyEmail.getText().toString()
-            val adresseBesked: String = nyAdresse.getText().toString()
-            val nummerBesked: String = nyNummer.getText().toString()*/
-
-
-            Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
-
-        }
-
-
-
 
     }
 
