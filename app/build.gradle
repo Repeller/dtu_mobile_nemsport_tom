@@ -32,11 +32,22 @@ android {
     }
 }
 
+// needed for firebase to work, don't ask me why - ziegler
+// apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 dependencies {
     // added by ziegler
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
 
+
+    // needed for firebase to work, don't ask me why - ziegler
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    // TODO: add what is needed, not sure what we need to add yet
+    // Add the dependencies for the desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 
     // learned from this codelab link
     // https://developer.android.com/codelabs/basic-android-kotlin-training-getting-data-internet
