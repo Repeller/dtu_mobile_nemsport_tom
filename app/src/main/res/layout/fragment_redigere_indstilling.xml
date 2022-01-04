@@ -239,7 +239,9 @@
             android:paddingStart="12dp"
             android:paddingEnd="40dp"
             android:text="Gem"
-            android:textSize="18sp"></Button>
+            android:textSize="18sp">
+
+        </Button>
 
     </LinearLayout>
 

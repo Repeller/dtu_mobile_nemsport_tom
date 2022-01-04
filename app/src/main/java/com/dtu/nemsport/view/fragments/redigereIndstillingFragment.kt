@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.Navigation
 import com.dtu.nemsport.R
 import kotlinx.coroutines.internal.artificialFrame
 
@@ -88,21 +89,16 @@ class RedigereIndstilling : Fragment() {
 
         sendBtn = view.findViewById(R.id.nyGemKnap)
 
-
+        // Navigate to Profile fragment
         sendBtn.setOnClickListener {
             val navnBesked: String = nyNavn.getText().toString()
             val emailBesked: String = nyEmail.getText().toString()
             val adresseBesked: String = nyAdresse.getText().toString()
             val nummerBesked: String = nyNummer.getText().toString()
 
+            Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
 
 
-            fragmentManager?.commit {
-                setReorderingAllowed(true)
-
-                replace<profilFragment>(R.id.fragmentContainerView)
-
-            }
         }
 
 

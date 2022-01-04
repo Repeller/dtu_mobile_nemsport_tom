@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.*
+import androidx.navigation.Navigation
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
 
@@ -63,14 +64,16 @@ class profilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
+
+        // Navigate to EditProfile fragment
         skiftIndstillinger.setOnClickListener {
-            fragmentManager?.commit {
-                setReorderingAllowed(true)
-                replace<RedigereIndstilling>(R.id.fragmentContainerView)
-            }
+            Navigation.findNavController(view).navigate(R.id.profilToRedigereProfil)
+            Toast.makeText(context, "Kommet til edit profile", Toast.LENGTH_SHORT).show()
         }
-        Toast.makeText(context, FakeDB.listData.get(0).overskrift , Toast.LENGTH_SHORT).show()
+
     }
 
     companion object {
