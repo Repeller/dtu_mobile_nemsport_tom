@@ -22,6 +22,7 @@ class profilFragment : Fragment() {
 
     lateinit var skiftIndstillinger: Button
     lateinit var navn: TextView
+    lateinit var bigNavnProfil: TextView
 
 
     override fun onCreateView(
@@ -32,17 +33,17 @@ class profilFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
 
         navn = view.findViewById(R.id.navn)
+        bigNavnProfil = view.findViewById(R.id.bigNavnProfil)
         val nyEmail = view.findViewById<TextView>(R.id.email)
         val nyAdresse = view.findViewById<TextView>(R.id.adresse)
         val nyNummer = view.findViewById<TextView>(R.id.nummer)
 
-
+        // Set each variable as the text from the FakeDB
         navn.text = FakeDB.userData[0].navn
+        bigNavnProfil.text = FakeDB.userData[0].navn
         nyEmail.text = FakeDB.userData[0].email
         nyAdresse.text = FakeDB.userData[0].adresse
         nyNummer.text = FakeDB.userData[0].nummer
-
-
 
         return view
 
