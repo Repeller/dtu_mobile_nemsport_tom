@@ -33,21 +33,9 @@ class profilFragment : Fragment() {
     //private val args: profilFragmentArgs by navArgs()
 
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     lateinit var skiftIndstillinger: Button
     lateinit var navn: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,18 +43,18 @@ class profilFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
-        navn = view.findViewById(R.id.navn)
 
+        navn = view.findViewById(R.id.navn)
         val nyEmail = view.findViewById<TextView>(R.id.email)
         val nyAdresse = view.findViewById<TextView>(R.id.adresse)
         val nyNummer = view.findViewById<TextView>(R.id.nummer)
-
 
 
         navn.text = FakeDB.userData[0].navn
         nyEmail.text = FakeDB.userData[0].email
         nyAdresse.text = FakeDB.userData[0].adresse
         nyNummer.text = FakeDB.userData[0].nummer
+
 
 
         return view
@@ -87,27 +75,6 @@ class profilFragment : Fragment() {
     }
 
 
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment profilFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            profilFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 
 
 }

@@ -21,6 +21,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/bigNavn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jens Mortensen"
@@ -77,7 +78,7 @@
             android:layout_marginLeft="25dp"
             android:inputType="text"
             android:maxLines="1"
-            android:text=""
+            android:text="Navn"
             android:textColor="@color/grey"
             android:textSize="18dp"
             tools:ignore="TouchTargetSizeCheck">
@@ -200,6 +201,7 @@
 
         <EditText
             android:id="@+id/edtxNummer"
+            android:maxLength="8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="481650361"

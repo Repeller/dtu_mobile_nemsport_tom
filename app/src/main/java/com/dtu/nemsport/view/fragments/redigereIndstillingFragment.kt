@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
@@ -56,17 +57,15 @@ class RedigereIndstilling : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_redigere_indstilling, container, false)
 
-
         nyNavn = view.findViewById(R.id.edtxNavn)
         nyEmail = view.findViewById(R.id.edtxEmail)
         nyAdresse = view.findViewById(R.id.edtxAdresse)
         nyNummer = view.findViewById(R.id.edtxNummer)
-
+        
         nyNavn.setText(FakeDB.userData[0].navn)
         nyEmail.setText(FakeDB.userData[0].email)
         nyAdresse.setText(FakeDB.userData[0].adresse)
         nyNummer.setText(FakeDB.userData[0].nummer)
-
 
         return view
 
@@ -98,23 +97,5 @@ class RedigereIndstilling : Fragment() {
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RedigereIndstilling.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RedigereIndstilling().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

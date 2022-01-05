@@ -6,7 +6,7 @@ object FakeDB {
 
     init {
         listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
-        userData.add(UserProfileData("navn1","email1","adresse1","nummer1"))
+        userData.add(UserProfileData("Jens Mortensen","user@gmail.com","Nyhavn 23, 2000 Frederriksberg","481650361"))
     }
 
 }
