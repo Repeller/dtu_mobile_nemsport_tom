@@ -27,11 +27,12 @@
         <entry key="app/src/main/res/layout/activity_start_side.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/add_list.xml" value="0.375" />
         <entry key="app/src/main/res/layout/aktivitet_item.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_baner.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_indstillinger.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/layout/fragment_lav_aktivitet.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_opret_profil.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.375" />
