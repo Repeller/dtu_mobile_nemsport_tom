@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profilFragment"
+    tools:context="com.dtu.nemsport.view.fragments.profilFragment"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,6 +21,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/bigNavnProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jens Mortensen"

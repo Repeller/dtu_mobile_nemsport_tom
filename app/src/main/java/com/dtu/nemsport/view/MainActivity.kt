@@ -21,33 +21,6 @@ class MainActivity : AppCompatActivity() {
          */
 
 
-        /*val knapTilLogin: Button = findViewById(R.id.buttonLogin)
-        val knapTilOpret: Button = findViewById(R.id.buttonOpretProfil)
-
-        knapTilLogin.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-        }
-
-        knapTilOpret.setOnClickListener {
-            val intent = Intent(this, OpretProfil::class.java)
-            startActivity(intent)
-        }*/
-
-
-
-        
-
-
-        // val intent = Intent(this, OpretProfilAktivitet::class.java)
-        // startActivity(intent)
-
-        // /*val knap: Button = findViewById(R.id.button)
-        // knap.setOnClickListener {
-
-
-        // }*/
-
 
     }
 

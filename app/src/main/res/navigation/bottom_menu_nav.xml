@@ -11,9 +11,10 @@
         android:label="Profil"
         tools:layout="@layout/fragment_profil" >
         <action
-            android:id="@+id/action_profilFragment_to_redigereIndstilling"
+            android:id="@+id/profilToRedigereProfil"
             app:destination="@id/redigereIndstilling" />
     </fragment>
+
     <fragment
         android:id="@+id/aktiviteterFragment"
         android:name="com.dtu.nemsport.view.fragments.AktivitetFragment"
@@ -48,7 +49,7 @@
         android:label="fragment_redigere_indstilling"
         tools:layout="@layout/fragment_redigere_indstilling" >
         <action
-            android:id="@+id/action_redigereIndstilling_to_profilFragment"
+            android:id="@+id/redigereProfilToProfil"
             app:destination="@id/profilFragment" />
     </fragment>
     <fragment
