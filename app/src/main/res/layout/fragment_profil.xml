@@ -75,7 +75,7 @@
             android:id="@+id/navn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jens Mortensen"
+            android:hint="Jens Mortensen"
             android:layout_marginLeft="25dp"
             android:textSize="18dp"
             android:textColor="@color/grey">
@@ -115,7 +115,7 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="user@gmail.com"
+            android:hint="user@gmail.com"
             android:layout_marginLeft="25dp"
             android:textSize="18dp"
             android:textColor="@color/grey">
@@ -155,7 +155,7 @@
             android:id="@+id/adresse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nyhavn 23, 2000 Frederriksberg"
+            android:hint="Nyhavn 23, 2000 Frederriksberg"
             android:layout_marginLeft="5dp"
             android:textSize="17dp"
             android:textColor="@color/grey">
@@ -195,7 +195,7 @@
             android:id="@+id/nummer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="481650361"
+            android:hint="481650361"
             android:layout_marginLeft="16dp"
             android:textSize="18dp"
             android:textColor="@color/grey">
