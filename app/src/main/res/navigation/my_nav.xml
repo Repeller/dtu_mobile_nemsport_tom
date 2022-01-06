@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/forside"
-        android:name="com.dtu.nemsport.view.fragments.forside"
+        android:name="com.dtu.nemsport.view.fragments.forsideFragment"
         android:label="forside"
         tools:layout="@layout/fragment_forside">
         <action

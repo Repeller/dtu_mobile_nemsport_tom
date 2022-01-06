@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nemsport">
-        <activity
-            android:name=".OpretProfil"
-            android:exported="true" />
-        <activity
-            android:name=".GlemtKode"
-            android:exported="true" />
-        <activity
-            android:name=".Login"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".OpretProfil"-->
+<!--            android:exported="true" />-->
+<!--        <activity-->
+<!--            android:name=".GlemtKode"-->
+<!--            android:exported="true" />-->
+<!--        <activity-->
+<!--            android:name=".Login"-->
+<!--            android:exported="true" />-->
 <!--        <activity-->
 <!--            android:name=".Forside"-->
 <!--            android:exported="true" />-->
@@ -25,15 +25,15 @@
             android:name=".view.MainPage"
             android:exported="true" />
         <!-- this maybe gonna be buggy -->
-        <activity
-            android:name=".resetPassword"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".resetPassword"-->
+<!--            android:exported="true" />-->
         <!-- <activity
             android:name=".login"
             android:exported="true" /> -->
-        <activity
-            android:name=".start_side"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".start_side"-->
+<!--            android:exported="true" />-->
 
         <activity android:name=".view.MainActivity">
 <!--            android:name=".OpretProfilAktivitet"-->
