@@ -74,8 +74,7 @@ class RedigereIndstilling : Fragment() {
             fakeDB.userData[0].adresse = adresse
             fakeDB.userData[0].nummer = nummer
 
-            val action = RedigereIndstillingDirections.redigereProfilToProfil("")
-            Navigation.findNavController(view).navigate(action)
+            Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
             Toast.makeText(context, "Kommet til profil", Toast.LENGTH_SHORT).show()
         }
 
