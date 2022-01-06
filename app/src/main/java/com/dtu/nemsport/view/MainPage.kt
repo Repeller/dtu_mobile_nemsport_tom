@@ -7,7 +7,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.dtu.nemsport.R
+import com.dtu.nemsport.view.fragments.RedigereIndstilling
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,5 +35,6 @@ class MainPage : AppCompatActivity() {
 
 
     }
+
 
 }

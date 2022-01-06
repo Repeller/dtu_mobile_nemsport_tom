@@ -5,45 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.*
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [profilFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
-
 
 
 class profilFragment : Fragment() {
 
-    var displayMessage: String? = ""
+    //private val args: profilFragmentArgs by navArgs()
 
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     lateinit var skiftIndstillinger: Button
+    lateinit var navn: TextView
+    lateinit var bigNavnProfil: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,11 +31,19 @@ class profilFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profil, container, false)
-        val textView: TextView = view.findViewById(R.id.navn)
 
-        val args = this.arguments
-        val inputData = args?.get("data")
-        textView.text = inputData.toString()
+        navn = view.findViewById(R.id.navn)
+        bigNavnProfil = view.findViewById(R.id.bigNavnProfil)
+        val nyEmail = view.findViewById<TextView>(R.id.email)
+        val nyAdresse = view.findViewById<TextView>(R.id.adresse)
+        val nyNummer = view.findViewById<TextView>(R.id.nummer)
+
+        // Set each variable as the text from the FakeDB
+        navn.text = FakeDB.userData[0].navn
+        bigNavnProfil.text = FakeDB.userData[0].navn
+        nyEmail.text = FakeDB.userData[0].email
+        nyAdresse.text = FakeDB.userData[0].adresse
+        nyNummer.text = FakeDB.userData[0].nummer
 
         return view
 
@@ -63,34 +51,18 @@ class profilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         skiftIndstillinger = view.findViewById(R.id.skiftIndstillinger)
+
+        // Navigate to EditProfile fragment
         skiftIndstillinger.setOnClickListener {
-            fragmentManager?.commit {
-                setReorderingAllowed(true)
-                replace<RedigereIndstilling>(R.id.fragmentContainerView)
-            }
+            Navigation.findNavController(view).navigate(R.id.profilToRedigereProfil)
+            Toast.makeText(context, "Kommet til edit profile", Toast.LENGTH_SHORT).show()
         }
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment profilFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            profilFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 
 
 }
