@@ -6,9 +6,9 @@ object FakeDB {
     var userData = ArrayList<UserProfileData>()
 
     init {
-        listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
+        listData.add(AktivitetData("overskrift1", "10", "dato1", "note1"))
         kortNummberData.add(kortNumberData("", "","",""))
-        userData.add(UserProfileData("","","",""))
+        userData.add(UserProfileData("navn1","email1","adresse1","nummer1"))
     }
 
 }
