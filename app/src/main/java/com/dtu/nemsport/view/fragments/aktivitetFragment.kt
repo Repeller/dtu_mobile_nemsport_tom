@@ -75,7 +75,7 @@ class AktivitetFragment : Fragment() {
 
         addDialog.setView(v)
         addDialog.setPositiveButton("Ok") {
-            dialog, i->
+                dialog, i->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
             val datoer = dato.text.toString()
@@ -92,7 +92,7 @@ class AktivitetFragment : Fragment() {
 
         }
         addDialog.setNegativeButton("Cancel") {
-            dialog, i->
+                dialog, i->
             dialog.dismiss()
             Toast.makeText(context, "Fortrudt", Toast.LENGTH_SHORT).show()
 

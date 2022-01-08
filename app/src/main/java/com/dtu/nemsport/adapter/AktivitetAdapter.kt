@@ -28,8 +28,8 @@ class AktivitetAdapter(val c: AktivitetFragment, val aktivitetList: ArrayList<Ak
     override fun onBindViewHolder(holder: AktivitetViewHolder, position: Int) {
         val newList = aktivitetList[position]
         holder.overskrift.text = newList.overskrift
-        holder.maxAntalSpillere.text = newList.maxAntalSpillere
-        holder.dato.text = newList.dato
+        holder.maxAntalSpillere.text = newList.maxAntalSpillere.toString()
+        holder.dato.text = newList.dato.toString()
         holder.note.text = newList.note
 
     }
