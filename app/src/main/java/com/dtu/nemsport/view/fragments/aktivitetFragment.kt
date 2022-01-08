@@ -15,6 +15,16 @@ import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
 import com.dtu.nemsport.models.FakeDB
+import android.R.attr.data
+import android.content.ContentValues.TAG
+import android.os.Build
+import android.util.Log
+import androidx.annotation.RequiresApi
+import com.google.firebase.Timestamp
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AktivitetFragment : Fragment() {
@@ -34,6 +44,7 @@ class AktivitetFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_aktiviteter, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,6 +70,7 @@ class AktivitetFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun addInfo() {
         val inflater = LayoutInflater.from(context)
         val v = inflater.inflate(R.layout.add_list, null)
@@ -82,6 +94,25 @@ class AktivitetFragment : Fragment() {
             val noter = note.text.toString()
 
             //aktivitetList.add(AktivitetData("$overskrifter", "$maxAntalSpillere", "$datoer", "$noter"))
+
+            val activity = fakeDB.db.collection("activity")
+
+            val data = hashMapOf(
+                "date" to Timestamp.now(),
+                "made_by" to 0,
+                "max_players" to maxAntalSpillere.toLong(),
+                "note" to noter,
+                "title" to overskrifter
+            )
+
+            activity.add(data)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                }
+
             fakeDB.listData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
             val lastObjectIndex = fakeDB.listData.size-1
             aktivitetList.add(AktivitetData(fakeDB.listData.get(lastObjectIndex).overskrift, fakeDB.listData.get(lastObjectIndex).maxAntalSpillere, fakeDB.listData.get(lastObjectIndex).dato, fakeDB.listData.get(lastObjectIndex).note))
