@@ -21,6 +21,12 @@ object FakeDB {
     var dato: Timestamp? = null
     var note: String? = null
 
+    var kortNummer: Long? = null
+    var MM: Long? = null
+    var YY: Long? = null
+    var CVV: Long? = null
+
+
 
 
     @SuppressLint("StaticFieldLeak")
@@ -29,6 +35,22 @@ object FakeDB {
 
 
     init {
+        db.collection("payment_info")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    kortNummer = document.getLong("card_number")
+                    MM = document.getLong("exp_month")
+                    YY = document.getLong("exp_year")
+                    CVV = document.getLong("CVV")
+                    kortNummberData.add(kortNumberData(kortNummer.toString(), MM.toString() ,YY.toString(),CVV.toString()))
+                    Log.d("test3", "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Fejl", "Error getting documents: ", exception)
+            }
+
         db.collection("activity")
             .get()
             .addOnSuccessListener { result ->
@@ -47,7 +69,7 @@ object FakeDB {
 
 //        listData.add(AktivitetData(overskrift, "10", "dato1", "note1"))
         Log.d("Lol", "Hello world")
-        kortNummberData.add(kortNumberData("", "","",""))
+       // kortNummberData.add(kortNumberData("", "","",""))
         userData.add(UserProfileData("navn1","email1","adresse1","nummer1"))
     }
 
