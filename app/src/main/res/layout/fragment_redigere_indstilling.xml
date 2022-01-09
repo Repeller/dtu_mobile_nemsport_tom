@@ -78,7 +78,7 @@
             android:layout_marginLeft="25dp"
             android:inputType="text"
             android:maxLines="1"
-            android:text="Navn"
+            android:text="Jens Mortensen"
             android:textColor="@color/grey"
             android:textSize="18dp"
             tools:ignore="TouchTargetSizeCheck">
