@@ -15,15 +15,12 @@ import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
 import com.dtu.nemsport.models.FakeDB
-import android.R.attr.data
 import android.content.ContentValues.TAG
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -32,6 +29,7 @@ class AktivitetFragment : Fragment() {
     var fakeDB = FakeDB
 
     private lateinit var tilføjNyAktivitetKnap: Button
+    private lateinit var visMineAktiviteterKnap: Button
     private lateinit var recycler: RecyclerView
     private lateinit var aktivitetList: ArrayList<AktivitetData>
     private lateinit var aktivitetAdapter: AktivitetAdapter
@@ -53,7 +51,10 @@ class AktivitetFragment : Fragment() {
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
         recycler = view.findViewById(R.id.recyclerView)
 
-        aktivitetAdapter = AktivitetAdapter(this,fakeDB.listData)
+
+        visMineAktiviteterKnap = view.findViewById(R.id.vismineaktiviteter)
+
+        aktivitetAdapter = AktivitetAdapter(fakeDB.listData)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = aktivitetAdapter
 
@@ -61,11 +62,22 @@ class AktivitetFragment : Fragment() {
             addInfo()
         }
 
+        visMineAktiviteterKnap.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.fragment_mine_aktiviteter)
+        }
+
         //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
 
-        if(fakeDB.listData.size > 1) {
-            aktivitetList.add(AktivitetData(fakeDB.listData.get(1).overskrift, fakeDB.listData.get(1).maxAntalSpillere, fakeDB.listData.get(1).dato, fakeDB.listData.get(1).note))
-            Toast.makeText(context,fakeDB.listData.get(1).overskrift , Toast.LENGTH_SHORT).show()
+        if (fakeDB.listData.size > 1) {
+            aktivitetList.add(
+                AktivitetData(
+                    fakeDB.listData.get(1).overskrift,
+                    fakeDB.listData.get(1).maxAntalSpillere,
+                    fakeDB.listData.get(1).dato,
+                    fakeDB.listData.get(1).note
+                )
+            )
+            Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -86,8 +98,7 @@ class AktivitetFragment : Fragment() {
         addDialog.setMessage("Indtast oplysninger")
 
         addDialog.setView(v)
-        addDialog.setPositiveButton("Ok") {
-                dialog, i->
+        addDialog.setPositiveButton("Ok") { dialog, i ->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
             val datoer = dato.text.toString()
@@ -113,17 +124,30 @@ class AktivitetFragment : Fragment() {
                     Log.w(TAG, "Error adding document", e)
                 }
 
-            fakeDB.listData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
-            val lastObjectIndex = fakeDB.listData.size-1
-            aktivitetList.add(AktivitetData(fakeDB.listData.get(lastObjectIndex).overskrift, fakeDB.listData.get(lastObjectIndex).maxAntalSpillere, fakeDB.listData.get(lastObjectIndex).dato, fakeDB.listData.get(lastObjectIndex).note))
+            fakeDB.listData.add(
+                AktivitetData(
+                    "$overskrifter",
+                    "$maxAntalSpillere",
+                    "$datoer",
+                    "$noter"
+                )
+            )
+            val lastObjectIndex = fakeDB.listData.size - 1
+            aktivitetList.add(
+                AktivitetData(
+                    fakeDB.listData.get(lastObjectIndex).overskrift,
+                    fakeDB.listData.get(lastObjectIndex).maxAntalSpillere,
+                    fakeDB.listData.get(lastObjectIndex).dato,
+                    fakeDB.listData.get(lastObjectIndex).note
+                )
+            )
             Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
 
         }
-        addDialog.setNegativeButton("Cancel") {
-                dialog, i->
+        addDialog.setNegativeButton("Cancel") { dialog, i ->
             dialog.dismiss()
             Toast.makeText(context, "Fortrudt", Toast.LENGTH_SHORT).show()
 

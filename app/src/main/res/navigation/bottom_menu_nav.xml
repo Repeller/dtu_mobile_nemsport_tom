@@ -19,12 +19,27 @@
         android:id="@+id/aktiviteterFragment"
         android:name="com.dtu.nemsport.view.fragments.AktivitetFragment"
         android:label="Aktiviteter"
-        tools:layout="@layout/fragment_aktiviteter" />
+        tools:layout="@layout/fragment_aktiviteter">
+        <action
+            android:id="@+id/action_aktiviteterFragment_to_fragment_mine_aktiviteter2"
+            app:destination="@id/fragment_mine_aktiviteter" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_mine_aktiviteter"
+        android:name="com.dtu.nemsport.view.fragments.mineAktivitetetFragment"
+        android:label="mineAktiviteter"
+        tools:layout="@layout/fragment_mine_aktivitetet">
+        <action
+            android:id="@+id/action_fragment_mine_aktiviteter_to_aktiviteterFragment"
+            app:destination="@id/aktiviteterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/banerFragment"
         android:name="com.dtu.nemsport.view.fragments.banerFragment"
         android:label="Baner"
         tools:layout="@layout/fragment_baner" />
+
+
     <fragment
         android:id="@+id/indstillingerFragment"
         android:name="com.dtu.nemsport.view.fragments.indstillingerFragment"

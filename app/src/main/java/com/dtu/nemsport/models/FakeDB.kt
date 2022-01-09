@@ -16,6 +16,10 @@ object FakeDB {
     var kortNummberData = ArrayList<kortNumberData>()
     var userData = ArrayList<UserProfileData>()
 
+    var myListData = ArrayList<AktivitetData>()
+
+
+
     var overskrift: String? = null
     var maxAntalSpillere: Long? = null
     var dato: Timestamp? = null
@@ -30,9 +34,7 @@ object FakeDB {
 
 
     @SuppressLint("StaticFieldLeak")
-    var db = FirebaseFirestore.getInstance()
-
-
+    val db = FirebaseFirestore.getInstance()
 
     init {
         db.collection("payment_info")
@@ -66,6 +68,57 @@ object FakeDB {
             .addOnFailureListener { exception ->
                 Log.d("Fejl", "Error getting documents: ", exception)
             }
+
+        db.collection("activity")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    if (document.get("title")?.equals("Fuck Milan!!!") == true) {
+                        overskrift = document.getString("title")
+                        maxAntalSpillere = document.getLong("max_players")
+                        dato = document.getTimestamp("date")
+                        note = document.getString("note")
+                        myListData.add(
+                            AktivitetData(
+                                overskrift,
+                                maxAntalSpillere.toString(),
+                                dato.toString(),
+                                note
+                            )
+                        )
+                        Log.d("test2", "${document.id} => ${document.data}")
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Fejl", "Error getting documents: ", exception)
+            }
+
+//        db.collection("activity")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    if (document.getLong("made_by")?.toInt() == 0 ?: false) {
+//                        overskrift = document.getString("title")
+//                        maxAntalSpillere = document.getLong("max_players")
+//                        dato = document.getTimestamp("date")
+//                        note = document.getString("note")
+//                        myListData.add(
+//                            AktivitetData(
+//                                overskrift,
+//                                maxAntalSpillere.toString(),
+//                                dato.toString(),
+//                                note
+//                            )
+//                        )
+//                        Log.d("test2", "${document.id} => ${document.data}")
+//                    }
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d("Fejl", "Error getting documents: ", exception)
+//            }
+
 
 //        listData.add(AktivitetData(overskrift, "10", "dato1", "note1"))
         Log.d("Lol", "Hello world")
