@@ -110,7 +110,7 @@ class AktivitetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to 0,
+                "made_by" to "",
                 "max_players" to maxAntalSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
