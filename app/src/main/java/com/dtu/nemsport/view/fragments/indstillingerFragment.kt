@@ -1,5 +1,6 @@
 package com.dtu.nemsport.view.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
+import com.dtu.nemsport.view.MainActivity
+import com.dtu.nemsport.view.MainPage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,10 +46,31 @@ class indstillingerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val ændreBetalingInformationKnap: Button = view.findViewById(R.id.ændreBetalingInformationKnap)
+
+        ændreBetalingInformationKnap.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.indstillingToBetaling)
+        }
+
         val betalingInformationKnap: Button = view.findViewById(R.id.betalingInformationKnap)
 
-        betalingInformationKnap.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.indstillingToBetaling)
+        betalingInformationKnap.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_indstillingerFragment_to_betalingsOplysninger)
+        }
+
+        val notifikationButton: Button = view.findViewById(R.id.notifikationButton)
+
+        notifikationButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.indstillingerToNotification)
+        }
+
+        val logud: Button = view.findViewById(R.id.logud)
+
+        logud.setOnClickListener{
+            requireActivity().run {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
         }
 
     }

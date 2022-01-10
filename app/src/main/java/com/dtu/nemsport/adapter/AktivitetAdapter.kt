@@ -5,11 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dtu.nemsport.view.fragments.AktivitetFragment
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.AktivitetData
 
-class AktivitetAdapter(val c: AktivitetFragment, val aktivitetList: ArrayList<AktivitetData>): RecyclerView.Adapter<AktivitetAdapter.AktivitetViewHolder>() {
+class AktivitetAdapter(val aktivitetList: ArrayList<AktivitetData>): RecyclerView.Adapter<AktivitetAdapter.AktivitetViewHolder>() {
 
     inner class AktivitetViewHolder(val v: View): RecyclerView.ViewHolder(v) {
         val overskrift = v.findViewById<TextView>(R.id.overskrift)
@@ -22,14 +21,15 @@ class AktivitetAdapter(val c: AktivitetFragment, val aktivitetList: ArrayList<Ak
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AktivitetViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val v = inflater.inflate(R.layout.aktivitet_item_list, parent, false)
+        val u_v = inflater.inflate(R.layout.aktivitet_item_list_user, parent, false)
         return AktivitetViewHolder(v)
     }
 
     override fun onBindViewHolder(holder: AktivitetViewHolder, position: Int) {
         val newList = aktivitetList[position]
         holder.overskrift.text = newList.overskrift
-        holder.maxAntalSpillere.text = newList.maxAntalSpillere
-        holder.dato.text = newList.dato
+        holder.maxAntalSpillere.text = newList.maxAntalSpillere.toString()
+        holder.dato.text = newList.dato.toString()
         holder.note.text = newList.note
 
     }

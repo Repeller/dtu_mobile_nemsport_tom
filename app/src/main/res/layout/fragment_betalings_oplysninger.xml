@@ -4,81 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dtu.nemsport.view.fragments.betalingsOplysningerFragment">
+    tools:context="com.dtu.nemsport.view.fragments.betalingsOplysninger">
 
-
-    <Button
-        android:id="@+id/gemButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="96dp"
-        android:text="Gem"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/tilbageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
         android:layout_marginBottom="96dp"
         android:gravity="center"
         android:text="Tilbage"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/kortnummerEditview"
+    <TextView
+        android:id="@+id/kortnummerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="15dp"
-        android:ems="10"
-        android:hint="Kortnummer:"
-        android:inputType="numberSigned"
+        android:text=""
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/KortnummerTextview" />
 
-    <EditText
-        android:id="@+id/MMTextview"
+    <TextView
+        android:id="@+id/MM"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="MM"
-        android:inputType="numberSigned"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UdløbsdatoTextview" />
 
-    <EditText
-        android:id="@+id/YYTextview"
+    <TextView
+        android:id="@+id/YY"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="YY"
-        android:inputType="numberSigned"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/MMTextview"
+        app:layout_constraintStart_toEndOf="@+id/MM"
         app:layout_constraintTop_toBottomOf="@+id/UdløbsdatoTextview" />
 
-    <EditText
+    <TextView
         android:id="@+id/CVV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="15dp"
-        android:ems="10"
-        android:hint="CVV:"
-        android:inputType="numberSigned"
+        android:text=""
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:gravity="center"
-        android:text="Betalings oplysninger:"
+        android:text="Betalings oplysninger"
         android:textColor="@color/primary_color"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -104,9 +92,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="15dp"
-        android:text="Kort nummer"
+        android:text="Kort nummer:"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -119,31 +107,30 @@
         android:id="@+id/UdløbsdatoTextview"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:text="Udløbs dato:"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kortnummerEditview" />
+        app:layout_constraintTop_toBottomOf="@+id/kortnummerText" />
 
     <TextView
         android:id="@+id/CVVTextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="15dp"
         android:text="CVV:"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MMTextview" />
+        app:layout_constraintTop_toBottomOf="@+id/MM" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

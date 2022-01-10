@@ -7,79 +7,79 @@
     tools:context="com.dtu.nemsport.view.fragments.indstillingerFragment">
 
 
-    <TextView
-        android:id="@+id/GeneralleIndstillinger"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="5dp"
-        android:gravity="center"
-        android:text="Generelle indstillinger:"
-
-        android:textColor="@color/primary_color"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/betalingInformationKnap"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="45dp"
-        android:text="Notifikationer:"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betalingInformationKnap" />
-
     <Button
-        android:id="@+id/betalingInformationKnap"
-        android:layout_width="183dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="212dp"
-        android:layout_marginBottom="24dp"
+        android:id="@+id/ændreBetalingInformationKnap"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="56dp"
         android:backgroundTint="@color/primary_color"
-        android:text="Betalings Oplysninger:"
+        android:text="Ændre Betalings Oplysninger"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GeneralleIndstillinger"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintTop_toBottomOf="@+id/GeneralleIndstillinger" />
+
+
+    <Button
+        android:id="@+id/betalingInformationKnap"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/primary_color"
+        android:text="Betalings Oplysninger"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ændreBetalingInformationKnap" />
+
+    <Button
+        android:id="@+id/notifikationButton"
+        android:layout_width="185dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/primary_color"
+        android:text="Notifikation"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/betalingInformationKnap" />
 
     <Button
         android:id="@+id/logud"
         android:layout_width="183dp"
         android:layout_height="65dp"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="114dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="116dp"
         android:text="Log ud"
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/GeneralleIndstillinger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:gravity="center"
+
+        android:text="Generelle indstillinger:"
+        android:textColor="@color/primary_color"
+        android:textSize="35dp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

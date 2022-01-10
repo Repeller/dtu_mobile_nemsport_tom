@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".redigereIndstillingFragment"
+    tools:context="com.dtu.nemsport.view.fragments.RedigereIndstilling"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,6 +21,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/bigNavn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jens Mortensen"
@@ -200,6 +201,7 @@
 
         <EditText
             android:id="@+id/edtxNummer"
+            android:maxLength="8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="481650361"
@@ -239,7 +241,9 @@
             android:paddingStart="12dp"
             android:paddingEnd="40dp"
             android:text="Gem"
-            android:textSize="18sp"></Button>
+            android:textSize="18sp">
+
+        </Button>
 
     </LinearLayout>
 
