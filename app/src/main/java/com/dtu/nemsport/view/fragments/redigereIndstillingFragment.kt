@@ -1,6 +1,7 @@
 package com.dtu.nemsport.view.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -58,21 +59,28 @@ class RedigereIndstilling : Fragment() {
 
         // Update each variable on button clicked and navigate to profilFragment
         gemKnap.setOnClickListener {
+
             val navn = nyNavn.text.toString()
             val email = nyEmail.text.toString()
             val adresse = nyAdresse.text.toString()
             val nummer = nyNummer.text.toString()
             val bigNavn = nyNavn.text.toString()
 
-            // Update each variable for what is on te editText
-            fakeDB.userData[0].navn = navn
-            fakeDB.userData[0].navn = bigNavn
-            fakeDB.userData[0].email = email
-            fakeDB.userData[0].adresse = adresse
-            fakeDB.userData[0].nummer = nummer
+            if(TextUtils.isEmpty(navn) || TextUtils.isEmpty(email) || TextUtils.isEmpty(adresse) || TextUtils.isEmpty(nummer)) {
+                Toast.makeText(context,"Indtast venligst et gyldigt input",Toast.LENGTH_LONG).show()
+            } else {
+                // Update each variable for what is on te editText
+                fakeDB.userData[0].navn = navn
+                fakeDB.userData[0].navn = bigNavn
+                fakeDB.userData[0].email = email
+                fakeDB.userData[0].adresse = adresse
+                fakeDB.userData[0].nummer = nummer
 
-            Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
-            Toast.makeText(context, "Kommet til profil", Toast.LENGTH_SHORT).show()
+                Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
+                Toast.makeText(context, "Kommet til profil", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
 
     }
