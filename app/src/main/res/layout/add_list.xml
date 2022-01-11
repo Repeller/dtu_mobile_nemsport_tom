@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:hint="Overskrift"
             android:layout_margin="5dp"
-            android:textSize="18sp">
+            android:textSize="18sp"
+            android:maxLines="1">
 
         </EditText>
 
@@ -41,7 +42,8 @@
             android:hint="Max. antal spillere"
             android:layout_margin="5dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLines="1"/>
 
         <EditText
             android:id="@+id/datoInput"
@@ -50,7 +52,8 @@
             android:hint="Dato"
             android:layout_margin="5dp"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:maxLines="1"/>
 
         <EditText
             android:id="@+id/noteInput"
@@ -58,7 +61,8 @@
             android:layout_height="wrap_content"
             android:hint="Note"
             android:layout_margin="5dp"
-            android:textSize="18sp">
+            android:textSize="18sp"
+            android:maxLines="1">
 
         </EditText>
 
