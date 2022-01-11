@@ -78,39 +78,43 @@ class loginFragment : Fragment() {
         buttonLogin.setOnClickListener {
             requireActivity().run {
 
+                var user_inputs = false
 
-                // 01 - check if the value is in the database
-                auth.signInWithEmailAndPassword(input_username.text.toString(), input_password.text.toString())
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            val user = auth.currentUser
-                            Log.d(TAG, "signInWithEmail:success - " + user.toString())
-                            // updateUI(user)
-                            foundUser = true
-                            Log.i("auth user info:" , user.toString())
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.exception)
-                            Toast.makeText(
-                                context, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show()
-                            // updateUI(null)
-                            foundUser = false
+                // 01 - validation
+                if(input_username.text.toString().isNullOrBlank() ||
+                    input_password.text.toString().isNullOrBlank())
+                        out_feedback.text = "you need fill out the fields"
+                else
+                    user_inputs = true
+
+                if(user_inputs)
+                {
+                    // 02 - check if the value is in the database
+                    auth.signInWithEmailAndPassword(input_username.text.toString(), input_password.text.toString())
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                val user = auth.currentUser
+                                Log.d(TAG, "signInWithEmail:success - " + user.toString())
+                                // updateUI(user)
+                                Log.i("auth user info:" , user.toString())
+                                startActivity(Intent(this, MainPage::class.java))
+                                finish()
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "signInWithEmail:failure", task.exception)
+                                Toast.makeText(
+                                    context, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+                                // updateUI(null)
+
+                                out_feedback.text = "you have the wrong email or password"
+                            }
                         }
-                    }
 
-                // 01.1 - yes, save id in local values
-                if(foundUser)   // foundUser = true
-                {
-                    // 01.1.1 - change the page
-                    startActivity(Intent(this, MainPage::class.java))
-                    finish()
                 }
-                else // 01.2 - no, change feedback
-                {
-                    out_feedback.text = "you have the wrong email or password"
-                }
+
             }
         }
 
