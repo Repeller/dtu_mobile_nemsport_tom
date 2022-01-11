@@ -3,29 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_glemt_kode.xml" value="0.209375" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_indstillinger.xml" value="0.2" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_login.xml" value="0.209375" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_main.xml" value="0.19927536231884058" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_main_page.xml" value="0.209375" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_opret_profil.xml" value="0.209375" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_opret_profil_aktivitet.xml" value="0.264" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_reset_password.xml" value="0.209375" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/activity_start_side.xml" value="0.2078125" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/add_list.xml" value="0.245018115942029" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/aktivitet_item.xml" value="0.2078125" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/aktivitet_item_list.xml" value="0.245018115942029" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_aktiviteter.xml" value="0.2078125" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_baner.xml" value="0.2078125" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_betalings_oplysninger.xml" value="0.18432971014492755" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_betalingsoplysning.xml" value="0.19791666666666666" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_forside.xml" value="0.18432971014492755" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_indstillinger.xml" value="0.264" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_login.xml" value="0.2625" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_notifikation.xml" value="0.18432971014492755" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_profil.xml" value="0.19701086956521738" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.20625" />
-        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tom/app/src/main/res/menu/bottom_menu.xml" value="0.2625" />
+        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner.xml" value="0.12760416666666666" />
+        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner2.xml" value="0.1" />
+        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner3.xml" value="0.26153846153846155" />
+        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_glemt_kode.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/menu/bottom_menu.xml" value="0.24666666666666667" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner2.xml" value="0.1" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner3.xml" value="0.26153846153846155" />
@@ -33,37 +16,43 @@
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/menu/bottom_menu.xml" value="0.24666666666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/drawable/bg_button.xml" value="0.39114583333333336" />
+        <entry key="app/src/main/res/drawable/ic_assignment.xml" value="0.14635416666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.14635416666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_repeat.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.39114583333333336" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
+        <entry key="app/src/main/res/drawable/ic_map.xml" value="0.14635416666666667" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/drawable/ic_phone.xml" value="0.39114583333333336" />
-        <entry key="app/src/main/res/drawable/logo.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/layout/activity_forside.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_glemt_kode.xml" value="0.38645833333333335" />
+        <entry key="app/src/main/res/layout/activity_glemt_kode.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_indstillinger.xml" value="0.2109375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3211050724637681" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_main_page.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_opret_profil.xml" value="0.3609375" />
+        <entry key="app/src/main/res/layout/activity_opret_profil_aktivitet.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_redigere_indstillinger.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/activity_start_side.xml" value="0.3211050724637681" />
         <entry key="app/src/main/res/layout/add_list.xml" value="0.375" />
         <entry key="app/src/main/res/layout/aktivitet_item.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_baner.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_betalings_oplysninger.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/fragment_indstillinger.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/layout/fragment_lav_aktivitet.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_opret_profil.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/shape_background.xml" value="0.375" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

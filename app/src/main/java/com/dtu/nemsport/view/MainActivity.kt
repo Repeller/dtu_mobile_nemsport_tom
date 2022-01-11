@@ -8,6 +8,10 @@ import android.widget.Button
 import com.dtu.nemsport.*
 
 import com.dtu.nemsport.R
+//import com.google.firebase.firestore.FirebaseFirestore
+
+
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

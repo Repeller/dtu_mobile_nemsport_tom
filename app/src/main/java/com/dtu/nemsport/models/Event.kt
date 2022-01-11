@@ -1,4 +1,5 @@
 package com.dtu.nemsport.models
+//import com.google.firebase.firestore.FirebaseFirestore
 import java.sql.Date
 
 data class Event(val id: Int,
@@ -9,6 +10,7 @@ data class Event(val id: Int,
                  val maxPlayers: Int,
                  val onlyPaid: Int,
                  val fk_member_id: Int) {
+
 
     override fun toString(): String {
         return "id: $id - " +
