@@ -38,4 +38,5 @@ class AktivitetAdapter(val aktivitetList: ArrayList<AktivitetData>): RecyclerVie
         return aktivitetList.size
     }
 
+
 }

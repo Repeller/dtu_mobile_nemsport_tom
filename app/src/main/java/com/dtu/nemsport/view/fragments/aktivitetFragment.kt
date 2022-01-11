@@ -18,6 +18,7 @@ import com.dtu.nemsport.models.FakeDB
 import android.content.ContentValues.TAG
 import android.os.Build
 import android.util.Log
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
@@ -27,12 +28,16 @@ import kotlin.collections.ArrayList
 class AktivitetFragment : Fragment() {
 
     var fakeDB = FakeDB
+    var tilmeldte = 0
 
     private lateinit var tilføjNyAktivitetKnap: Button
     private lateinit var visMineAktiviteterKnap: Button
     private lateinit var recycler: RecyclerView
     private lateinit var aktivitetList: ArrayList<AktivitetData>
     private lateinit var aktivitetAdapter: AktivitetAdapter
+    private lateinit var tilmeldteSpillere: TextView
+    private lateinit var deltagKnap: Button
+    private lateinit var frameldKnap: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,6 +84,9 @@ class AktivitetFragment : Fragment() {
             )
             Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
         }
+
+
+
 
     }
 
