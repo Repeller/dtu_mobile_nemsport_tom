@@ -123,8 +123,6 @@ class opretProfilFragment : Fragment() {
                                 val user = auth.currentUser
                                 Log.i("auth user info:" , user.toString())
 
-                                // TODO: give some kind of feedback and stop the program, if the same email have been used already
-
                                 startActivity(Intent(this, MainPage::class.java))
                                 finish()
 
@@ -136,7 +134,7 @@ class opretProfilFragment : Fragment() {
                                     Toast.LENGTH_SHORT).show()
                                 //updateUI(null)
 
-                                // TODO: give some kind of feedback and stop the program, if the same email have been used already
+                                out_feedback.text = "This email is already in the system, it needs to be unique"
                             }
                         }
                 }
