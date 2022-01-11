@@ -5,6 +5,8 @@ data class UserProfileData(
     var email: String,
     var adresse: String,
     var nummer: String
+
+
 )
 
 
