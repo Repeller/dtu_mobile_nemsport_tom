@@ -39,11 +39,15 @@
         <entry key="app/src/main/res/layout/aktivitet_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/aktivitet_item_list.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/aktivitet_item_list_user.xml" value="0.37552083333333336" />
+        <entry key="app/src/main/res/layout/fragment_aktiviteter.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_baner.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_betalings_oplysninger.xml" value="0.15625" />
         <entry key="app/src/main/res/layout/fragment_indstillinger.xml" value="0.1816123188405797" />
         <entry key="app/src/main/res/layout/fragment_lav_aktivitet.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_mine_aktivitetet.xml" value="0.37552083333333336" />
         <entry key="app/src/main/res/layout/fragment_opret_profil.xml" value="0.264" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_redigere_indstilling.xml" value="0.375" />
@@ -51,6 +55,7 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

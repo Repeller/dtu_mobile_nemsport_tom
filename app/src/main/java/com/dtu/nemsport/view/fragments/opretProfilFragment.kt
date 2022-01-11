@@ -9,8 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+
 import android.widget.EditText
 import android.widget.TextView
+
+import android.widget.Switch
+
 import android.widget.Toast
 import com.dtu.nemsport.R
 import com.dtu.nemsport.view.MainPage
@@ -22,6 +26,9 @@ import android.util.Patterns
 
 class opretProfilFragment : Fragment() {
 
+    private lateinit var switch1: Switch
+
+    var medlem = false
 
     // views and text inputs from the front page
     private lateinit var input_name: EditText
@@ -63,6 +70,7 @@ class opretProfilFragment : Fragment() {
 
         val opretButton: Button = view.findViewById(R.id.opretButton)
 
+
         var validationDone = false
         var isPasswordsTheSame = false
         var emailValidaton = false
@@ -70,6 +78,18 @@ class opretProfilFragment : Fragment() {
         // TODO: write validation for: phone number, address (for now it takes anything you write in it as correct inputs)
         // 01 - validation of input
 
+
+        switch1 = view.findViewById(R.id.switch1)
+
+        switch1.setOnCheckedChangeListener { compoundButton, onSwitch ->
+            if(onSwitch) {
+                Toast.makeText(context, "On", Toast.LENGTH_SHORT).show()
+                medlem = true
+            } else {
+                Toast.makeText(context, "Off", Toast.LENGTH_SHORT).show()
+                medlem = false
+            }
+        }
 
 
 
