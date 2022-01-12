@@ -1,7 +1,9 @@
 package com.dtu.nemsport.view.fragments
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -22,6 +24,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.util.Patterns
+import androidx.annotation.RequiresApi
+import com.dtu.nemsport.models.FakeDB
+import com.dtu.nemsport.models.User
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.concurrent.TimeUnit
 
 
 class opretProfilFragment : Fragment() {
@@ -39,8 +48,7 @@ class opretProfilFragment : Fragment() {
     private lateinit var input_address: EditText
     private lateinit var out_feedback: TextView
     private lateinit var auth: FirebaseAuth
-    private lateinit var btn_makeUser: Button
-
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +59,29 @@ class opretProfilFragment : Fragment() {
     }
 
 
+
+    private fun addUser(userId: String, name: String, email: String, phone:String, address: String)
+    {
+        // video guide - https://youtu.be/5UEdyUFi_uQ
+        // how to set id - https://firebase.google.com/docs/firestore/manage-data/add-data#kotlin+ktx
+
+        db = FirebaseFirestore.getInstance()
+        val user: MutableMap<String, Any> = hashMapOf()
+        user["name"] = name
+        user["mail"] = email
+        user["phone"] = phone
+        user["address"] = address
+
+        db.collection("users").document(userId).set(user)
+            .addOnSuccessListener { Toast.makeText(context, "the user have been added", Toast.LENGTH_SHORT).show() }
+            .addOnFailureListener { Toast.makeText(context, "the user could not be added", Toast.LENGTH_SHORT).show() }
+
+//        db.database.getReference
+//        var user_info = User(email,  name, phone, address)
+//
+//        db.child("users").child(userId).setValue(user_info)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         // 00 - set the views/inputs to our local vars
@@ -60,17 +91,13 @@ class opretProfilFragment : Fragment() {
         input_password2 = view.findViewById(R.id.editTextPassword2)
         input_phone = view.findViewById(R.id.editTextPhone)
         input_address = view.findViewById(R.id.editTextPostalAddress)
-
+        val opretButton: Button = view.findViewById(R.id.opretButton)
         out_feedback = view.findViewById(R.id.textView_feedback)
-        btn_makeUser = view.findViewById(R.id.opretButton)
-
         auth = Firebase.auth
 
         super.onViewCreated(view, savedInstanceState)
 
-        val opretButton: Button = view.findViewById(R.id.opretButton)
-
-
+        var allFilledOut = false
         var validationDone = false
         var isPasswordsTheSame = false
         var emailValidaton = false
@@ -96,19 +123,19 @@ class opretProfilFragment : Fragment() {
         opretButton.setOnClickListener {
             requireActivity().run {
                 // checking if any of the inputs are empty
-                if(input_name.text.toString().isNullOrBlank() ||
-                    input_email.text.toString().isNullOrBlank() ||
-                    input_password1.text.toString().isNullOrBlank() ||
-                    input_password2.text.toString().isNullOrBlank() ||
-                    input_phone.text.toString().isNullOrBlank() ||
-                    input_address.text.toString().isNullOrBlank())
+                if(input_name.text.toString().isBlank() ||
+                    input_email.text.toString().isBlank() ||
+                    input_password1.text.toString().isBlank() ||
+                    input_password2.text.toString().isBlank() ||
+                    input_phone.text.toString().isBlank() ||
+                    input_address.text.toString().isBlank())
                 {
-                    validationDone = false
-                    isPasswordsTheSame = false
+                    allFilledOut = false
                     out_feedback.text = "Please make sure all fields are filled in correctly"
                 }
                 else // check password and email
                 {
+                    allFilledOut = true
                     // check password
                     if(input_password1.text.toString() == input_password2.text.toString())
                         isPasswordsTheSame = true
@@ -127,11 +154,11 @@ class opretProfilFragment : Fragment() {
                     }
 
                     // set validationDone to true, if both checks works
-                    validationDone = isPasswordsTheSame && emailValidaton
+                    validationDone = isPasswordsTheSame && emailValidaton && allFilledOut
                 }
 
-                // just to make sure everything works, I check all 3 bool values
-                if(validationDone && isPasswordsTheSame && emailValidaton)
+
+                if(validationDone)
                 {
                     // 02 - if everything is okay, make the user
 
@@ -142,6 +169,15 @@ class opretProfilFragment : Fragment() {
                                 Log.d(TAG, "createUserWithEmail:success")
                                 val user = auth.currentUser
                                 Log.i("auth user info:" , user.toString())
+
+                                // 03 - add the user-info to the database
+                                //TODO: replace the id with the real one
+
+                                addUser(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString(),
+                                    input_name.text.toString(),
+                                    input_email.text.toString(),
+                                    input_phone.text.toString(),
+                                    input_address.text.toString())
 
                                 startActivity(Intent(this, MainPage::class.java))
                                 finish()

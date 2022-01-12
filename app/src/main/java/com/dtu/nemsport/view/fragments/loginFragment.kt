@@ -39,7 +39,6 @@ class loginFragment : Fragment() {
     private lateinit var input_username: EditText
     private lateinit var input_password: EditText
     private lateinit var out_feedback: TextView
-    private var foundUser: Boolean = false
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,15 +73,14 @@ class loginFragment : Fragment() {
         out_feedback = view.findViewById(R.id.textView_feedback)
         auth = Firebase.auth
 
-        // TODO: edit this function
         buttonLogin.setOnClickListener {
             requireActivity().run {
 
                 var user_inputs = false
 
                 // 01 - validation
-                if(input_username.text.toString().isNullOrBlank() ||
-                    input_password.text.toString().isNullOrBlank())
+                if(input_username.text.toString().isBlank() ||
+                    input_password.text.toString().isBlank())
                         out_feedback.text = "you need fill out the fields"
                 else
                     user_inputs = true
@@ -108,7 +106,6 @@ class loginFragment : Fragment() {
                                     context, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show()
                                 // updateUI(null)
-
                                 out_feedback.text = "you have the wrong email or password"
                             }
                         }
