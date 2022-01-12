@@ -111,7 +111,7 @@ class mineAktivitetetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to 0,
+                "made_by" to FakeDB.userUID,
                 "max_players" to maxAntalSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
@@ -132,6 +132,8 @@ class mineAktivitetetFragment : Fragment() {
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
+
+            FakeDB.getAllData()
 
         }
         addDialog.setNegativeButton("Cancel") {
