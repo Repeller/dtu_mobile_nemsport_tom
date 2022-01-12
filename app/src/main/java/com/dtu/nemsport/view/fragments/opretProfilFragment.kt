@@ -15,7 +15,7 @@ import com.dtu.nemsport.view.MainPage
 
 class opretProfilFragment : Fragment() {
 
-    private lateinit var switch1: Switch
+    lateinit var switch1: Switch
 
     var medlem = false
 
