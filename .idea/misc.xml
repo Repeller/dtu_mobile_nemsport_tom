@@ -3,12 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner.xml" value="0.12760416666666666" />
-        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner2.xml" value="0.1" />
-        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner3.xml" value="0.26153846153846155" />
-        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_glemt_kode.xml" value="0.25052083333333336" />
-        <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/menu/bottom_menu.xml" value="0.24666666666666667" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tomRealOne/app/src/main/res/layout/fragment_indstillinger.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tomRealOne/app/src/main/res/layout/fragment_notifikation.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/alexr/AndroidStudioProjects/dtu_mobile_nemsport_tomRealOne/app/src/main/res/layout/fragment_opret_profil.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner2.xml" value="0.1" />
         <entry key="..\:/Users/nurko/AndroidStudioProjects/dtu_mobile_nemsport_tom2/app/src/main/res/layout/fragment_baner3.xml" value="0.26153846153846155" />

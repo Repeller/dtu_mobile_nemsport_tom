@@ -58,10 +58,10 @@ class indstillingerFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_indstillingerFragment_to_betalingsOplysninger)
         }
 
-        val notifikationButton: Button = view.findViewById(R.id.notifikationButton)
+        val medlemStatusButton: Button = view.findViewById(R.id.medlemStatusButton)
 
-        notifikationButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.indstillingerToNotification)
+        medlemStatusButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.indstillingerToMedlemStatus)
         }
 
         val logud: Button = view.findViewById(R.id.logud)
