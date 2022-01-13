@@ -3,6 +3,7 @@ package com.dtu.nemsport.view.fragments
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -161,6 +162,7 @@ class opretProfilFragment : Fragment() {
 
                     auth.createUserWithEmailAndPassword(input_email.text.toString(), input_password1.text.toString())
                         .addOnCompleteListener(this) { task ->
+                            // add the user to the list of accounts
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success")
@@ -169,12 +171,24 @@ class opretProfilFragment : Fragment() {
 
                                 // 03 - add the user-info to the database
                                 //TODO: replace the id with the real one
-
-                                addUser(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString(),
+                                val tempUserId = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString()
+                                addUser(tempUserId,
                                     input_name.text.toString(),
                                     input_email.text.toString(),
                                     input_phone.text.toString(),
                                     input_address.text.toString())
+
+                                // 04 - save the UID in shared
+                                // https://developer.android.com/training/data-storage/shared-preferences#WriteSharedPreference
+                                val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@addOnCompleteListener
+                                with (sharedPref.edit()) {
+                                    putString(getString(R.string.nemsport_uid), tempUserId)
+                                    apply()
+                                }
+
+
+                                // nemsport_uid
+
 
                                 startActivity(Intent(this, MainPage::class.java))
                                 finish()
