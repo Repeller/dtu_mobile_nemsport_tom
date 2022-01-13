@@ -62,7 +62,11 @@ class AktivitetFragment : Fragment() {
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
 
-        if(!medlemStatus && !medlemIndstillingStatus) {
+        if(!medlemStatus) {
+            tilføjNyAktivitetKnap.visibility = View.GONE
+        }
+
+        if(!medlemIndstillingStatus) {
             tilføjNyAktivitetKnap.visibility = View.GONE
         }
 
