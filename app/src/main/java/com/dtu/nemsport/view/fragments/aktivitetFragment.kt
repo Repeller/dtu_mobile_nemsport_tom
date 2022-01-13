@@ -6,9 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dtu.nemsport.R
@@ -16,9 +13,10 @@ import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
 import com.dtu.nemsport.models.FakeDB
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Build
 import android.util.Log
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
@@ -51,11 +49,28 @@ class AktivitetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val defaultValue = false
+        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
+
+        Log.i(TAG, medlemStatus.toString())
+        println(medlemStatus)
+
+        if(medlemStatus) {
+            println("Du fik true")
+        } else {
+            println("Du fik false")
+        }
 
 
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+
+        if(!medlemStatus) {
+            tilføjNyAktivitetKnap.visibility = View.GONE
+        }
+
         recycler = view.findViewById(R.id.recyclerView)
 
 

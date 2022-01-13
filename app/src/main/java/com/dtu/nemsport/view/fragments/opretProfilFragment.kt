@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit
 
 class opretProfilFragment : Fragment() {
 
-    private lateinit var switch1: Switch
+    lateinit var switch1: Switch
 
     var medlem = false
 
@@ -106,21 +106,17 @@ class opretProfilFragment : Fragment() {
         // 01 - validation of input
 
 
-        switch1 = view.findViewById(R.id.switch1)
-
-        switch1.setOnCheckedChangeListener { compoundButton, onSwitch ->
-            if(onSwitch) {
-                Toast.makeText(context, "On", Toast.LENGTH_SHORT).show()
-                medlem = true
-            } else {
-                Toast.makeText(context, "Off", Toast.LENGTH_SHORT).show()
-                medlem = false
-            }
-        }
+        medlemState(view)
 
 
 
         opretButton.setOnClickListener {
+            val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+            with (sharedPref!!.edit()) {
+                putBoolean("medlemStatus", medlemState(view))
+                apply()
+            }
+
             requireActivity().run {
                 // checking if any of the inputs are empty
                 if(input_name.text.toString().isBlank() ||
@@ -198,5 +194,14 @@ class opretProfilFragment : Fragment() {
         }
 
     }
+
+    fun medlemState(view: View): Boolean {
+        switch1 = view.findViewById(R.id.switch1)
+
+        medlem = switch1.isChecked
+
+        return medlem
+    }
+
 
 }
