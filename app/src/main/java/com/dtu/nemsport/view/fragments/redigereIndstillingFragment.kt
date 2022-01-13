@@ -1,7 +1,9 @@
 package com.dtu.nemsport.view.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,10 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
+import com.dtu.nemsport.models.FakeDB.db
+import com.dtu.nemsport.models.FakeDB.user
+import com.dtu.nemsport.models.FakeDB.userUID
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class RedigereIndstilling : Fragment() {
@@ -22,6 +28,7 @@ class RedigereIndstilling : Fragment() {
     lateinit var nyAdresse: EditText
     lateinit var nyNummer: EditText
     lateinit var gemKnap: Button
+    private lateinit var db: FirebaseFirestore
     var fakeDB = FakeDB
 
     lateinit var bigNavn: TextView
@@ -65,6 +72,15 @@ class RedigereIndstilling : Fragment() {
             val adresse = nyAdresse.text.toString()
             val nummer = nyNummer.text.toString()
             val bigNavn = nyNavn.text.toString()
+
+
+            // Update in the databasecall
+            /*val updateName = db.collection("users").document(userUID)
+            updateName
+                .update(navn, true)
+                .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
+                .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) } */
+
 
             if(TextUtils.isEmpty(navn) || TextUtils.isEmpty(email) || TextUtils.isEmpty(adresse) || TextUtils.isEmpty(nummer)) {
                 Toast.makeText(context,"Indtast venligst et gyldigt input",Toast.LENGTH_LONG).show()

@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
 import com.dtu.nemsport.models.FakeDB.db
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class profilFragment : Fragment() {
@@ -24,6 +25,7 @@ class profilFragment : Fragment() {
     lateinit var skiftIndstillinger: Button
     lateinit var navn: TextView
     lateinit var bigNavnProfil: TextView
+    private lateinit var db: FirebaseFirestore
 
 
     override fun onCreateView(
