@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
+import com.dtu.nemsport.models.FakeDB.db
 
 
 class profilFragment : Fragment() {
@@ -37,6 +38,7 @@ class profilFragment : Fragment() {
         val nyEmail = view.findViewById<TextView>(R.id.email)
         val nyAdresse = view.findViewById<TextView>(R.id.adresse)
         val nyNummer = view.findViewById<TextView>(R.id.nummer)
+
 
         // Set each variable as the text from the FakeDB
         navn.text = FakeDB.userData[0].navn

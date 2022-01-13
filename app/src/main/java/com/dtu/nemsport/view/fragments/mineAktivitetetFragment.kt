@@ -64,7 +64,6 @@ class mineAktivitetetFragment : Fragment() {
         if(!medlemStatus) {
             tilføjNyAktivitetKnap2.visibility = View.GONE
         }
-        //
 
         recycler = view.findViewById(R.id.recyclerView2)
 
