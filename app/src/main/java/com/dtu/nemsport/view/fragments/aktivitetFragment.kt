@@ -53,14 +53,20 @@ class AktivitetFragment : Fragment() {
         val defaultValue = false
         val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
 
+        val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
+        val defaultValue2 = false
+        val medlemIndstillingStatus = sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
+
 
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
 
-        if(!medlemStatus) {
+        if(!medlemStatus && !medlemIndstillingStatus) {
             tilføjNyAktivitetKnap.visibility = View.GONE
         }
+
+
 
         recycler = view.findViewById(R.id.recyclerView)
 

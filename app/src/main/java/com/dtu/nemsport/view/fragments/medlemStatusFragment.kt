@@ -14,6 +14,7 @@ import com.dtu.nemsport.R
 
 
 class medlemStatusFragment : Fragment() {
+
     lateinit var medlemSwitch: Switch
 
     var medlem = false
@@ -35,9 +36,9 @@ class medlemStatusFragment : Fragment() {
         medlemState(view)
 
         gemButton.setOnClickListener {
-            val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+            val sharedPref = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
             with(sharedPref!!.edit()) {
-                putBoolean("medlemStatus", medlemState(view))
+                putBoolean("medlemIndstillingStatus", medlemState(view))
                 apply()
             }
 
@@ -52,7 +53,7 @@ class medlemStatusFragment : Fragment() {
     }
 
     fun medlemState(view: View): Boolean {
-        medlemSwitch = view.findViewById(R.id.medlemSwitch)
+        medlemSwitch = view.findViewById(R.id.medlemIndstillingSwitch)
 
         medlem = medlemSwitch.isChecked
 
