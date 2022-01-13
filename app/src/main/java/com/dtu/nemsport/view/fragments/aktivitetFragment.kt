@@ -66,6 +66,11 @@ class AktivitetFragment : Fragment() {
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+
+        if(!medlemStatus) {
+            tilføjNyAktivitetKnap.visibility = View.GONE
+        }
+
         recycler = view.findViewById(R.id.recyclerView)
 
 
@@ -76,9 +81,6 @@ class AktivitetFragment : Fragment() {
         recycler.adapter = aktivitetAdapter
 
         tilføjNyAktivitetKnap.setOnClickListener {
-            if(medlemStatus) {
-
-            }
             addInfo()
         }
 
