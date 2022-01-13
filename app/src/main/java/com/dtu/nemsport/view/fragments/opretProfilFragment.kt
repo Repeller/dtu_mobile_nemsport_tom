@@ -71,6 +71,7 @@ class opretProfilFragment : Fragment() {
         user["mail"] = email
         user["phone"] = phone
         user["address"] = address
+        user["member"] = switch1.isChecked.toString()
 
         db.collection("users").document(userId).set(user)
             .addOnSuccessListener { Toast.makeText(context, "the user have been added", Toast.LENGTH_SHORT).show() }
