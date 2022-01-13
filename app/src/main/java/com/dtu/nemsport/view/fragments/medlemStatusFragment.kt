@@ -1,33 +1,22 @@
 package com.dtu.nemsport.view.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Switch
 import androidx.navigation.Navigation
 import com.dtu.nemsport.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 
 
 class medlemStatusFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var medlemSwitch: Switch
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    var medlem = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +29,18 @@ class medlemStatusFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val gemButton: Button = view.findViewById(R.id.gemButton)
+
+        medlemState(view)
+
         gemButton.setOnClickListener {
+            val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+            with(sharedPref!!.edit()) {
+                putBoolean("medlemStatus", medlemState(view))
+                apply()
+            }
+
             Navigation.findNavController(view).navigate(R.id.action_medlemStatus_to_indstillingerFragment)
         }
 
@@ -50,6 +49,14 @@ class medlemStatusFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_medlemStatus_to_indstillingerFragment)
         }
 
+    }
+
+    fun medlemState(view: View): Boolean {
+        medlemSwitch = view.findViewById(R.id.medlemSwitch)
+
+        medlem = medlemSwitch.isChecked
+
+        return medlem
     }
 
 
