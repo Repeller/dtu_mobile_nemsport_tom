@@ -1,5 +1,6 @@
 package com.dtu.nemsport.view.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,20 +34,16 @@ class opretProfilFragment : Fragment() {
 
         val opretButton: Button = view.findViewById(R.id.opretButton)
 
-        switch1 = view.findViewById(R.id.switch1)
-
-        switch1.setOnCheckedChangeListener { compoundButton, onSwitch ->
-            if(onSwitch) {
-                Toast.makeText(context, "On", Toast.LENGTH_SHORT).show()
-                medlem = true
-            } else {
-                Toast.makeText(context, "Off", Toast.LENGTH_SHORT).show()
-                medlem = false
-            }
-        }
+        medlemState(view)
 
 
         opretButton.setOnClickListener {
+            val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+            with (sharedPref!!.edit()) {
+                putBoolean("medlemStatus", medlemState(view))
+                apply()
+            }
+
             requireActivity().run {
                 startActivity(Intent(this, MainPage::class.java))
                 finish()
@@ -54,5 +51,14 @@ class opretProfilFragment : Fragment() {
         }
 
     }
+
+    fun medlemState(view: View): Boolean {
+        switch1 = view.findViewById(R.id.switch1)
+
+        medlem = switch1.isChecked
+
+        return medlem
+    }
+
 
 }

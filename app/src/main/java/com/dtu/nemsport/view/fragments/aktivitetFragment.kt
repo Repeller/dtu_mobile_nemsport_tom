@@ -13,6 +13,7 @@ import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
 import com.dtu.nemsport.models.FakeDB
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.widget.*
@@ -20,7 +21,6 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
 import kotlin.collections.ArrayList
-import kotlin.math.log
 
 
 class AktivitetFragment : Fragment() {
@@ -49,14 +49,14 @@ class AktivitetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val switch1: Switch = view.findViewById(R.id.switch1)
-        val objectFromOpret = opretProfilFragment()
-        val medlemState = objectFromOpret.medlem
+        val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val defaultValue = false
+        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
 
-        Log.i(TAG, medlemState.toString())
-        println(medlemState)
+        Log.i(TAG, medlemStatus.toString())
+        println(medlemStatus)
 
-        if(medlemState) {
+        if(medlemStatus) {
             println("Du fik true")
         } else {
             println("Du fik false")
@@ -76,7 +76,7 @@ class AktivitetFragment : Fragment() {
         recycler.adapter = aktivitetAdapter
 
         tilføjNyAktivitetKnap.setOnClickListener {
-            if(medlemState) {
+            if(medlemStatus) {
 
             }
             addInfo()
