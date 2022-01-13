@@ -1,102 +1,96 @@
 package com.dtu.nemsport.view.fragments
 
+import android.app.ActionBar
 import android.app.AlertDialog
+import android.content.ContentValues
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dtu.nemsport.R
-import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.adapter.AktivitetAdapter
+import com.dtu.nemsport.models.AktivitetData
 import com.dtu.nemsport.models.FakeDB
-import android.content.ContentValues.TAG
-import android.content.Context
-import android.os.Build
-import android.util.Log
-import android.widget.*
-import androidx.annotation.RequiresApi
-import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
-import kotlin.collections.ArrayList
 
+class mineAktivitetetFragment : Fragment() {
 
-class AktivitetFragment : Fragment() {
-
-    var fakeDB = FakeDB
-    var tilmeldte = 0
-
-    private lateinit var tilføjNyAktivitetKnap: Button
-    private lateinit var visMineAktiviteterKnap: Button
+    private lateinit var visAlleAktiviteterKnap: Button
+    private lateinit var tilføjNyAktivitetKnap2: Button
     private lateinit var recycler: RecyclerView
     private lateinit var aktivitetList: ArrayList<AktivitetData>
     private lateinit var aktivitetAdapter: AktivitetAdapter
-    private lateinit var tilmeldteSpillere: TextView
-    private lateinit var deltagKnap: Button
-    private lateinit var frameldKnap: Button
+
+    var fakeDB = FakeDB
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aktiviteter, container, false)
+        return inflater.inflate(R.layout.fragment_mine_aktivitetet, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
         val defaultValue = false
         val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
 
-
         aktivitetList = ArrayList()
 
-        tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+        tilføjNyAktivitetKnap2 = view.findViewById(R.id.tilføjNyAktivitetKnap2)
 
         if(!medlemStatus) {
-            tilføjNyAktivitetKnap.visibility = View.GONE
+            tilføjNyAktivitetKnap2.visibility = View.GONE
         }
 
-        recycler = view.findViewById(R.id.recyclerView)
+        recycler = view.findViewById(R.id.recyclerView2)
 
 
-        visMineAktiviteterKnap = view.findViewById(R.id.vismineaktiviteter)
+        visAlleAktiviteterKnap = view.findViewById(R.id.visalleaktiviteter)
 
-        aktivitetAdapter = AktivitetAdapter(fakeDB.listData)
+        aktivitetAdapter = AktivitetAdapter(fakeDB.myListData)
         recycler.layoutManager = LinearLayoutManager(context)
         recycler.adapter = aktivitetAdapter
 
-        tilføjNyAktivitetKnap.setOnClickListener {
+        tilføjNyAktivitetKnap2.setOnClickListener {
             addInfo()
         }
 
-        visMineAktiviteterKnap.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.fragment_mine_aktiviteter)
+        visAlleAktiviteterKnap.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.aktiviteterFragment)
         }
 
         //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
 
-        if (fakeDB.listData.size > 1) {
-            aktivitetList.add(
-                AktivitetData(
-                    fakeDB.listData.get(1).overskrift,
-                    fakeDB.listData.get(1).maxAntalSpillere,
-                    fakeDB.listData.get(1).dato,
-                    fakeDB.listData.get(1).note
-                )
-            )
-            Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
+        if(fakeDB.myListData.size > 1) {
+            aktivitetList.add(AktivitetData(fakeDB.myListData.get(1).overskrift, fakeDB.myListData.get(1).maxAntalSpillere, fakeDB.myListData.get(1).dato, fakeDB.myListData.get(1).note))
+            Toast.makeText(context,fakeDB.myListData.get(1).overskrift , Toast.LENGTH_SHORT).show()
         }
 
-
-
-
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addInfo() {
@@ -114,7 +108,8 @@ class AktivitetFragment : Fragment() {
         addDialog.setMessage("Indtast oplysninger")
 
         addDialog.setView(v)
-        addDialog.setPositiveButton("Ok") { dialog, i ->
+        addDialog.setPositiveButton("Ok") {
+                dialog, i->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
             val datoer = dato.text.toString()
@@ -126,7 +121,7 @@ class AktivitetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to "",
+                "made_by" to FakeDB.userUID,
                 "max_players" to maxAntalSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
@@ -134,36 +129,25 @@ class AktivitetFragment : Fragment() {
 
             activity.add(data)
                 .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+                    Log.d(ContentValues.TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
                 }
                 .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
+                    Log.w(ContentValues.TAG, "Error adding document", e)
                 }
 
-            fakeDB.listData.add(
-                AktivitetData(
-                    "$overskrifter",
-                    "$maxAntalSpillere",
-                    "$datoer",
-                    "$noter"
-                )
-            )
-            val lastObjectIndex = fakeDB.listData.size - 1
-            aktivitetList.add(
-                AktivitetData(
-                    fakeDB.listData.get(lastObjectIndex).overskrift,
-                    fakeDB.listData.get(lastObjectIndex).maxAntalSpillere,
-                    fakeDB.listData.get(lastObjectIndex).dato,
-                    fakeDB.listData.get(lastObjectIndex).note
-                )
-            )
-            Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
+            fakeDB.myListData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
+            val lastObjectIndex = fakeDB.myListData.size-1
+            aktivitetList.add(AktivitetData(fakeDB.myListData.get(lastObjectIndex).overskrift, fakeDB.myListData.get(lastObjectIndex).maxAntalSpillere, fakeDB.myListData.get(lastObjectIndex).dato, fakeDB.myListData.get(lastObjectIndex).note))
+            Toast.makeText(context, fakeDB.myListData.get(0).overskrift, Toast.LENGTH_SHORT).show()
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
 
+            FakeDB.getAllData()
+
         }
-        addDialog.setNegativeButton("Cancel") { dialog, i ->
+        addDialog.setNegativeButton("Cancel") {
+                dialog, i->
             dialog.dismiss()
             Toast.makeText(context, "Fortrudt", Toast.LENGTH_SHORT).show()
 
@@ -174,5 +158,4 @@ class AktivitetFragment : Fragment() {
 
 
     }
-
 }

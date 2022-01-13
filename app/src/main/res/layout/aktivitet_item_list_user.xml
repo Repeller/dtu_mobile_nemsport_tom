@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/overskrift"
+            android:id="@+id/overskrift2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_alignParentStart="true"
@@ -32,7 +32,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/antalSpillereTV"
+            android:id="@+id/antalSpillereTV2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -48,7 +48,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/tilmeldteSpillere"
+            android:id="@+id/tilmeldteSpillere2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -77,7 +77,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/maxAntalSpillere"
+            android:id="@+id/maxAntalSpillere2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -107,7 +107,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/datoTv"
+            android:id="@+id/datoTv2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -137,7 +137,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/noteTv"
+            android:id="@+id/noteTv2"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentStart="true"
@@ -152,7 +152,6 @@
         </TextView>
 
         <Button
-            android:id="@+id/deltagKnap"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_alignParentStart="true"
@@ -169,7 +168,6 @@
         </Button>
 
         <Button
-            android:id="@+id/frameldKnap"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_alignParentStart="true"
