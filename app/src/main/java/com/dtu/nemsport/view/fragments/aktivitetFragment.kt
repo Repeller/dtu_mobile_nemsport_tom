@@ -53,15 +53,6 @@ class AktivitetFragment : Fragment() {
         val defaultValue = false
         val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
 
-        Log.i(TAG, medlemStatus.toString())
-        println(medlemStatus)
-
-        if(medlemStatus) {
-            println("Du fik true")
-        } else {
-            println("Du fik false")
-        }
-
 
         aktivitetList = ArrayList()
 
@@ -135,7 +126,7 @@ class AktivitetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to FakeDB.userUID,
+                "made_by" to "",
                 "max_players" to maxAntalSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
@@ -170,9 +161,6 @@ class AktivitetFragment : Fragment() {
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
-
-            FakeDB.getUserData()
-
 
         }
         addDialog.setNegativeButton("Cancel") { dialog, i ->

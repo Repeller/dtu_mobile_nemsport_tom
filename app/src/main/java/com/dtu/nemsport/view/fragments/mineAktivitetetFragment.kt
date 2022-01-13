@@ -3,6 +3,7 @@ package com.dtu.nemsport.view.fragments
 import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -52,9 +53,18 @@ class mineAktivitetetFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val defaultValue = false
+        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
+
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap2 = view.findViewById(R.id.tilføjNyAktivitetKnap2)
+
+        if(!medlemStatus) {
+            tilføjNyAktivitetKnap2.visibility = View.GONE
+        }
+
         recycler = view.findViewById(R.id.recyclerView2)
 
 
