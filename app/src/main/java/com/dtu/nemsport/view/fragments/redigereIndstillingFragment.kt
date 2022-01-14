@@ -75,11 +75,7 @@ class RedigereIndstilling : Fragment() {
 
 
             // Update in the databasecall
-            /*val updateName = db.collection("users").document(userUID)
-            updateName
-                .update(navn, true)
-                .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
-                .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) } */
+            db = FirebaseFirestore.getInstance()
 
 
             if(TextUtils.isEmpty(navn) || TextUtils.isEmpty(email) || TextUtils.isEmpty(adresse) || TextUtils.isEmpty(nummer)) {
@@ -91,6 +87,27 @@ class RedigereIndstilling : Fragment() {
                 fakeDB.userData[0].email = email
                 fakeDB.userData[0].adresse = adresse
                 fakeDB.userData[0].nummer = nummer
+
+                // Update navn
+                val updateName = db.collection("users").document("1642074234")
+                updateName
+                    .update("name", navn)
+                    .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+
+                // Update adresse
+                val updateAdresse = db.collection("users").document("1642074234")
+                updateAdresse
+                    .update("address", adresse)
+                    .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+
+                // Update phone number
+                val updateNumber = db.collection("users").document("1642074234")
+                updateNumber
+                    .update("phone", nummer)
+                    .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
 
                 Navigation.findNavController(view).navigate(R.id.redigereProfilToProfil)
                 Toast.makeText(context, "Kommet til profil", Toast.LENGTH_SHORT).show()
