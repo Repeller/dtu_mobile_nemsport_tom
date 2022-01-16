@@ -4,5 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="activity">Aktiviteter</string>
     <string name="email">Email</string>
-    <string name="nemsport_uid" />
+    <string name="nemsport_uid">placeholder</string>
 </resources>
