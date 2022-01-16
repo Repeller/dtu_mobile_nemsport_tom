@@ -3,7 +3,7 @@ package com.dtu.nemsport.view.fragments
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
-import android.os.Build
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,12 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-
 import android.widget.EditText
 import android.widget.TextView
-
 import android.widget.Switch
-
 import android.widget.Toast
 import com.dtu.nemsport.R
 import com.dtu.nemsport.view.MainPage
@@ -24,11 +21,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.util.Patterns
-import androidx.annotation.RequiresApi
-import com.dtu.nemsport.models.FakeDB
-import com.dtu.nemsport.models.User
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
+import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 
@@ -58,19 +51,15 @@ class opretProfilFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_opret_profil, container, false)
     }
 
-
-
     private fun addUser(userId: String, name: String, email: String, phone:String, address: String)
     {
-        // video guide - https://youtu.be/5UEdyUFi_uQ
-        // how to set id - https://firebase.google.com/docs/firestore/manage-data/add-data#kotlin+ktx
-
         db = FirebaseFirestore.getInstance()
         val user: MutableMap<String, Any> = hashMapOf()
         user["name"] = name
         user["mail"] = email
         user["phone"] = phone
         user["address"] = address
+        user["member"] = switch1.isChecked.toString()
 
         db.collection("users").document(userId).set(user)
             .addOnSuccessListener { Toast.makeText(context, "the user have been added", Toast.LENGTH_SHORT).show() }
@@ -105,18 +94,9 @@ class opretProfilFragment : Fragment() {
         // TODO: write validation for: phone number, address (for now it takes anything you write in it as correct inputs)
         // 01 - validation of input
 
-
         medlemState(view)
 
-
-
         opretButton.setOnClickListener {
-            val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
-            with (sharedPref!!.edit()) {
-                putBoolean("medlemStatus", medlemState(view))
-                apply()
-            }
-
             requireActivity().run {
                 // checking if any of the inputs are empty
                 if(input_name.text.toString().isBlank() ||
@@ -160,6 +140,7 @@ class opretProfilFragment : Fragment() {
 
                     auth.createUserWithEmailAndPassword(input_email.text.toString(), input_password1.text.toString())
                         .addOnCompleteListener(this) { task ->
+                            // add the user to the list of accounts
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success")
@@ -168,12 +149,22 @@ class opretProfilFragment : Fragment() {
 
                                 // 03 - add the user-info to the database
                                 //TODO: replace the id with the real one
+                                val tempUserId = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString()
 
-                                addUser(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString(),
+                                addUser(tempUserId,
                                     input_name.text.toString(),
                                     input_email.text.toString(),
                                     input_phone.text.toString(),
                                     input_address.text.toString())
+
+                                // 04 - save the UID and 'medlemStatus' in sharedPref
+
+                                var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                                var editor : SharedPreferences.Editor = sharedPref.edit()
+                                editor.putString("nemsport_uid", tempUserId).commit()
+                                editor.putBoolean("medlemStatus", medlemState(view)).commit()
+
 
                                 startActivity(Intent(this, MainPage::class.java))
                                 finish()
