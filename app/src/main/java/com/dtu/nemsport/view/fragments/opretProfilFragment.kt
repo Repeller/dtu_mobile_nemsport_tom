@@ -148,28 +148,29 @@ class opretProfilFragment : Fragment() {
                                 Log.i("auth user info:" , user.toString())
 
                                 // 03 - add the user-info to the database
-                                //TODO: replace the id with the real one
-                                val tempUserId = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()).toString()
+                                val tempUserId = auth.currentUser?.uid
 
-                                addUser(tempUserId,
-                                    input_name.text.toString(),
-                                    input_email.text.toString(),
-                                    input_phone.text.toString(),
-                                    input_address.text.toString())
+                                if (tempUserId != null) {
+                                    addUser(tempUserId,
+                                        input_name.text.toString(),
+                                        input_email.text.toString(),
+                                        input_phone.text.toString(),
+                                        input_address.text.toString())
 
-                                // 04 - save the UID and 'medlemStatus' in sharedPref
+                                    // 04 - save the UID and 'medlemStatus' in sharedPref
 
-                                var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+                                    var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
 
-                                var editor : SharedPreferences.Editor = sharedPref.edit()
-                                editor.putString("nemsport_uid", tempUserId).commit()
-                                editor.putBoolean("medlemStatus", medlemState(view)).commit()
+                                    var editor : SharedPreferences.Editor = sharedPref.edit()
+                                    editor.putString("nemsport_uid", tempUserId).commit()
+                                    editor.putBoolean("medlemStatus", medlemState(view)).commit()
 
 
-                                startActivity(Intent(this, MainPage::class.java))
-                                finish()
+                                    startActivity(Intent(this, MainPage::class.java))
+                                    finish()
 
-                                //updateUI(user)
+                                    //updateUI(user)
+                                }
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.exception)
