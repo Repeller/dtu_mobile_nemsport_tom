@@ -28,10 +28,10 @@ class AktivitetAdapter(val aktivitetList: ArrayList<AktivitetData>): RecyclerVie
 
     override fun onBindViewHolder(holder: AktivitetViewHolder, position: Int) {
         val newList = aktivitetList[position]
-        holder.overskrift.text = newList.overskrift
-        holder.maxAntalSpillere.text = newList.maxAntalSpillere.toString()
-        holder.tilmeldteSpillere.text = newList.tilmeldteSpillere.toString()
-        holder.dato.text = newList.dato.toString()
+        holder.overskrift.text = newList.title
+        holder.maxAntalSpillere.text = newList.max_players.toString()
+        holder.tilmeldteSpillere.text = newList.joined_amount.toString()
+        holder.dato.text = newList.date.toString()
         holder.note.text = newList.note
 
     }

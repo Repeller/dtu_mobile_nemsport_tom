@@ -92,10 +92,15 @@ class mineAktivitetetFragment : Fragment() {
 
         //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
 
-        if(fakeDB.myListData.size > 1) {
-            aktivitetList.add(AktivitetData(fakeDB.myListData.get(1).overskrift, fakeDB.myListData.get(1).maxAntalSpillere, fakeDB.myListData.get(1).tilmeldteSpillere, fakeDB.myListData.get(1).dato, fakeDB.myListData.get(1).note))
-            Toast.makeText(context,fakeDB.myListData.get(1).overskrift , Toast.LENGTH_SHORT).show()
-        }
+//        if(fakeDB.myListData.size > 1) {
+//            aktivitetList.add(AktivitetData(
+//                fakeDB.myListData.get(1).title,
+//                fakeDB.myListData.get(1).max_players,
+//                fakeDB.myListData.get(1).joined_amount,
+//                fakeDB.myListData.get(1).date,
+//                fakeDB.myListData.get(1).note))
+//            Toast.makeText(context,fakeDB.myListData.get(1).title , Toast.LENGTH_SHORT).show()
+//        }
 
     }
 
@@ -140,20 +145,26 @@ class mineAktivitetetFragment : Fragment() {
             activity.add(data)
                 .addOnSuccessListener { documentReference ->
                     Log.d(ContentValues.TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+                    FakeDB.getAllData()
                 }
                 .addOnFailureListener { e ->
                     Log.w(ContentValues.TAG, "Error adding document", e)
                 }
 
-            fakeDB.myListData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$tilmeldteSpillere","$datoer","$noter"))
-            val lastObjectIndex = fakeDB.myListData.size-1
-            aktivitetList.add(AktivitetData(fakeDB.myListData.get(lastObjectIndex).overskrift, fakeDB.myListData.get(lastObjectIndex).maxAntalSpillere, FakeDB.myListData.get(lastObjectIndex).tilmeldteSpillere, fakeDB.myListData.get(lastObjectIndex).dato, fakeDB.myListData.get(lastObjectIndex).note))
-            Toast.makeText(context, fakeDB.myListData.get(0).overskrift, Toast.LENGTH_SHORT).show()
-
-            aktivitetAdapter.notifyDataSetChanged()
-            dialog.dismiss()
-
-            FakeDB.getAllData()
+//            fakeDB.myListData.add(
+//                AktivitetData(
+//
+//                "$overskrifter",
+//                "$maxAntalSpillere",
+//                "$tilmeldteSpillere",
+//                "$datoer",
+//                "$noter"))
+//
+//            aktivitetList.add(AktivitetData(fakeDB.myListData.get(lastObjectIndex).overskrift, fakeDB.myListData.get(lastObjectIndex).maxAntalSpillere, FakeDB.myListData.get(lastObjectIndex).tilmeldteSpillere, fakeDB.myListData.get(lastObjectIndex).dato, fakeDB.myListData.get(lastObjectIndex).note))
+//            Toast.makeText(context, fakeDB.myListData.get(0).overskrift, Toast.LENGTH_SHORT).show()
+//
+//            aktivitetAdapter.notifyDataSetChanged()
+//            dialog.dismiss()
 
         }
         addDialog.setNegativeButton("Cancel") {
