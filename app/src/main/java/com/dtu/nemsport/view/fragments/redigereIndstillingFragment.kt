@@ -73,6 +73,8 @@ class RedigereIndstilling : Fragment() {
             val nummer = nyNummer.text.toString()
             val bigNavn = nyNavn.text.toString()
 
+            // Test commit
+
 
             // Update in the databasecall
             db = FirebaseFirestore.getInstance()
