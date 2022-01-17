@@ -21,6 +21,8 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
 import kotlin.collections.ArrayList
+import android.widget.TextView
+import androidx.preference.PreferenceManager
 
 
 class AktivitetFragment : Fragment() {
@@ -49,30 +51,36 @@ class AktivitetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
-        val defaultValue = false
-        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
+        // TODO: add this later on
+        var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+//        val defaultValue = false
+//        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
+//
+//        val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
+//        val defaultValue2 = false
+//        val medlemIndstillingStatus =
+//            sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
 
-        val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
-        val defaultValue2 = false
-        val medlemIndstillingStatus = sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
-
+        // val medlemIndstillingStatus = true
 
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+//        deltagKnap = view.findViewById(R.id.tilmeldteSpillere)
 
-        if(!medlemStatus) {
-            tilføjNyAktivitetKnap.visibility = View.GONE
-        }
-
-        if(!medlemIndstillingStatus) {
-            tilføjNyAktivitetKnap.visibility = View.GONE
-        }
+//        if (!medlemStatus) {
+//            tilføjNyAktivitetKnap.visibility = View.GONE
+//        }
+//
+//        if (!medlemIndstillingStatus) {
+//            tilføjNyAktivitetKnap.visibility = View.GONE
+//        }
 
 
 
         recycler = view.findViewById(R.id.recyclerView)
+
+
 
 
         visMineAktiviteterKnap = view.findViewById(R.id.vismineaktiviteter)
@@ -85,26 +93,44 @@ class AktivitetFragment : Fragment() {
             addInfo()
         }
 
+
         visMineAktiviteterKnap.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.fragment_mine_aktiviteter)
         }
 
         //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
 
-        if (fakeDB.listData.size > 1) {
-            aktivitetList.add(
-                AktivitetData(
-                    fakeDB.listData.get(1).overskrift,
-                    fakeDB.listData.get(1).maxAntalSpillere,
-                    fakeDB.listData.get(1).dato,
-                    fakeDB.listData.get(1).note
-                )
-            )
-            Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
-        }
+//        if (fakeDB.listData.size > 1) {
+//            aktivitetList.add(
+//                AktivitetData(
+//                    fakeDB.listData.get(1).title,
+//                    fakeDB.listData.get(1).max_players.toString(),
+//                    fakeDB.listData.get(1).joined_amount.toString(),
+//                    fakeDB.listData.get(1).date.toString(),
+//                    fakeDB.listData.get(1).note.toString()
+//                )
+//            )
+//            Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
+//        }
 
-
-
+//        deltagKnap.setOnClickListener {
+//            val activity_user = fakeDB.db.collection("activity_user")
+//
+//            val data = hashMapOf(
+//
+//                "user_uid" to FakeDB.userUID,
+//                "activity_id" to 0
+//            )
+//
+//            activity_user.add(data)
+//                .addOnSuccessListener { documentReference ->
+//                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+//                }
+//                .addOnFailureListener { e ->
+//                    Log.w(TAG, "Error adding document", e)
+//                }
+//
+//        }
 
     }
 
@@ -127,6 +153,7 @@ class AktivitetFragment : Fragment() {
         addDialog.setPositiveButton("Ok") { dialog, i ->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
+            val tilmeldteSpillere = 0
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
@@ -136,41 +163,43 @@ class AktivitetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to "",
+                "made_by" to fakeDB.userUID,
                 "max_players" to maxAntalSpillere.toLong(),
+                "joined_amount" to tilmeldteSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
             )
 
+            // adding to the database ---------------------------------------------
             activity.add(data)
                 .addOnSuccessListener { documentReference ->
                     Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+
+                    val tempAktiv : AktivitetData =  AktivitetData(
+                        documentReference.id,
+                        overskrifter,
+                        fakeDB.userUID,
+                        maxAntalSpillere.toLong(),
+                        0,
+                        Timestamp.now(),
+                        noter)
+
+                    fakeDB.listData.add( tempAktiv )
+                    // val lastObjectIndex = fakeDB.listData.size - 1
+
+                    aktivitetList.add(tempAktiv)
+
+                    // Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
+
+                    aktivitetAdapter.notifyDataSetChanged()
+                    dialog.dismiss()
+
+                    FakeDB.getUserData()
+
                 }
                 .addOnFailureListener { e ->
                     Log.w(TAG, "Error adding document", e)
                 }
-
-            fakeDB.listData.add(
-                AktivitetData(
-                    "$overskrifter",
-                    "$maxAntalSpillere",
-                    "$datoer",
-                    "$noter"
-                )
-            )
-            val lastObjectIndex = fakeDB.listData.size - 1
-            aktivitetList.add(
-                AktivitetData(
-                    fakeDB.listData.get(lastObjectIndex).overskrift,
-                    fakeDB.listData.get(lastObjectIndex).maxAntalSpillere,
-                    fakeDB.listData.get(lastObjectIndex).dato,
-                    fakeDB.listData.get(lastObjectIndex).note
-                )
-            )
-            Toast.makeText(context, fakeDB.listData.get(0).overskrift, Toast.LENGTH_SHORT).show()
-
-            aktivitetAdapter.notifyDataSetChanged()
-            dialog.dismiss()
 
         }
         addDialog.setNegativeButton("Cancel") { dialog, i ->
