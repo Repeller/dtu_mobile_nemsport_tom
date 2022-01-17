@@ -21,6 +21,10 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import com.google.firebase.Timestamp
 import kotlin.collections.ArrayList
+import android.widget.TextView
+
+
+
 
 
 class AktivitetFragment : Fragment() {
@@ -55,24 +59,28 @@ class AktivitetFragment : Fragment() {
 
         val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
         val defaultValue2 = false
-        val medlemIndstillingStatus = sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
+        val medlemIndstillingStatus =
+            sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
 
 
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap = view.findViewById(R.id.tilføjNyAktivitetKnap)
+//        deltagKnap = view.findViewById(R.id.tilmeldteSpillere)
 
-        if(!medlemStatus) {
-            tilføjNyAktivitetKnap.visibility = View.GONE
-        }
-
-        if(!medlemIndstillingStatus) {
-            tilføjNyAktivitetKnap.visibility = View.GONE
-        }
+//        if (!medlemStatus) {
+//            tilføjNyAktivitetKnap.visibility = View.GONE
+//        }
+//
+//        if (!medlemIndstillingStatus) {
+//            tilføjNyAktivitetKnap.visibility = View.GONE
+//        }
 
 
 
         recycler = view.findViewById(R.id.recyclerView)
+
+
 
 
         visMineAktiviteterKnap = view.findViewById(R.id.vismineaktiviteter)
@@ -85,6 +93,7 @@ class AktivitetFragment : Fragment() {
             addInfo()
         }
 
+
         visMineAktiviteterKnap.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.fragment_mine_aktiviteter)
         }
@@ -96,6 +105,7 @@ class AktivitetFragment : Fragment() {
                 AktivitetData(
                     fakeDB.listData.get(1).overskrift,
                     fakeDB.listData.get(1).maxAntalSpillere,
+                    fakeDB.listData.get(1).tilmeldteSpillere,
                     fakeDB.listData.get(1).dato,
                     fakeDB.listData.get(1).note
                 )
@@ -103,8 +113,24 @@ class AktivitetFragment : Fragment() {
             Toast.makeText(context, fakeDB.listData.get(1).overskrift, Toast.LENGTH_SHORT).show()
         }
 
-
-
+//        deltagKnap.setOnClickListener {
+//            val activity_user = fakeDB.db.collection("activity_user")
+//
+//            val data = hashMapOf(
+//
+//                "user_uid" to FakeDB.userUID,
+//                "activity_id" to 0
+//            )
+//
+//            activity_user.add(data)
+//                .addOnSuccessListener { documentReference ->
+//                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+//                }
+//                .addOnFailureListener { e ->
+//                    Log.w(TAG, "Error adding document", e)
+//                }
+//
+//        }
 
     }
 
@@ -127,6 +153,7 @@ class AktivitetFragment : Fragment() {
         addDialog.setPositiveButton("Ok") { dialog, i ->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
+            val tilmeldteSpillere = 0
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
@@ -136,8 +163,9 @@ class AktivitetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to "",
+                "made_by" to fakeDB.userUID,
                 "max_players" to maxAntalSpillere.toLong(),
+                "joined_amount" to tilmeldteSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
             )
@@ -154,6 +182,7 @@ class AktivitetFragment : Fragment() {
                 AktivitetData(
                     "$overskrifter",
                     "$maxAntalSpillere",
+                    "$tilmeldteSpillere",
                     "$datoer",
                     "$noter"
                 )
@@ -163,6 +192,7 @@ class AktivitetFragment : Fragment() {
                 AktivitetData(
                     fakeDB.listData.get(lastObjectIndex).overskrift,
                     fakeDB.listData.get(lastObjectIndex).maxAntalSpillere,
+                    fakeDB.listData.get(lastObjectIndex).tilmeldteSpillere,
                     fakeDB.listData.get(lastObjectIndex).dato,
                     fakeDB.listData.get(lastObjectIndex).note
                 )
@@ -171,6 +201,8 @@ class AktivitetFragment : Fragment() {
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
+
+            FakeDB.getUserData()
 
         }
         addDialog.setNegativeButton("Cancel") { dialog, i ->

@@ -93,7 +93,7 @@ class mineAktivitetetFragment : Fragment() {
         //fakeDB.listData.add(AktivitetData("overskrift1", "spillere1", "dato1", "note1"))
 
         if(fakeDB.myListData.size > 1) {
-            aktivitetList.add(AktivitetData(fakeDB.myListData.get(1).overskrift, fakeDB.myListData.get(1).maxAntalSpillere, fakeDB.myListData.get(1).dato, fakeDB.myListData.get(1).note))
+            aktivitetList.add(AktivitetData(fakeDB.myListData.get(1).overskrift, fakeDB.myListData.get(1).maxAntalSpillere, fakeDB.myListData.get(1).tilmeldteSpillere, fakeDB.myListData.get(1).dato, fakeDB.myListData.get(1).note))
             Toast.makeText(context,fakeDB.myListData.get(1).overskrift , Toast.LENGTH_SHORT).show()
         }
 
@@ -107,6 +107,7 @@ class mineAktivitetetFragment : Fragment() {
 
         val overskrift = v.findViewById<EditText>(R.id.overskriftInput)
         val maxAntalSpillere = v.findViewById<EditText>(R.id.maxAntalSpillereInput)
+        val tilmeldteSpillere = v.findViewById<EditText>(R.id.tilmeldteSpillere)
         val dato = v.findViewById<EditText>(R.id.datoInput)
         val note = v.findViewById<EditText>(R.id.noteInput)
 
@@ -120,6 +121,7 @@ class mineAktivitetetFragment : Fragment() {
                 dialog, i->
             val overskrifter = overskrift.text.toString()
             val maxAntalSpillere = maxAntalSpillere.text.toString()
+            val tilmeldteSpillere = tilmeldteSpillere.text.toString()
             val datoer = dato.text.toString()
             val noter = note.text.toString()
 
@@ -143,9 +145,9 @@ class mineAktivitetetFragment : Fragment() {
                     Log.w(ContentValues.TAG, "Error adding document", e)
                 }
 
-            fakeDB.myListData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$datoer","$noter"))
+            fakeDB.myListData.add(AktivitetData("$overskrifter","$maxAntalSpillere","$tilmeldteSpillere","$datoer","$noter"))
             val lastObjectIndex = fakeDB.myListData.size-1
-            aktivitetList.add(AktivitetData(fakeDB.myListData.get(lastObjectIndex).overskrift, fakeDB.myListData.get(lastObjectIndex).maxAntalSpillere, fakeDB.myListData.get(lastObjectIndex).dato, fakeDB.myListData.get(lastObjectIndex).note))
+            aktivitetList.add(AktivitetData(fakeDB.myListData.get(lastObjectIndex).overskrift, fakeDB.myListData.get(lastObjectIndex).maxAntalSpillere, FakeDB.myListData.get(lastObjectIndex).tilmeldteSpillere, fakeDB.myListData.get(lastObjectIndex).dato, fakeDB.myListData.get(lastObjectIndex).note))
             Toast.makeText(context, fakeDB.myListData.get(0).overskrift, Toast.LENGTH_SHORT).show()
 
             aktivitetAdapter.notifyDataSetChanged()

@@ -31,6 +31,7 @@ object FakeDB {
 
     var overskrift: String? = null
     var maxAntalSpillere: Long? = null
+    var tilmeldteSpillere: Long? = null
     var dato: Timestamp? = null
     var note: String? = null
 
@@ -61,6 +62,7 @@ object FakeDB {
                                 AktivitetData(
                                     overskrift,
                                     maxAntalSpillere.toString(),
+                                    tilmeldteSpillere.toString(),
                                     dato.toString(),
                                     note
                                 )
@@ -85,16 +87,20 @@ object FakeDB {
                     maxAntalSpillere = document.getLong("max_players")
                     dato = document.getTimestamp("date")
                     note = document.getString("note")
+
                     listData.add(
                         AktivitetData(
                             overskrift,
                             maxAntalSpillere.toString(),
+                            tilmeldteSpillere.toString(),
                             dato.toString(),
                             note
                         )
                     )
+
                     Log.d("test2", "${document.id} => ${document.data}")
                 }
+
             }
             .addOnFailureListener { exception ->
                 Log.d("Fejl", "Error getting documents: ", exception)

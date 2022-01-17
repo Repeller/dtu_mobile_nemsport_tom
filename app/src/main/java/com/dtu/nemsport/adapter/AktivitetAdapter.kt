@@ -13,6 +13,7 @@ class AktivitetAdapter(val aktivitetList: ArrayList<AktivitetData>): RecyclerVie
     inner class AktivitetViewHolder(val v: View): RecyclerView.ViewHolder(v) {
         val overskrift = v.findViewById<TextView>(R.id.overskrift)
         val maxAntalSpillere = v.findViewById<TextView>(R.id.maxAntalSpillere)
+        val tilmeldteSpillere = v.findViewById<TextView>(R.id.tilmeldteSpillere)
         val dato = v.findViewById<TextView>(R.id.datoTv)
         val note = v.findViewById<TextView>(R.id.noteTv)
 
@@ -29,6 +30,7 @@ class AktivitetAdapter(val aktivitetList: ArrayList<AktivitetData>): RecyclerVie
         val newList = aktivitetList[position]
         holder.overskrift.text = newList.overskrift
         holder.maxAntalSpillere.text = newList.maxAntalSpillere.toString()
+        holder.tilmeldteSpillere.text = newList.tilmeldteSpillere.toString()
         holder.dato.text = newList.dato.toString()
         holder.note.text = newList.note
 
