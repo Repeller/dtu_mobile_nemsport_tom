@@ -31,9 +31,9 @@ object FakeDB {
 
     var overskrift: String? = null
     var maxAntalSpillere: Long? = null
+    var tilmeldteSpillere: Long? = null
     var dato: Timestamp? = null
     var note: String? = null
-
 
     var kortNummer: Long? = null
     var MM: Long? = null
@@ -49,28 +49,48 @@ object FakeDB {
         this.myListData = ArrayList<AktivitetData>()
         if (user != null) {
             db.collection("activity")
+                .whereEqualTo("made_by", userUID)
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        if (document.get("made_by")?.equals(userUID) == true) {
-                            overskrift = document.getString("title")
-                            maxAntalSpillere = document.getLong("max_players")
-                            dato = document.getTimestamp("date")
-                            note = document.getString("note")
-                            myListData.add(
-                                AktivitetData(
-                                    overskrift,
-                                    maxAntalSpillere.toString(),
-                                    dato.toString(),
-                                    note
-                                )
+                        myListData.add(
+                            AktivitetData(
+                                document.id,
+                                document.getString("title"),
+                                document.getString("made_by"),
+                                document.getLong("max_players"),
+                                document.getLong("joined_amount"),
+                                document.getTimestamp("date"),
+                                document.getString("note")
                             )
-                            Log.d("test2", "${document.id} => ${document.data}")
-                        }
+                        )
+                        Log.d("test2", "${document.id} => ${document.data}")
                     }
                 }
                 .addOnFailureListener { exception ->
                     Log.d("Fejl", "Error getting documents: ", exception)
+                }
+        }
+    }
+
+    fun checkUsersOnData() {
+        // 00 - take in all a activity and check in "activity_user"
+        var copyOfList = listData
+
+        for ((i, item) in listData.withIndex())
+        {
+            db.collection("activity")
+                .whereEqualTo("ActivityID", item.id)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (doc in result)
+                    {
+                        val temp = copyOfList[i].joined_amount!!.toInt() + 1
+                        copyOfList[i].joined_amount = temp.toLong()
+                    }
+
+                    // 01 - save over the old list
+                    listData = copyOfList
                 }
         }
     }
@@ -81,20 +101,20 @@ object FakeDB {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    overskrift = document.getString("title")
-                    maxAntalSpillere = document.getLong("max_players")
-                    dato = document.getTimestamp("date")
-                    note = document.getString("note")
                     listData.add(
                         AktivitetData(
-                            overskrift,
-                            maxAntalSpillere.toString(),
-                            dato.toString(),
-                            note
+                            document.id,
+                            document.getString("title"),
+                            document.getString("made_by"),
+                            document.getLong("max_players"),
+                            document.getLong("joined_amount"),
+                            document.getTimestamp("date"),
+                            document.getString("note")
                         )
                     )
                     Log.d("test2", "${document.id} => ${document.data}")
                 }
+
             }
             .addOnFailureListener { exception ->
                 Log.d("Fejl", "Error getting documents: ", exception)

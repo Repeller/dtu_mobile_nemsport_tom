@@ -115,7 +115,7 @@
             android:layout_marginLeft="5dp">
         </TextView>
 
-        <EditText
+        <TextView
             android:id="@+id/edtxEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,9 +123,8 @@
             android:layout_marginLeft="25dp"
             android:textSize="18dp"
             android:textColor="@color/grey"
-            android:maxLines="1"
-            android:inputType="text">
-        </EditText>
+            android:maxLines="1">
+        </TextView>
 
 
     </LinearLayout>
