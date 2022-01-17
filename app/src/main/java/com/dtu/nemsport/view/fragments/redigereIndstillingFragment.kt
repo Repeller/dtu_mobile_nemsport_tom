@@ -1,6 +1,7 @@
 package com.dtu.nemsport.view.fragments
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -19,13 +20,15 @@ import com.dtu.nemsport.models.FakeDB
 import com.dtu.nemsport.models.FakeDB.db
 import com.dtu.nemsport.models.FakeDB.user
 import com.dtu.nemsport.models.FakeDB.userUID
+import com.dtu.nemsport.models.User
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.runBlocking
 
 
 class RedigereIndstilling : Fragment() {
 
     lateinit var nyNavn: EditText
-    lateinit var nyEmail: EditText
+    lateinit var nyEmail: TextView
     lateinit var nyAdresse: EditText
     lateinit var nyNummer: EditText
     lateinit var gemKnap: Button
@@ -49,21 +52,21 @@ class RedigereIndstilling : Fragment() {
         nyAdresse = view.findViewById(R.id.edtxAdresse)
         nyNummer = view.findViewById(R.id.edtxNummer)
 
-        // Set each variable as the text from the FakeDB
-        nyNavn.setText(FakeDB.userData[0].navn)
-        bigNavn.setText(FakeDB.userData[0].navn)
-        nyEmail.setText(FakeDB.userData[0].email)
-        nyAdresse.setText(FakeDB.userData[0].adresse)
-        nyNummer.setText(FakeDB.userData[0].nummer)
 
         return view
 
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         gemKnap = view.findViewById(R.id.nyGemKnap)
+
+        runBlocking {
+            getData()
+        }
 
         // Update each variable on button clicked and navigate to profilFragment
         gemKnap.setOnClickListener {
@@ -130,10 +133,87 @@ class RedigereIndstilling : Fragment() {
                 Toast.makeText(context, "Kommet til profil", Toast.LENGTH_SHORT).show()
             }
 
+            runBlocking {
+                setData()
+            }
 
         }
 
+
     }
 
+    suspend fun getData() {
+        db = FirebaseFirestore.getInstance()
+
+        // 00 - get user id
+        var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        var uid = sharedPref.getString("nemsport_uid", "")
+
+        if (uid != null) {
+            Log.w("uid - profil - onViewCreated:", uid)
+        }
+        // 00 - get the values from the DB
+        if (uid != null) {
+
+            val navn = requireView().findViewById<TextView>(R.id.edtxNavn)
+            val bigNavnProfil = requireView().findViewById<TextView>(R.id.bigNavn)
+            val nyEmail = requireView().findViewById<TextView>(R.id.edtxEmail)
+            val nyAdresse = requireView().findViewById<TextView>(R.id.edtxAdresse)
+            val nyNummer = requireView().findViewById<TextView>(R.id.edtxNummer)
+
+            // get the current data from the database
+            db.collection("users").document(uid)
+                .get()
+                .addOnSuccessListener { doc ->
+
+
+                    navn.text = doc.getString("name").toString()
+                    bigNavnProfil.text = doc.getString("name").toString()
+                    nyEmail.text = doc.getString("mail").toString()
+                    nyAdresse.text = doc.getString("address").toString()
+                    nyNummer.text = doc.getString("phone").toString()
+
+                }
+                .addOnFailureListener {
+                    // TODO: maybe we need to do it some other way than this xDDDDD
+
+                }
+        }
+
+
+    }
+
+    suspend fun setData(){
+        db = FirebaseFirestore.getInstance()
+
+
+
+        // 00 - get user id
+        var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        var uid = sharedPref.getString("nemsport_uid", "")
+
+        if (uid != null) {
+            Log.w("uid - profil - onViewCreated:", uid)
+        }
+        // 00 - get the values from the DB
+        if (uid != null) {
+
+            // get the current data from the database
+                    val navn = requireView().findViewById<TextView>(R.id.edtxNavn)
+                    val bigNavnProfil = requireView().findViewById<TextView>(R.id.bigNavn)
+                    val nyEmail = requireView().findViewById<TextView>(R.id.edtxEmail)
+                    val nyAdresse = requireView().findViewById<TextView>(R.id.edtxAdresse)
+                    val nyNummer = requireView().findViewById<TextView>(R.id.edtxNummer)
+
+
+            var newUser : User = User(nyEmail.text.toString(), navn.text.toString(), nyNummer.text.toString(), nyAdresse.text.toString(), true)
+
+                    // save the edited
+                    db.collection("users").document(uid).set(newUser)
+                        .addOnSuccessListener { Toast.makeText(context, "text works", Toast.LENGTH_SHORT).show()  }
+                        .addOnFailureListener { Toast.makeText(context, "text does not work", Toast.LENGTH_SHORT).show()  }
+                }
+
+        }
 
 }
