@@ -1,13 +1,19 @@
 package com.dtu.nemsport.view.fragments
 
+import android.content.ContentValues
+import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.dtu.nemsport.R
 import com.dtu.nemsport.view.MainActivity
 import com.dtu.nemsport.view.MainPage
@@ -58,10 +64,10 @@ class indstillingerFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_indstillingerFragment_to_betalingsOplysninger)
         }
 
-        val notifikationButton: Button = view.findViewById(R.id.notifikationButton)
+        val medlemStatusButton: Button = view.findViewById(R.id.medlemStatusButton)
 
-        notifikationButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.indstillingerToNotification)
+        medlemStatusButton.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.indstillingerToMedlemStatus)
         }
 
         val logud: Button = view.findViewById(R.id.logud)
@@ -73,6 +79,23 @@ class indstillingerFragment : Fragment() {
             }
         }
 
+
+        val view_feedback = view.findViewById<TextView>(R.id.textView_feedback)
+        val btnUpdate : Button = view.findViewById(R.id.button_update)
+        btnUpdate.setOnClickListener{
+            // testing, will remove it later
+
+            var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+            //var sharedPref = this.activity?.getPreferences(Context.MODE_PRIVATE)
+
+            val uidValue = sharedPref.getString("nemsport_uid", "")
+            val memStatus = sharedPref.getBoolean("medlemStatus", false).toString()
+
+            val tempOut : String = "member status: ${memStatus} | uid: ${uidValue}"
+
+            view_feedback.text = tempOut
+            Log.w(TAG, tempOut)
+        }
     }
 
     companion object {

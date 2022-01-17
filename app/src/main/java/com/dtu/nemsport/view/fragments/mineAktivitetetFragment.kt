@@ -3,6 +3,7 @@ package com.dtu.nemsport.view.fragments
 import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -52,9 +53,26 @@ class mineAktivitetetFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
+        val defaultValue = false
+        val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
+
+        val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
+        val defaultValue2 = false
+        val medlemIndstillingStatus = sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
+
         aktivitetList = ArrayList()
 
         tilføjNyAktivitetKnap2 = view.findViewById(R.id.tilføjNyAktivitetKnap2)
+
+        if(!medlemStatus) {
+            tilføjNyAktivitetKnap2.visibility = View.GONE
+        }
+
+        if(!medlemIndstillingStatus) {
+            tilføjNyAktivitetKnap2.visibility = View.GONE
+        }
+
         recycler = view.findViewById(R.id.recyclerView2)
 
 
@@ -111,7 +129,7 @@ class mineAktivitetetFragment : Fragment() {
 
             val data = hashMapOf(
                 "date" to Timestamp.now(),
-                "made_by" to 0,
+                "made_by" to FakeDB.userUID,
                 "max_players" to maxAntalSpillere.toLong(),
                 "note" to noter,
                 "title" to overskrifter
@@ -132,6 +150,8 @@ class mineAktivitetetFragment : Fragment() {
 
             aktivitetAdapter.notifyDataSetChanged()
             dialog.dismiss()
+
+            FakeDB.getAllData()
 
         }
         addDialog.setNegativeButton("Cancel") {

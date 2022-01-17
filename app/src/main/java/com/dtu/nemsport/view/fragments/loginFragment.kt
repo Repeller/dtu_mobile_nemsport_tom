@@ -3,6 +3,7 @@ package com.dtu.nemsport.view.fragments
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,10 +15,12 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.dtu.nemsport.R
 import com.dtu.nemsport.view.MainPage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,8 +42,8 @@ class loginFragment : Fragment() {
     private lateinit var input_username: EditText
     private lateinit var input_password: EditText
     private lateinit var out_feedback: TextView
-    private var foundUser: Boolean = false
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,15 +77,17 @@ class loginFragment : Fragment() {
         out_feedback = view.findViewById(R.id.textView_feedback)
         auth = Firebase.auth
 
-        // TODO: edit this function
         buttonLogin.setOnClickListener {
             requireActivity().run {
 
                 var user_inputs = false
 
+                // USED TO SAVE SHARED-PREF values
+                var sharedPref = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+
                 // 01 - validation
-                if(input_username.text.toString().isNullOrBlank() ||
-                    input_password.text.toString().isNullOrBlank())
+                if(input_username.text.toString().isBlank() ||
+                    input_password.text.toString().isBlank())
                         out_feedback.text = "you need fill out the fields"
                 else
                     user_inputs = true
@@ -90,6 +95,15 @@ class loginFragment : Fragment() {
                 if(user_inputs)
                 {
                     // 02 - check if the value is in the database
+                    // login(input_username.text.toString(), input_password.text.toString())
+
+                    //TODO: maybe use these links, since it could be easier, then what you are doing here
+                    // https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients
+                    // https://firebase.google.com/docs/firestore/security/rules-query
+                    // search firebase database for the UID
+                    // https://firebase.google.com/docs/firestore/query-data/queries#execute_a_query
+                    // https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
+
                     auth.signInWithEmailAndPassword(input_username.text.toString(), input_password.text.toString())
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
@@ -97,10 +111,16 @@ class loginFragment : Fragment() {
                                 val user = auth.currentUser
                                 Log.d(TAG, "signInWithEmail:success - " + user.toString())
                                 // updateUI(user)
-                                Log.i("auth user info:" , user.toString())
-                                startActivity(Intent(this, MainPage::class.java))
-                                finish()
+                                if (user != null) {
+                                    var editor : SharedPreferences.Editor = sharedPref.edit()
+                                    var savedYet = editor.putString("nemsport_uid", user.uid).commit()
 
+                                    if(savedYet)
+                                    {
+                                        startActivity(Intent(this, MainPage::class.java))
+                                        finish()
+                                    }
+                                }
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -108,11 +128,9 @@ class loginFragment : Fragment() {
                                     context, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show()
                                 // updateUI(null)
-
                                 out_feedback.text = "you have the wrong email or password"
                             }
                         }
-
                 }
 
             }

@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.dtu.nemsport.view.fragments.notifikationFragment">
+    tools:context="com.dtu.nemsport.view.fragments.medlemStatusFragment">
 
     <TextView
-        android:id="@+id/Indstillinger"
+        android:id="@+id/medlemStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:gravity="center"
-        android:text="Notifikationer"
+        android:text="Medlem Status"
         android:textColor="@color/primary_color"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -23,17 +23,17 @@
 
 
     <Switch
-        android:id="@+id/notifiktation"
+        android:id="@+id/medlemIndstillingSwitch"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="45dp"
-        android:text="Notifikationer:"
+        android:text="Medlem:"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Indstillinger" />
+        app:layout_constraintTop_toBottomOf="@+id/medlemStatus" />
 
     <Button
         android:id="@+id/tilbageButton"

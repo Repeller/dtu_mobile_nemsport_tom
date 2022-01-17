@@ -1,7 +1,9 @@
 package com.dtu.nemsport.view.fragments
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,12 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-
 import android.widget.EditText
 import android.widget.TextView
-
 import android.widget.Switch
-
 import android.widget.Toast
 import com.dtu.nemsport.R
 import com.dtu.nemsport.view.MainPage
@@ -22,11 +21,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import android.util.Patterns
+import androidx.preference.PreferenceManager
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.concurrent.TimeUnit
 
 
 class opretProfilFragment : Fragment() {
 
-    private lateinit var switch1: Switch
+    lateinit var switch1: Switch
 
     var medlem = false
 
@@ -39,8 +41,7 @@ class opretProfilFragment : Fragment() {
     private lateinit var input_address: EditText
     private lateinit var out_feedback: TextView
     private lateinit var auth: FirebaseAuth
-    private lateinit var btn_makeUser: Button
-
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +51,25 @@ class opretProfilFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_opret_profil, container, false)
     }
 
+    private fun addUser(userId: String, name: String, email: String, phone:String, address: String)
+    {
+        db = FirebaseFirestore.getInstance()
+        val user: MutableMap<String, Any> = hashMapOf()
+        user["name"] = name
+        user["mail"] = email
+        user["phone"] = phone
+        user["address"] = address
+        user["member"] = switch1.isChecked.toString()
+
+        db.collection("users").document(userId).set(user)
+            .addOnSuccessListener { Toast.makeText(context, "the user have been added", Toast.LENGTH_SHORT).show() }
+            .addOnFailureListener { Toast.makeText(context, "the user could not be added", Toast.LENGTH_SHORT).show() }
+
+//        db.database.getReference
+//        var user_info = User(email,  name, phone, address)
+//
+//        db.child("users").child(userId).setValue(user_info)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -60,17 +80,13 @@ class opretProfilFragment : Fragment() {
         input_password2 = view.findViewById(R.id.editTextPassword2)
         input_phone = view.findViewById(R.id.editTextPhone)
         input_address = view.findViewById(R.id.editTextPostalAddress)
-
+        val opretButton: Button = view.findViewById(R.id.opretButton)
         out_feedback = view.findViewById(R.id.textView_feedback)
-        btn_makeUser = view.findViewById(R.id.opretButton)
-
         auth = Firebase.auth
 
         super.onViewCreated(view, savedInstanceState)
 
-        val opretButton: Button = view.findViewById(R.id.opretButton)
-
-
+        var allFilledOut = false
         var validationDone = false
         var isPasswordsTheSame = false
         var emailValidaton = false
@@ -78,37 +94,24 @@ class opretProfilFragment : Fragment() {
         // TODO: write validation for: phone number, address (for now it takes anything you write in it as correct inputs)
         // 01 - validation of input
 
-
-        switch1 = view.findViewById(R.id.switch1)
-
-        switch1.setOnCheckedChangeListener { compoundButton, onSwitch ->
-            if(onSwitch) {
-                Toast.makeText(context, "On", Toast.LENGTH_SHORT).show()
-                medlem = true
-            } else {
-                Toast.makeText(context, "Off", Toast.LENGTH_SHORT).show()
-                medlem = false
-            }
-        }
-
-
+        medlemState(view)
 
         opretButton.setOnClickListener {
             requireActivity().run {
                 // checking if any of the inputs are empty
-                if(input_name.text.toString().isNullOrBlank() ||
-                    input_email.text.toString().isNullOrBlank() ||
-                    input_password1.text.toString().isNullOrBlank() ||
-                    input_password2.text.toString().isNullOrBlank() ||
-                    input_phone.text.toString().isNullOrBlank() ||
-                    input_address.text.toString().isNullOrBlank())
+                if(input_name.text.toString().isBlank() ||
+                    input_email.text.toString().isBlank() ||
+                    input_password1.text.toString().isBlank() ||
+                    input_password2.text.toString().isBlank() ||
+                    input_phone.text.toString().isBlank() ||
+                    input_address.text.toString().isBlank())
                 {
-                    validationDone = false
-                    isPasswordsTheSame = false
+                    allFilledOut = false
                     out_feedback.text = "Please make sure all fields are filled in correctly"
                 }
                 else // check password and email
                 {
+                    allFilledOut = true
                     // check password
                     if(input_password1.text.toString() == input_password2.text.toString())
                         isPasswordsTheSame = true
@@ -127,26 +130,47 @@ class opretProfilFragment : Fragment() {
                     }
 
                     // set validationDone to true, if both checks works
-                    validationDone = isPasswordsTheSame && emailValidaton
+                    validationDone = isPasswordsTheSame && emailValidaton && allFilledOut
                 }
 
-                // just to make sure everything works, I check all 3 bool values
-                if(validationDone && isPasswordsTheSame && emailValidaton)
+
+                if(validationDone)
                 {
                     // 02 - if everything is okay, make the user
 
                     auth.createUserWithEmailAndPassword(input_email.text.toString(), input_password1.text.toString())
                         .addOnCompleteListener(this) { task ->
+                            // add the user to the list of accounts
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success")
                                 val user = auth.currentUser
                                 Log.i("auth user info:" , user.toString())
 
-                                startActivity(Intent(this, MainPage::class.java))
-                                finish()
+                                // 03 - add the user-info to the database
+                                val tempUserId = auth.currentUser?.uid
 
-                                //updateUI(user)
+                                if (tempUserId != null) {
+                                    addUser(tempUserId,
+                                        input_name.text.toString(),
+                                        input_email.text.toString(),
+                                        input_phone.text.toString(),
+                                        input_address.text.toString())
+
+                                    // 04 - save the UID and 'medlemStatus' in sharedPref
+
+                                    var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+
+                                    var editor : SharedPreferences.Editor = sharedPref.edit()
+                                    editor.putString("nemsport_uid", tempUserId).commit()
+                                    editor.putBoolean("medlemStatus", medlemState(view)).commit()
+
+
+                                    startActivity(Intent(this, MainPage::class.java))
+                                    finish()
+
+                                    //updateUI(user)
+                                }
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -162,5 +186,14 @@ class opretProfilFragment : Fragment() {
         }
 
     }
+
+    fun medlemState(view: View): Boolean {
+        switch1 = view.findViewById(R.id.switch1)
+
+        medlem = switch1.isChecked
+
+        return medlem
+    }
+
 
 }

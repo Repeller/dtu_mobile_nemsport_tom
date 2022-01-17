@@ -13,6 +13,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
+import com.dtu.nemsport.models.FakeDB.db
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class profilFragment : Fragment() {
@@ -23,6 +25,7 @@ class profilFragment : Fragment() {
     lateinit var skiftIndstillinger: Button
     lateinit var navn: TextView
     lateinit var bigNavnProfil: TextView
+    private lateinit var db: FirebaseFirestore
 
 
     override fun onCreateView(
@@ -37,6 +40,7 @@ class profilFragment : Fragment() {
         val nyEmail = view.findViewById<TextView>(R.id.email)
         val nyAdresse = view.findViewById<TextView>(R.id.adresse)
         val nyNummer = view.findViewById<TextView>(R.id.nummer)
+
 
         // Set each variable as the text from the FakeDB
         navn.text = FakeDB.userData[0].navn
