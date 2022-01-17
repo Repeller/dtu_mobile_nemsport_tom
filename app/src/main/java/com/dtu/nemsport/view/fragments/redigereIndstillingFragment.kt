@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.dtu.nemsport.R
 import com.dtu.nemsport.models.FakeDB
 import com.dtu.nemsport.models.FakeDB.db
@@ -79,19 +80,25 @@ class RedigereIndstilling : Fragment() {
             // Update in the databasecall
             db = FirebaseFirestore.getInstance()
 
+            val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+
+            val uidValue = sharedPref.getString("nemsport_uid", "")
+            val memStatus = sharedPref.getBoolean("medlemStatus", false).toString()
+
 
             if(TextUtils.isEmpty(navn) || TextUtils.isEmpty(email) || TextUtils.isEmpty(adresse) || TextUtils.isEmpty(nummer)) {
                 Toast.makeText(context,"Indtast venligst et gyldigt input",Toast.LENGTH_LONG).show()
             } else {
                 // Update each variable for what is on te editText
-                fakeDB.userData[0].navn = navn
+
+                /*fakeDB.userData[0].navn = navn
                 fakeDB.userData[0].navn = bigNavn
                 fakeDB.userData[0].email = email
                 fakeDB.userData[0].adresse = adresse
-                fakeDB.userData[0].nummer = nummer
+                fakeDB.userData[0].nummer = nummer*/
 
                 // Update navn
-                val updateName = db.collection("users").document("1642074234")
+                val updateName = db.collection("users").document(uidValue.toString())
                 updateName
                     .update("name", navn)
                     .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
