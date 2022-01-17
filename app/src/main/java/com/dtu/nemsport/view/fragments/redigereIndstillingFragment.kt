@@ -104,15 +104,23 @@ class RedigereIndstilling : Fragment() {
                     .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
                     .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
 
+                /*
+                // Update email
+                val updateEmail = db.collection("users").document(uidValue.toString())
+                updateEmail
+                    .update("mail", email)
+                    .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) } */
+
                 // Update adresse
-                val updateAdresse = db.collection("users").document("1642074234")
+                val updateAdresse = db.collection("users").document(uidValue.toString())
                 updateAdresse
                     .update("address", adresse)
                     .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
                     .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
 
                 // Update phone number
-                val updateNumber = db.collection("users").document("1642074234")
+                val updateNumber = db.collection("users").document(uidValue.toString())
                 updateNumber
                     .update("phone", nummer)
                     .addOnSuccessListener { Log.d(TAG, "Name successfully updated!") }
