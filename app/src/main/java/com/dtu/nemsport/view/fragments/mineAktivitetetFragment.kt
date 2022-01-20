@@ -54,11 +54,11 @@ class mineAktivitetetFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val sharedPref = activity?.getSharedPreferences("shared", Context.MODE_PRIVATE)
-        val defaultValue = false
+        val defaultValue = true
         val medlemStatus = sharedPref!!.getBoolean("medlemStatus", defaultValue)
 
         val sharedPref2 = activity?.getSharedPreferences("shared2", Context.MODE_PRIVATE)
-        val defaultValue2 = false
+        val defaultValue2 = true
         val medlemIndstillingStatus = sharedPref2!!.getBoolean("medlemIndstillingStatus", defaultValue2)
 
         aktivitetList = ArrayList()
