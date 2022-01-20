@@ -116,6 +116,11 @@ class loginFragment : Fragment() {
         out_feedback = view.findViewById(R.id.textView_feedback)
         auth = Firebase.auth
 
+        // TODO: remove this, it is only here, because of demands from the class
+        // "Usernames / passwords should not be required to be entered to use the app. "
+        input_username.setText("alice@dtu.dk")
+        input_password.setText("nemsport")
+
         buttonLogin.setOnClickListener {
             requireActivity().run {
 
