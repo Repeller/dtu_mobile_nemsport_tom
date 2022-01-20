@@ -17,7 +17,7 @@ class medlemStatusFragment : Fragment() {
 
     lateinit var medlemSwitch: Switch
 
-    var medlem = false
+    var medlem = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +32,10 @@ class medlemStatusFragment : Fragment() {
 
 
         val gemButton: Button = view.findViewById(R.id.gemButton)
+
+        // TODO: remove later, when the member system is working
+        val temp = view.findViewById<Switch>(R.id.medlemIndstillingSwitch)
+        temp.isChecked = true
 
         medlemState(view)
 
