@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/KortnummerTextview" />
 
     <TextView
-        android:id="@+id/MM"
+        android:id="@+id/MMText"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/UdløbsdatoTextview" />
 
     <TextView
-        android:id="@+id/YY"
+        android:id="@+id/YYText"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
@@ -55,11 +55,11 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/MM"
+        app:layout_constraintStart_toEndOf="@+id/MMText"
         app:layout_constraintTop_toBottomOf="@+id/UdløbsdatoTextview" />
 
     <TextView
-        android:id="@+id/CVV"
+        android:id="@+id/CVVText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -130,7 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MM" />
+        app:layout_constraintTop_toBottomOf="@+id/MMText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

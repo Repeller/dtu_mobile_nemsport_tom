@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.Navigation
 import androidx.preference.PreferenceManager
 import com.dtu.nemsport.R
@@ -61,6 +62,44 @@ class loginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
+    suspend fun movePage(){
+        startActivity(Intent(context, MainPage::class.java))
+        // finish()
+    }
+//    suspend fun login(fragmentActivity: FragmentActivity, email: String, password: String) : Boolean {
+//        // USED TO SAVE SHARED-PREF values
+//        var sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+//
+//        auth.signInWithEmailAndPassword(input_username.text.toString(), input_password.text.toString())
+//            .addOnCompleteListener(fragmentActivity) { task ->
+//                if (task.isSuccessful) {
+//                    // Sign in success, update UI with the signed-in user's information
+//                    val user = auth.currentUser
+//                    Log.d(TAG, "signInWithEmail:success - " + user.toString())
+//                    // updateUI(user)
+//                    if (user != null) {
+//                        var editor : SharedPreferences.Editor = sharedPref.edit()
+//                        var savedYet = editor.putString("nemsport_uid", user.uid).commit()
+//
+//                        if(savedYet)
+//                        {
+//                            movePage()
+//                        }
+//                    }
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+//                    Toast.makeText(
+//                        context, "Authentication failed.",
+//                        Toast.LENGTH_SHORT).show()
+//                    // updateUI(null)
+//                    out_feedback.text = "you have the wrong email or password"
+//
+//                    return@addOnCompleteListener false
+//                }
+//            }
+//    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -76,6 +115,11 @@ class loginFragment : Fragment() {
         input_password = view.findViewById(R.id.loginWritePassword)
         out_feedback = view.findViewById(R.id.textView_feedback)
         auth = Firebase.auth
+
+        // TODO: remove this, it is only here, because of demands from the class
+        // "Usernames / passwords should not be required to be entered to use the app. "
+        input_username.setText("alice@dtu.dk")
+        input_password.setText("nemsport")
 
         buttonLogin.setOnClickListener {
             requireActivity().run {
@@ -95,14 +139,6 @@ class loginFragment : Fragment() {
                 if(user_inputs)
                 {
                     // 02 - check if the value is in the database
-                    // login(input_username.text.toString(), input_password.text.toString())
-
-                    //TODO: maybe use these links, since it could be easier, then what you are doing here
-                    // https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients
-                    // https://firebase.google.com/docs/firestore/security/rules-query
-                    // search firebase database for the UID
-                    // https://firebase.google.com/docs/firestore/query-data/queries#execute_a_query
-                    // https://firebase.google.com/docs/firestore/query-data/get-data#get_a_document
 
                     auth.signInWithEmailAndPassword(input_username.text.toString(), input_password.text.toString())
                         .addOnCompleteListener(this) { task ->
